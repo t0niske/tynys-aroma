@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://t0niske.github.io/tynys-aroma/sitemap.xml
