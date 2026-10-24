@@ -94,12 +94,13 @@ ul,ol{margin:0;padding:0;list-style:none}
 .aurora{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0}
 .aurora i{position:absolute;border-radius:50%;filter:blur(70px);opacity:.75;animation:drift 22s ease-in-out infinite alternate}
 .aurora .a1{width:46vw;height:46vw;max-width:680px;max-height:680px;background:#BFEADB;left:-10%;top:-30%}
-.aurora .a2{width:38vw;height:38vw;max-width:560px;max-height:560px;background:#D7E9FF;right:-8%;top:-10%;animation-delay:-6s}
+.aurora .a2{width:38vw;height:38vw;max-width:560px;max-height:560px;background:#D7E9FF;right:0;top:-10%;animation-delay:-6s;animation-name:drift-l}
 .aurora .a3{width:30vw;height:30vw;max-width:460px;max-height:460px;background:#FCE3D3;right:20%;bottom:-30%;animation-delay:-12s;opacity:.6}
 .aurora .a4{width:26vw;height:26vw;max-width:380px;max-height:380px;background:#E5F7C9;left:30%;bottom:-25%;animation-delay:-3s;opacity:.55}
 .aurora.soft i{opacity:.45}
 @keyframes drift{to{transform:translate(6%,8%) scale(1.12)}}
-@media (prefers-reduced-motion:reduce){.aurora i,.mist i,.stage-svg{animation:none!important}}
+@keyframes drift-l{to{transform:translate(-6%,8%) scale(1.12)}}
+@media (prefers-reduced-motion:reduce){.aurora i,.mist i,.stage-svg,.stage-spin{animation:none!important}}
 
 /* ── hero ── */
 .hero{position:relative;padding:56px 0 34px;overflow:hidden}
@@ -118,6 +119,16 @@ ul,ol{margin:0;padding:0;list-style:none}
 .stage-svg,.stage-img{position:relative;width:74%;animation:float 6s ease-in-out infinite}
 .stage-img{width:88%;border-radius:var(--r);mix-blend-mode:multiply}
 @keyframes float{50%{transform:translateY(-10px)}}
+/* 360°-просмотр аппарата */
+.spin{position:relative;width:100%;aspect-ratio:1/1;touch-action:pan-y;cursor:grab;user-select:none;-webkit-user-select:none}
+.stage-spin{width:88%;animation:float 6s ease-in-out infinite}
+.spin.grab{cursor:grabbing}
+.spin>img,.stage .spin .stage-img{width:100%;height:100%;object-fit:contain;animation:none;transition:opacity .5s}
+.spin-f{position:absolute;inset:0;background-size:600% 600%;background-repeat:no-repeat;mix-blend-mode:multiply;opacity:0;transition:opacity .5s;pointer-events:none}
+.spin.ready .spin-f{opacity:1}.spin.ready>img{opacity:0}
+.spin-hint{position:absolute;left:50%;bottom:-4px;transform:translateX(-50%);font-size:12px;font-weight:500;color:var(--ink3,#7a857f);white-space:nowrap;opacity:0;transition:opacity .5s .4s;pointer-events:none}
+.spin.ready .spin-hint{opacity:1}.spin.touched .spin-hint{opacity:0}
+.stage.has-photo .mist{top:2%}
 .mist{position:absolute;left:50%;top:12%;width:120px;height:160px;transform:translateX(-50%);pointer-events:none}
 .mist i{position:absolute;bottom:0;left:50%;width:46px;height:46px;border-radius:50%;background:radial-gradient(closest-side,rgba(200,236,224,.9),rgba(200,236,224,0));animation:mist 5.2s ease-out infinite}
 .mist i:nth-child(2){animation-delay:1.3s}.mist i:nth-child(3){animation-delay:2.6s}.mist i:nth-child(4){animation-delay:3.9s}

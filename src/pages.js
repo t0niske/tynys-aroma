@@ -44,8 +44,8 @@ function register(site) {
         <li><b>1 день</b><span>до запуска</span></li>
       </ul>
     </div>
-    <div class="stage">
-      ${site.hasImg('device') ? img('device', { cls: 'stage-img', eager: true }) : UI.deviceSvg('nova300', 'nova stage-svg')}
+    <div class="stage${site.hasImg('device') ? ' has-photo' : ''}">
+      ${site.hasImg('device') ? UI.spin(img('device', { cls: 'stage-img', eager: true }), 'stage-spin') : UI.deviceSvg('nova300', 'nova stage-svg')}
       <div class="mist" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
       <div class="callout c1"><b>&lt; 35 дБ</b><span>тише шёпота</span></div>
       <div class="callout c2"><b>Расписание</b><span>включается к открытию</span></div>
@@ -223,7 +223,7 @@ ${UI.related('Другие решения', others.map(o => [o.h1, `resheniya/${
 <section class="sec">
   <div class="wrap narrow">
     <h2 class="h2">Сравнение характеристик</h2>
-    <div class="tbl-wrap"><table class="tbl"><thead><tr><th scope="col">Параметр</th>${D.devices.map(d => `<th scope="col">${d.name}</th>`).join('')}</tr></thead>
+    <div class="tbl-wrap" data-scroll-x><table class="tbl"><thead><tr><th scope="col">Параметр</th>${D.devices.map(d => `<th scope="col">${d.name}</th>`).join('')}</tr></thead>
     <tbody>${keys.map(k => `<tr><th scope="row">${k}</th>${D.devices.map(d => `<td>${(d.specs.find(s => s[0] === k) || [, '—'])[1]}</td>`).join('')}</tr>`).join('')}
     <tr><th scope="row">Цена в месяц</th>${D.devices.map(d => `<td>от ${UI.pm(d)}</td>`).join('')}</tr></tbody></table></div>
   </div>
@@ -258,7 +258,7 @@ ${UI.faq([['Нужно ли покупать диффузор?', 'Нет. Апп
       get body() {
         return UI.pageHead(this, {
           kicker: `до ${d.area} м²`, lead: d.lead,
-          media: site.hasImg('device') ? img('device', { alt: `Диффузор ${d.name}`, eager: true }) : UI.deviceSvg(d.id, 'nova'),
+          media: site.hasImg('device') ? UI.spin(img('device', { alt: `Диффузор ${d.name}`, eager: true })) : UI.deviceSvg(d.id, 'nova'),
           actions: `<div class="hero-cta"><a class="btn btn-dark btn-lg" href="#zayavka">Арендовать ${d.name}</a><span class="price-big">от <b>${UI.pm(d)}</b> / мес</span></div>`
         }) + `
 <section class="sec">
@@ -307,7 +307,7 @@ ${UI.faq(dfaq, `Вопросы о ${d.name}`)}`;
 <section class="sec">
   <div class="wrap narrow">
     <h2 class="h2">Все тарифы в одной таблице</h2>
-    <div class="tbl-wrap"><table class="tbl"><thead><tr><th scope="col">Срок</th>${D.devices.map(d => `<th scope="col">${d.name}<small>до ${d.area} м²</small></th>`).join('')}</tr></thead>
+    <div class="tbl-wrap" data-scroll-x><table class="tbl"><thead><tr><th scope="col">Срок</th>${D.devices.map(d => `<th scope="col">${d.name}<small>до ${d.area} м²</small></th>`).join('')}</tr></thead>
     <tbody>${[0, 1, 2].map(j => `<tr><th scope="row">${months(D.devices[0].plans[j].months)}</th>${D.devices.map(d => `<td><b>${D.fmt(d.plans[j].total)}</b><small>${D.fmt(D.perMonth(d.plans[j]))} в месяц</small></td>`).join('')}</tr>`).join('')}</tbody></table></div>
     <div class="prose">
       <h2>Примеры расчёта</h2>

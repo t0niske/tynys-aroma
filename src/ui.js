@@ -237,6 +237,12 @@ function calc() {
 
 /* Рисованный диффузор — пока нет фото (src/assets/img/device.*) */
 let svgN = 0;
+/* 360°-просмотр Nova: статичная картинка + спрайт из 36 кадров (рендер Blender), main.js его оживляет */
+function spin(imgHtml, cls = '') {
+  if (!site.hasImg('nova-360')) return imgHtml;
+  return `<div class="spin${cls ? ' ' + cls : ''}" data-src="${site.url('assets/img/nova-360.webp')}" data-start="33">${imgHtml}<span class="spin-hint" aria-hidden="true">Потяните, чтобы повернуть</span></div>`;
+}
+
 function deviceSvg(id = 'nova300', cls = 'nova') {
   const k = id + (++svgN); // уникальные id градиентов, стабильные между сборками
   return `<svg class="${cls}" viewBox="0 0 330 320" role="img" aria-label="Диффузор Nova с LED-дисплеем">
@@ -266,4 +272,4 @@ function related(title, links) {
   return `<section class="sec sec-tight"><div class="wrap"><h2 class="h3">${title}</h2><div class="chips">${links.map(([n, h]) => `<a class="chip" href="/${h}">${esc(n)}${icon('arrow', 'ic ic-s')}</a>`).join('')}</div></div></section>`;
 }
 
-module.exports = { init, layout, icon, pageHead, faq, cta, scentCard, solCard, deviceCard, plans, calc, deviceSvg, related, pm };
+module.exports = { init, layout, icon, pageHead, faq, cta, scentCard, solCard, deviceCard, plans, calc, deviceSvg, spin, related, pm };

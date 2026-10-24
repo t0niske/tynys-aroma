@@ -101,6 +101,36 @@
     window.open(D.waLink(msg), '_blank', 'noopener');
   });
 
+  /* 360°: аппарат медленно вращается, его можно повернуть мышью или пальцем */
+  $$('.spin[data-src]').forEach(function (box) {
+    var N = 36, COLS = 6, i = +box.getAttribute('data-start') || 0, timer = null, drag = null, idle, seen = true;
+    var still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var sprite = new Image();
+    sprite.onload = function () {
+      var f = document.createElement('div');
+      f.className = 'spin-f'; f.style.backgroundImage = 'url(' + sprite.src + ')';
+      box.appendChild(f);
+      var show = function () { f.style.backgroundPosition = (i % COLS) * 20 + '% ' + Math.floor(i / COLS) * 20 + '%'; };
+      var stop = function () { clearInterval(timer); timer = null; };
+      var play = function () { stop(); if (!still && seen) timer = setInterval(function () { i = (i + 1) % N; show(); }, 150); };
+      show(); box.classList.add('ready'); play();
+      if ('IntersectionObserver' in window) new IntersectionObserver(function (es) { seen = es[0].isIntersecting; seen && !drag ? play() : stop(); }).observe(box);
+      box.addEventListener('pointerdown', function (e) {
+        drag = { x: e.clientX, i: i }; stop(); clearTimeout(idle);
+        box.classList.add('grab', 'touched');
+        if (box.setPointerCapture) box.setPointerCapture(e.pointerId);
+      });
+      box.addEventListener('pointermove', function (e) {
+        if (!drag) return;
+        i = ((drag.i - Math.round((e.clientX - drag.x) / 8)) % N + N) % N; show();
+      });
+      var up = function () { if (!drag) return; drag = null; box.classList.remove('grab'); idle = setTimeout(play, 2500); };
+      box.addEventListener('pointerup', up); box.addEventListener('pointercancel', up);
+    };
+    var load = function () { sprite.src = box.getAttribute('data-src'); };
+    'requestIdleCallback' in window ? requestIdleCallback(load, { timeout: 2500 }) : setTimeout(load, 1200);
+  });
+
   /* мягкое появление блоков */
   if ('IntersectionObserver' in window) {
     var io = new IntersectionObserver(function (es) {

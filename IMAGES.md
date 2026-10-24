@@ -3,9 +3,9 @@
 Сгенерируйте в ChatGPT, сохраните в `src/assets/img/` под указанным именем (png, jpg или webp) и пересоберите: `node build.js`.
 Пока файла нет, на сайте стоит подписанная заглушка того же размера.
 
-Готово: 0 из 25.
+Готово: 25 из 25.
 
-## ⬜ `device` — Диффузор Nova, студийный рендер
+## ✅ `device` — Диффузор Nova, студийный рендер
 
 - Формат: 1:1
 - Где на сайте: главная (первый экран), страницы оборудования
@@ -17,7 +17,7 @@ Studio product photograph of a compact rectangular aroma diffuser about 20 cm ta
 ВАЖНО: приложите к запросу в ChatGPT фото аппарата со страницы прайса (PDF Nova 300), чтобы форма совпала с настоящим диффузором.
 ```
 
-## ⬜ `device-led` — Деталь: LED-панель
+## ✅ `device-led` — Деталь: LED-панель
 
 - Формат: 4:5
 - Где на сайте: страницы Nova 300 и Nova 1000
@@ -29,7 +29,7 @@ Macro close-up product photograph of the front of a compact rectangular aroma di
 Приложите фото аппарата из PDF как референс.
 ```
 
-## ⬜ `sol-ofis` — Офис
+## ✅ `sol-ofis` — Офис
 
 - Формат: 3:2
 - Где на сайте: /resheniya/ofis/
@@ -42,7 +42,7 @@ In the scene, a compact rectangular aroma diffuser about 20 cm tall made of matt
 Composition: wide horizontal frame, the diffuser in the right third, plenty of calm negative space on the left. Aspect ratio 3:2.
 ```
 
-## ⬜ `sol-magazin` — Бутик
+## ✅ `sol-magazin` — Бутик
 
 - Формат: 3:2
 - Где на сайте: /resheniya/magazin/
@@ -55,7 +55,7 @@ In the scene, a compact rectangular aroma diffuser about 20 cm tall made of matt
 Composition: wide horizontal frame, the diffuser in the right third, plenty of calm negative space on the left. Aspect ratio 3:2.
 ```
 
-## ⬜ `sol-otel` — Лобби отеля
+## ✅ `sol-otel` — Лобби отеля
 
 - Формат: 3:2
 - Где на сайте: /resheniya/otel/
@@ -68,7 +68,7 @@ In the scene, a compact rectangular aroma diffuser about 20 cm tall made of matt
 Composition: wide horizontal frame, the diffuser in the right third, plenty of calm negative space on the left. Aspect ratio 3:2.
 ```
 
-## ⬜ `sol-restoran-kafe` — Кофейня
+## ✅ `sol-restoran-kafe` — Кофейня
 
 - Формат: 3:2
 - Где на сайте: /resheniya/restoran-kafe/
@@ -81,7 +81,7 @@ In the scene, a compact rectangular aroma diffuser about 20 cm tall made of matt
 Composition: wide horizontal frame, the diffuser in the right third, plenty of calm negative space on the left. Aspect ratio 3:2.
 ```
 
-## ⬜ `sol-fitnes` — Фитнес-клуб
+## ✅ `sol-fitnes` — Фитнес-клуб
 
 - Формат: 3:2
 - Где на сайте: /resheniya/fitnes/
@@ -94,7 +94,7 @@ In the scene, a compact rectangular aroma diffuser about 20 cm tall made of matt
 Composition: wide horizontal frame, the diffuser in the right third, plenty of calm negative space on the left. Aspect ratio 3:2.
 ```
 
-## ⬜ `sol-salon-krasoty` — Салон красоты
+## ✅ `sol-salon-krasoty` — Салон красоты
 
 - Формат: 3:2
 - Где на сайте: /resheniya/salon-krasoty/
@@ -107,7 +107,7 @@ In the scene, a compact rectangular aroma diffuser about 20 cm tall made of matt
 Composition: wide horizontal frame, the diffuser in the right third, plenty of calm negative space on the left. Aspect ratio 3:2.
 ```
 
-## ⬜ `sol-klinika` — Клиника
+## ✅ `sol-klinika` — Клиника
 
 - Формат: 3:2
 - Где на сайте: /resheniya/klinika/
@@ -120,7 +120,7 @@ In the scene, a compact rectangular aroma diffuser about 20 cm tall made of matt
 Composition: wide horizontal frame, the diffuser in the right third, plenty of calm negative space on the left. Aspect ratio 3:2.
 ```
 
-## ⬜ `sol-zhk-nedvizhimost` — Лобби ЖК
+## ✅ `sol-zhk-nedvizhimost` — Лобби ЖК
 
 - Формат: 3:2
 - Где на сайте: /resheniya/zhk-nedvizhimost/
@@ -133,7 +133,7 @@ In the scene, a compact rectangular aroma diffuser about 20 cm tall made of matt
 Composition: wide horizontal frame, the diffuser in the right third, plenty of calm negative space on the left. Aspect ratio 3:2.
 ```
 
-## ⬜ `sol-avtosalon` — Автосалон
+## ✅ `sol-avtosalon` — Автосалон
 
 - Формат: 3:2
 - Где на сайте: /resheniya/avtosalon/
@@ -146,7 +146,7 @@ In the scene, a compact rectangular aroma diffuser about 20 cm tall made of matt
 Composition: wide horizontal frame, the diffuser in the right third, plenty of calm negative space on the left. Aspect ratio 3:2.
 ```
 
-## ⬜ `sol-dom` — Квартира
+## ✅ `sol-dom` — Квартира
 
 - Формат: 3:2
 - Где на сайте: /resheniya/dom/
@@ -159,7 +159,7 @@ In the scene, a compact rectangular aroma diffuser about 20 cm tall made of matt
 Composition: wide horizontal frame, the diffuser in the right third, plenty of calm negative space on the left. Aspect ratio 3:2.
 ```
 
-## ⬜ `cat-svezhie-citrusovye` — Свежие и цитрусовые
+## ✅ `cat-svezhie-citrusovye` — Свежие и цитрусовые
 
 - Формат: 4:3
 - Где на сайте: /aromaty/svezhie-citrusovye/
@@ -169,7 +169,7 @@ Composition: wide horizontal frame, the diffuser in the right third, plenty of c
 Minimal still-life product photograph on a seamless very light sage-green background (#EEF4F1), soft diffused studio light, gentle long shadow. Subject: halved lemons, limes and a bergamot, a sprig of basil, a few drops of water. Arranged loosely in the centre with air around it. Clean, fresh, premium, editorial. No text, no logos, no bottles with labels. Aspect ratio 4:3.
 ```
 
-## ⬜ `cat-cvetochnye` — Цветочные
+## ✅ `cat-cvetochnye` — Цветочные
 
 - Формат: 4:3
 - Где на сайте: /aromaty/cvetochnye/
@@ -179,7 +179,7 @@ Minimal still-life product photograph on a seamless very light sage-green backgr
 Minimal still-life product photograph on a seamless very light sage-green background (#EEF4F1), soft diffused studio light, gentle long shadow. Subject: a single pale pink rose, white jasmine blossoms and freesia petals. Arranged loosely in the centre with air around it. Clean, fresh, premium, editorial. No text, no logos, no bottles with labels. Aspect ratio 4:3.
 ```
 
-## ⬜ `cat-gurmanskie` — Гурманские
+## ✅ `cat-gurmanskie` — Гурманские
 
 - Формат: 4:3
 - Где на сайте: /aromaty/gurmanskie/
@@ -189,7 +189,7 @@ Minimal still-life product photograph on a seamless very light sage-green backgr
 Minimal still-life product photograph on a seamless very light sage-green background (#EEF4F1), soft diffused studio light, gentle long shadow. Subject: roasted coffee beans, two vanilla pods, a small piece of caramel and a cinnamon stick. Arranged loosely in the centre with air around it. Clean, fresh, premium, editorial. No text, no logos, no bottles with labels. Aspect ratio 4:3.
 ```
 
-## ⬜ `cat-otelnye` — Отельные
+## ✅ `cat-otelnye` — Отельные
 
 - Формат: 4:3
 - Где на сайте: /aromaty/otelnye/
@@ -199,7 +199,7 @@ Minimal still-life product photograph on a seamless very light sage-green backgr
 Minimal still-life product photograph on a seamless very light sage-green background (#EEF4F1), soft diffused studio light, gentle long shadow. Subject: a halved fresh fig, loose white tea leaves in a small porcelain bowl, a folded white cotton towel. Arranged loosely in the centre with air around it. Clean, fresh, premium, editorial. No text, no logos, no bottles with labels. Aspect ratio 4:3.
 ```
 
-## ⬜ `cat-spa-relax` — SPA и релакс
+## ✅ `cat-spa-relax` — SPA и релакс
 
 - Формат: 4:3
 - Где на сайте: /aromaty/spa-relax/
@@ -209,7 +209,7 @@ Minimal still-life product photograph on a seamless very light sage-green backgr
 Minimal still-life product photograph on a seamless very light sage-green background (#EEF4F1), soft diffused studio light, gentle long shadow. Subject: a bundle of lavender, a eucalyptus branch, smooth river stones and green tea leaves. Arranged loosely in the centre with air around it. Clean, fresh, premium, editorial. No text, no logos, no bottles with labels. Aspect ratio 4:3.
 ```
 
-## ⬜ `cat-parfyumernye` — Парфюмерные
+## ✅ `cat-parfyumernye` — Парфюмерные
 
 - Формат: 4:3
 - Где на сайте: /aromaty/parfyumernye/
@@ -219,7 +219,7 @@ Minimal still-life product photograph on a seamless very light sage-green backgr
 Minimal still-life product photograph on a seamless very light sage-green background (#EEF4F1), soft diffused studio light, gentle long shadow. Subject: a piece of cedar wood, a folded piece of tan leather, dried tobacco leaf and a few pink peppercorns. Arranged loosely in the centre with air around it. Clean, fresh, premium, editorial. No text, no logos, no bottles with labels. Aspect ratio 4:3.
 ```
 
-## ⬜ `process` — Установка диффузора
+## ✅ `process` — Установка диффузора
 
 - Формат: 3:2
 - Где на сайте: /kak-my-rabotaem/
@@ -230,7 +230,7 @@ Photorealistic editorial interior photograph, soft natural daylight, airy and cl
 Scene: a technician's hands (no face visible) in a sage-green work shirt placing a compact rectangular aroma diffuser about 20 cm tall made of matte graphite-grey powder-coated metal with slightly rounded edges, a narrow vertical black glossy glass panel on the right half of the front with small glowing blue LED digits and a tiny red power icon, a round black fan grille on the top, a small round port on the left side, four short black rubber feet on a white shelf in a bright modern office, a small case with oil bottles next to it. Aspect ratio 3:2.
 ```
 
-## ⬜ `blog-kak-vybrat-aromat-dlya-biznesa` — Обложка: как выбрать аромат
+## ✅ `blog-kak-vybrat-aromat-dlya-biznesa` — Обложка: как выбрать аромат
 
 - Формат: 16:9
 - Где на сайте: блог
@@ -240,7 +240,7 @@ Scene: a technician's hands (no face visible) in a sage-green work shirt placing
 Minimal editorial flat-lay on a light sage background: six small glass dishes each holding a different aroma ingredient (lemon peel, rose petals, coffee beans, white tea, lavender, cedar shavings), a paper scent strip on top. Soft daylight, premium, airy. No text, no logos. Aspect ratio 16:9.
 ```
 
-## ⬜ `blog-stoimost-aromatizacii-pomeshcheniya` — Обложка: стоимость
+## ✅ `blog-stoimost-aromatizacii-pomeshcheniya` — Обложка: стоимость
 
 - Формат: 16:9
 - Где на сайте: блог
@@ -250,7 +250,7 @@ Minimal editorial flat-lay on a light sage background: six small glass dishes ea
 Minimal still life: a compact rectangular aroma diffuser about 20 cm tall made of matte graphite-grey powder-coated metal with slightly rounded edges, a narrow vertical black glossy glass panel on the right half of the front with small glowing blue LED digits and a tiny red power icon, a round black fan grille on the top, a small round port on the left side, four short black rubber feet next to a small stack of three amber glass oil bottles without labels on a light oak table, soft daylight, sage green wall behind. Calm, premium, airy. No text, no logos. Aspect ratio 16:9.
 ```
 
-## ⬜ `blog-arenda-ili-pokupka-aromatizatora` — Обложка: аренда или покупка
+## ✅ `blog-arenda-ili-pokupka-aromatizatora` — Обложка: аренда или покупка
 
 - Формат: 16:9
 - Где на сайте: блог
@@ -260,7 +260,7 @@ Minimal still life: a compact rectangular aroma diffuser about 20 cm tall made o
 Editorial photograph: two identical a compact rectangular aroma diffuser about 20 cm tall made of matte graphite-grey powder-coated metal with slightly rounded edges, a narrow vertical black glossy glass panel on the right half of the front with small glowing blue LED digits and a tiny red power icon, a round black fan grille on the top, a small round port on the left side, four short black rubber feets standing side by side on a white plinth, one with a small cardboard delivery box beside it, soft studio daylight, pale mint background. No text, no logos. Aspect ratio 16:9.
 ```
 
-## ⬜ `blog-bezopasna-li-aromatizaciya` — Обложка: безопасность
+## ✅ `blog-bezopasna-li-aromatizaciya` — Обложка: безопасность
 
 - Формат: 16:9
 - Где на сайте: блог
@@ -271,7 +271,7 @@ Photorealistic editorial interior photograph, soft natural daylight, airy and cl
 Scene: a calm bright living room, a cat sleeping on a linen sofa, a compact rectangular aroma diffuser about 20 cm tall made of matte graphite-grey powder-coated metal with slightly rounded edges, a narrow vertical black glossy glass panel on the right half of the front with small glowing blue LED digits and a tiny red power icon, a round black fan grille on the top, a small round port on the left side, four short black rubber feet on a high shelf in the background with a faint mist. Aspect ratio 16:9.
 ```
 
-## ⬜ `blog-skolko-diffuzorov-nuzhno` — Обложка: сколько диффузоров
+## ✅ `blog-skolko-diffuzorov-nuzhno` — Обложка: сколько диффузоров
 
 - Формат: 16:9
 - Где на сайте: блог
@@ -281,7 +281,7 @@ Scene: a calm bright living room, a cat sleeping on a linen sofa, a compact rect
 Top-down architectural floor plan drawing of a cafe on white paper, thin black lines, with three small sage-green circles marking diffuser positions and soft gradient halos around them, a pencil and a ruler lying on the paper. Clean, minimal, editorial. No readable text. Aspect ratio 16:9.
 ```
 
-## ⬜ `og` — Обложка для соцсетей
+## ✅ `og` — Обложка для соцсетей
 
 - Формат: 16:9
 - Где на сайте: превью ссылок в мессенджерах
