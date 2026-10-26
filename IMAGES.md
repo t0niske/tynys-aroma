@@ -3,7 +3,7 @@
 Сгенерируйте в ChatGPT, сохраните в `src/assets/img/` под указанным именем (png, jpg или webp) и пересоберите: `node build.js`.
 Пока файла нет, на сайте стоит подписанная заглушка того же размера.
 
-Готово: 25 из 25.
+Готово: 31 из 31.
 
 ## ✅ `device` — Диффузор Nova, студийный рендер
 
@@ -27,6 +27,19 @@ Studio product photograph of a compact rectangular aroma diffuser about 20 cm ta
 Macro close-up product photograph of the front of a compact rectangular aroma diffuser about 20 cm tall made of matte graphite-grey powder-coated metal with slightly rounded edges, a narrow vertical black glossy glass panel on the right half of the front with small glowing blue LED digits and a tiny red power icon, a round black fan grille on the top, a small round port on the left side, four short black rubber feet: the vertical black glass panel with glowing blue LED digits and the small red power icon, shallow depth of field, the matte graphite metal texture in soft focus. Dark moody studio light with a cool rim light. No text other than LED digits, no logos. Aspect ratio 4:5.
 
 Приложите фото аппарата из PDF как референс.
+```
+
+## ✅ `hero` — Аппарат в интерьере кофейни
+
+- Формат: 4:5
+- Где на сайте: главная, первый экран
+- Alt: Аромамашина Nova на стойке кофейни в Астане
+
+```text
+Photorealistic editorial interior photograph, soft natural daylight, airy and clean modern minimal design, palette of white, warm light oak and muted sage green, shot on a 35 mm lens at f/4, high detail, realistic materials. No text, no logos, no watermarks, no visible faces.
+Scene: a bright cosy specialty coffee shop in Astana, Kazakhstan, morning light from a large window, an espresso machine and a glass case with pastries softly out of focus in the background.
+In the foreground, a compact rectangular aroma diffuser about 20 cm tall made of matte graphite-grey powder-coated metal with slightly rounded edges, a narrow vertical black glossy glass panel on the right half of the front with small glowing blue LED digits and a tiny red power icon, a round black fan grille on the top, a small round port on the left side, four short black rubber feet, stands on the light oak counter next to a ceramic cup of cappuccino. A barely visible soft mist rises from the top grille.
+Composition: vertical frame, the diffuser in the lower right third, sharp and clearly visible, about a quarter of the frame height; calm out-of-focus interior above. Aspect ratio 4:5.
 ```
 
 ## ✅ `sol-ofis` — Офис
@@ -68,16 +81,55 @@ In the scene, a compact rectangular aroma diffuser about 20 cm tall made of matt
 Composition: wide horizontal frame, the diffuser in the right third, plenty of calm negative space on the left. Aspect ratio 3:2.
 ```
 
-## ✅ `sol-restoran-kafe` — Кофейня
+## ✅ `sol-kofejnya` — Кофейня
 
 - Формат: 3:2
-- Где на сайте: /resheniya/restoran-kafe/
-- Alt: Ароматизация кофейни: диффузор на полке у бара
+- Где на сайте: /resheniya/kofejnya/
+- Alt: Ароматизация кофейни: аромамашина на полке у бара
 
 ```text
 Photorealistic editorial interior photograph, soft natural daylight, airy and clean modern minimal design, palette of white, warm light oak and muted sage green, shot on a 35 mm lens at f/4, high detail, realistic materials. No text, no logos, no watermarks, no visible faces.
 Scene: a cosy specialty coffee shop with an espresso machine, pastries in a glass case and wooden shelves in Astana, Kazakhstan.
 In the scene, a compact rectangular aroma diffuser about 20 cm tall made of matte graphite-grey powder-coated metal with slightly rounded edges, a narrow vertical black glossy glass panel on the right half of the front with small glowing blue LED digits and a tiny red power icon, a round black fan grille on the top, a small round port on the left side, four short black rubber feet, stands discreetly on a wooden shelf behind the bar. A barely visible soft mist rises from the top grille.
+Composition: wide horizontal frame, the diffuser in the right third, plenty of calm negative space on the left. Aspect ratio 3:2.
+```
+
+## ✅ `sol-restoran-kafe` — Ресторан
+
+- Формат: 3:2
+- Где на сайте: /resheniya/restoran-kafe/
+- Alt: Ароматизация ресторана: аромамашина у входа в зал
+
+```text
+Photorealistic editorial interior photograph, soft natural daylight, airy and clean modern minimal design, palette of white, warm light oak and muted sage green, shot on a 35 mm lens at f/4, high detail, realistic materials. No text, no logos, no watermarks, no visible faces.
+Scene: an elegant restaurant dining hall in the evening with warm pendant lights, set tables with white linen, green velvet chairs and a host stand at the entrance in Astana, Kazakhstan.
+In the scene, a compact rectangular aroma diffuser about 20 cm tall made of matte graphite-grey powder-coated metal with slightly rounded edges, a narrow vertical black glossy glass panel on the right half of the front with small glowing blue LED digits and a tiny red power icon, a round black fan grille on the top, a small round port on the left side, four short black rubber feet, stands discreetly on the wooden host stand at the entrance to the hall. A barely visible soft mist rises from the top grille.
+Composition: wide horizontal frame, the diffuser in the right third, plenty of calm negative space on the left. Aspect ratio 3:2.
+```
+
+## ✅ `sol-magazin-odezhdy` — Магазин одежды
+
+- Формат: 3:2
+- Где на сайте: /resheniya/magazin-odezhdy/
+- Alt: Ароматизация магазина одежды: аромамашина у примерочных
+
+```text
+Photorealistic editorial interior photograph, soft natural daylight, airy and clean modern minimal design, palette of white, warm light oak and muted sage green, shot on a 35 mm lens at f/4, high detail, realistic materials. No text, no logos, no watermarks, no visible faces.
+Scene: a bright clothing store with long rails of shirts and knitwear, folded jeans on oak tables and fitting rooms with linen curtains in Astana, Kazakhstan.
+In the scene, a compact rectangular aroma diffuser about 20 cm tall made of matte graphite-grey powder-coated metal with slightly rounded edges, a narrow vertical black glossy glass panel on the right half of the front with small glowing blue LED digits and a tiny red power icon, a round black fan grille on the top, a small round port on the left side, four short black rubber feet, stands discreetly on an oak table with folded knitwear near the fitting rooms. A barely visible soft mist rises from the top grille.
+Composition: wide horizontal frame, the diffuser in the right third, plenty of calm negative space on the left. Aspect ratio 3:2.
+```
+
+## ✅ `sol-produktovyj-magazin` — Продуктовый магазин
+
+- Формат: 3:2
+- Где на сайте: /resheniya/produktovyj-magazin/
+- Alt: Ароматизация продуктового магазина: аромамашина у входа
+
+```text
+Photorealistic editorial interior photograph, soft natural daylight, airy and clean modern minimal design, palette of white, warm light oak and muted sage green, shot on a 35 mm lens at f/4, high detail, realistic materials. No text, no logos, no watermarks, no visible faces.
+Scene: a clean modern neighbourhood grocery store with wooden crates of fresh fruit and vegetables, a bakery shelf with bread and bright aisles in Astana, Kazakhstan.
+In the scene, a compact rectangular aroma diffuser about 20 cm tall made of matte graphite-grey powder-coated metal with slightly rounded edges, a narrow vertical black glossy glass panel on the right half of the front with small glowing blue LED digits and a tiny red power icon, a round black fan grille on the top, a small round port on the left side, four short black rubber feet, stands discreetly on a shelf above the fresh bread near the entrance. A barely visible soft mist rises from the top grille.
 Composition: wide horizontal frame, the diffuser in the right third, plenty of calm negative space on the left. Aspect ratio 3:2.
 ```
 
@@ -279,6 +331,27 @@ Scene: a calm bright living room, a cat sleeping on a linen sofa, a compact rect
 
 ```text
 Top-down architectural floor plan drawing of a cafe on white paper, thin black lines, with three small sage-green circles marking diffuser positions and soft gradient halos around them, a pencil and a ruler lying on the paper. Clean, minimal, editorial. No readable text. Aspect ratio 16:9.
+```
+
+## ✅ `blog-aromamarketing-primery` — Обложка: примеры аромамаркетинга
+
+- Формат: 16:9
+- Где на сайте: блог
+- Alt: Примеры аромамаркетинга в отеле, магазине и кофейне
+
+```text
+Photorealistic editorial interior photograph, soft natural daylight, airy and clean modern minimal design, palette of white, warm light oak and muted sage green, shot on a 35 mm lens at f/4, high detail, realistic materials. No text, no logos, no watermarks, no visible faces.
+Scene: the entrance zone of a calm premium hotel lobby, a stone console with a vase of white flowers and a compact rectangular aroma diffuser about 20 cm tall made of matte graphite-grey powder-coated metal with slightly rounded edges, a narrow vertical black glossy glass panel on the right half of the front with small glowing blue LED digits and a tiny red power icon, a round black fan grille on the top, a small round port on the left side, four short black rubber feet standing on it with a faint mist, a blurred lounge in the background. Aspect ratio 16:9.
+```
+
+## ✅ `blog-aromat-dlya-magazina-odezhdy` — Обложка: аромат для магазина одежды
+
+- Формат: 16:9
+- Где на сайте: блог
+- Alt: Аромат для магазина одежды
+
+```text
+Minimal editorial still life on a light oak table: neatly folded knitwear and linen shirts in sage, cream and white, a paper scent strip resting on top, a compact rectangular aroma diffuser about 20 cm tall made of matte graphite-grey powder-coated metal with slightly rounded edges, a narrow vertical black glossy glass panel on the right half of the front with small glowing blue LED digits and a tiny red power icon, a round black fan grille on the top, a small round port on the left side, four short black rubber feet standing at the right edge with a faint mist, soft daylight, pale sage wall behind. Calm, premium, airy. No text, no logos. Aspect ratio 16:9.
 ```
 
 ## ✅ `og` — Обложка для соцсетей

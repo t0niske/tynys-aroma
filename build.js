@@ -4,6 +4,7 @@ const path = require('path');
 const { createSite } = require('./lib/engine');
 const D = require('./lib/data');
 const UI = require('./src/ui');
+const CFG = require('./src/config');
 const { register } = require('./src/pages');
 
 const site = createSite({
@@ -14,6 +15,8 @@ const site = createSite({
   description: 'Ароматизация помещений для бизнеса и дома в Астане',
   themeColor: '#0B6B58',
   ogImage: 'og',
+  yandexVerification: CFG.verification.yandex,
+  googleVerification: CFG.verification.google,
   images: require('./src/images'),
   browserData: D.browserScript()
 });

@@ -1,9 +1,27 @@
-/* Tynys — поведение страниц: меню, тарифы, калькулятор, фильтр ароматов, заявка в WhatsApp.
+/* Tynys — поведение страниц: меню, подбор по площади, фильтр ароматов, заявка в WhatsApp, события аналитики.
    Весь контент уже есть в HTML, скрипт только добавляет интерактив. */
 (function () {
-  var D = window.SITE_DATA;
+  var D = window.SITE_DATA, T = window.TYNYS || {};
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+  var page = document.body.getAttribute('data-page') || document.title;
+  var wa = function (text) { return 'https://wa.me/' + (T.wa || D.contacts.whatsapp) + '?text=' + encodeURIComponent(text); };
+  var head = function () { return 'Здравствуйте! Пишу с сайта ' + (T.brand || 'Tynys') + ', страница «' + page + '». '; };
+
+  /* аналитика: цели Метрики и события GA4; без ID счётчиков события копятся в dataLayer */
+  function track(ev, params) {
+    params = params || {};
+    params.page = page;
+    try {
+      if (T.metrika && window.ym) window.ym(+T.metrika, 'reachGoal', ev, params);
+      if (T.ga4 && window.gtag) window.gtag('event', ev, params);
+      else (window.dataLayer = window.dataLayer || []).push({ event: ev, params: params });
+    } catch (e) {}
+  }
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('[data-ev]');
+    if (a) track(a.getAttribute('data-ev'), { place: a.className.split(' ').pop() });
+  });
 
   /* header: тень при прокрутке, бургер, выпадающее меню */
   var hdr = $('#hdr');
@@ -29,80 +47,68 @@
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape') { dd.classList.remove('open'); btn.setAttribute('aria-expanded', 'false'); } });
   });
 
-  /* LED на рисованном диффузоре */
-  if (window.LED) $$('.led').forEach(function (g, i) {
-    var seq = g.getAttribute('data-led') === '1000' ? ['ON', '1000', '♥', 'APP'] : ['ON', '300', '♥', '24'];
-    LED.cycle(g, seq, { cols: 11, rows: 9, pitch: 3.6, r: 1.35 }, 1800 + i * 150);
-  });
-
-  /* переключатель тарифов */
-  $$('.switch').forEach(function (sw) {
-    var wrap = sw.nextElementSibling;
-    $$('button', sw).forEach(function (b) {
-      b.addEventListener('click', function () {
-        $$('button', sw).forEach(function (x) { x.setAttribute('aria-selected', x === b); });
-        $$('.plans', wrap).forEach(function (p) {
-          if (p.getAttribute('data-dev') === b.getAttribute('data-dev')) p.removeAttribute('data-hidden'); else p.setAttribute('data-hidden', '');
-        });
-      });
-    });
-  });
-
-  /* калькулятор */
-  var area = $('#c-area');
+  /* подбор по площади: набор аппаратов и цена; КП в WhatsApp получает площадь */
+  var area = $('#pb-area');
   if (area) {
-    var term = 6;
+    var box = $('#calc'), used = false, last = '';
     var calc = function () {
-      var a = +area.value, r = D.bestSetup(a, term);
-      $('#c-area-o').textContent = a.toLocaleString('ru-RU') + ' м²';
-      var parts = [];
-      if (r.nova1000) parts.push(r.nova1000 + ' × Nova 1000');
-      if (r.nova300) parts.push(r.nova300 + ' × Nova 300');
-      $('#c-set').textContent = parts.join(' + ');
-      $('#c-pm').textContent = D.fmt(r.pm);
-      $('#c-cta').setAttribute('data-plan', 'площадь ' + a + ' м², ' + parts.join(' + ') + ', ' + term + ' мес.');
+      var a = Math.max(10, Math.min(10000, Math.round(+area.value) || 0));
+      if (!+area.value) return;
+      var r6 = D.bestSetup(a, 6), r1 = D.bestSetup(a, 1), parts = [];
+      if (r6.nova1000) parts.push(r6.nova1000 + ' × Nova 1000');
+      if (r6.nova300) parts.push(r6.nova300 + ' × Nova 300');
+      $('[data-r="set"]', box).textContent = parts.join(' + ');
+      $('[data-r="pm"]', box).textContent = D.fmt(r6.pm);
+      $('[data-r="m1"]', box).textContent = D.fmt(r1.pm);
+      $$('[data-wa="kp"]').forEach(function (k) { k.href = wa(head() + 'Хочу КП для ' + a + ' м² (' + parts.join(' + ') + ')'); });
+      if (String(a) !== last) { last = String(a); if (used) track('calc_use', { area: a }); }
     };
-    area.addEventListener('input', calc);
-    $$('#c-term button').forEach(function (b) {
-      b.addEventListener('click', function () {
-        term = +b.getAttribute('data-m');
-        $$('#c-term button').forEach(function (x) { x.setAttribute('aria-pressed', x === b); });
-        calc();
-      });
-    });
+    area.addEventListener('input', function () { used = true; clearTimeout(area._t); area._t = setTimeout(calc, 400); });
     calc();
   }
 
-  /* фильтр каталога */
-  var grid = $('#scents');
-  $$('.filters button').forEach(function (b) {
+  /* фильтр каталога: семейство × бизнес */
+  var grid = $('#scents'), fCat = 'all', fSol = 'all';
+  var applyFilter = function () {
+    $$('.sc', grid).forEach(function (c) {
+      var okCat = fCat === 'all' || c.getAttribute('data-cat') === fCat;
+      var okSol = fSol === 'all' || (' ' + c.getAttribute('data-sol') + ' ').indexOf(' ' + fSol + ' ') > -1;
+      c.hidden = !(okCat && okSol);
+    });
+  };
+  $$('.filters [data-f]').forEach(function (b) {
     b.addEventListener('click', function () {
-      var f = b.getAttribute('data-f');
-      $$('.filters button').forEach(function (x) { x.setAttribute('aria-pressed', x === b); });
-      $$('.sc', grid).forEach(function (c) { c.hidden = f !== 'all' && c.getAttribute('data-cat') !== f; });
+      fCat = b.getAttribute('data-f');
+      $$('.filters [data-f]').forEach(function (x) { x.setAttribute('aria-pressed', x === b); });
+      applyFilter();
+    });
+  });
+  $$('.filters [data-s]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      fSol = b.getAttribute('data-s');
+      $$('.filters [data-s]').forEach(function (x) { x.setAttribute('aria-pressed', x === b); });
+      applyFilter();
     });
   });
 
-  /* кнопки «Оформить» запоминают выбранный тариф для заявки */
-  var chosen = '';
-  document.addEventListener('click', function (e) {
-    var t = e.target.closest && e.target.closest('[data-plan]');
-    if (t) chosen = t.getAttribute('data-plan');
-  });
-
-  /* заявка → WhatsApp */
+  /* заявка: имя, телефон, тип бизнеса + страница и UTM → WhatsApp */
   var form = $('#lead-form');
   if (form) form.addEventListener('submit', function (e) {
     e.preventDefault();
-    var name = $('#f-name').value.trim(), type = $('#f-type').value, ar = $('#f-area').value.trim();
-    var msg = 'Здравствуйте! Хочу подобрать аромат.' +
-      (name ? '\nИмя: ' + name : '') + '\nПомещение: ' + type + (ar ? '\nПлощадь: ' + ar + ' м²' : '') +
-      (chosen ? '\nИнтересует: ' + chosen : '') + '\nСтраница: ' + document.title;
-    window.open(D.waLink(msg), '_blank', 'noopener');
+    var phone = $('#f-phone').value.trim(), err = $('#f-err');
+    if (phone.replace(/\D/g, '').length < 10) { err.hidden = false; $('#f-phone').focus(); return; }
+    err.hidden = true;
+    var name = $('#f-name').value.trim(), type = $('#f-type').value;
+    var utm = location.search.slice(1).split('&').filter(function (x) { return /^utm_/.test(x); }).join(', ');
+    var msg = head() + 'Хочу тест ' + ((D.trialDays) || 3) + ' дня.' +
+      (name ? '\nИмя: ' + name : '') + '\nТелефон: ' + phone + '\nБизнес: ' + type + (utm ? '\nМетки: ' + decodeURIComponent(utm) : '');
+    track('form_submit', { type: type });
+    window.open(wa(msg), '_blank', 'noopener');
   });
 
-  /* 360°: аппарат медленно вращается, его можно повернуть мышью или пальцем */
+  /* 360°: аппарат медленно вращается, его можно повернуть мышью или пальцем (только если виден) */
   $$('.spin[data-src]').forEach(function (box) {
+    if (!box.offsetParent) return;
     var N = 36, COLS = 6, i = +box.getAttribute('data-start') || 0, timer = null, drag = null, idle, seen = true;
     var still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     var sprite = new Image();
@@ -136,7 +142,7 @@
     var io = new IntersectionObserver(function (es) {
       es.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
     }, { rootMargin: '0px 0px -8% 0px' });
-    $$('.sec .sec-head, .sols > *, .devs > *, .plans > *, .cats > *, .steps > li, .zones > *, .scents > *, .posts > *, .incl > li').forEach(function (el, i) {
+    $$('.sec .sec-head, .sols > *, .devs > *, .plans > *, .cats > *, .steps > li, .zones > *, .scents > *, .posts > *, .incl > li, .studies > *, .np > *').forEach(function (el, i) {
       el.classList.add('rv'); el.style.transitionDelay = (i % 5) * 60 + 'ms'; io.observe(el);
     });
   }
