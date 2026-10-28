@@ -137,6 +137,49 @@
     'requestIdleCallback' in window ? requestIdleCallback(load, { timeout: 2500 }) : setTimeout(load, 1200);
   });
 
+  /* слайдер первого экрана: смена раз в 5 с, полоски внизу шапки фото, свайп, пауза при наведении */
+  $$('[data-slider]').forEach(function (box) {
+    var slides = $$('.hf-slide', box), bars = $$('.hf-bar', box), N = slides.length;
+    if (N < 2) return;
+    var DUR = 5000, i = 0, timer = null, left = DUR, started = 0;
+    var still = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+    box.style.setProperty('--hf-dur', DUR / 1000 + 's');
+    /* скрытые слайды с loading=lazy браузер может не грузить — грузим их сразу после первого кадра */
+    var wake = function () { slides.forEach(function (s) { var im = $('img', s); if (im) im.loading = 'eager'; }); };
+    document.readyState === 'complete' ? wake() : window.addEventListener('load', wake);
+    var go = function (n) {
+      i = (n + N) % N;
+      slides.forEach(function (s, k) {
+        s.classList.toggle('on', k === i);
+        s.setAttribute('aria-hidden', k === i ? 'false' : 'true');
+        var a = $('a', s); if (a) a.tabIndex = k === i ? 0 : -1;
+      });
+      bars.forEach(function (b, k) {
+        b.classList.remove('on'); b.classList.toggle('done', k < i);
+        if (k === i) { void b.offsetWidth; b.classList.add('on'); }
+      });
+      left = DUR; run();
+    };
+    var run = function () {
+      clearTimeout(timer);
+      if (still || box.classList.contains('paused')) return;
+      started = Date.now(); timer = setTimeout(function () { go(i + 1); }, left);
+    };
+    var pause = function () { if (box.classList.contains('paused')) return; box.classList.add('paused'); clearTimeout(timer); left -= Date.now() - started; };
+    var resume = function () { if (!box.classList.contains('paused')) return; box.classList.remove('paused'); run(); };
+    bars.forEach(function (b, k) { b.addEventListener('click', function () { go(k); }); });
+    if (window.matchMedia && matchMedia('(hover: hover)').matches) { box.addEventListener('mouseenter', pause); box.addEventListener('mouseleave', resume); }
+    document.addEventListener('visibilitychange', function () { document.hidden ? pause() : resume(); });
+    var x0 = null;
+    box.addEventListener('pointerdown', function (e) { if (e.pointerType !== 'mouse') x0 = e.clientX; });
+    box.addEventListener('pointerup', function (e) {
+      if (x0 === null) return;
+      var dx = e.clientX - x0; x0 = null;
+      if (Math.abs(dx) > 40) go(i + (dx < 0 ? 1 : -1));
+    });
+    run();
+  });
+
   /* мягкое появление блоков */
   if ('IntersectionObserver' in window) {
     var io = new IntersectionObserver(function (es) {

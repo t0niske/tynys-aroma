@@ -51,6 +51,9 @@ function register(site) {
     schema: [site.schema.website(), site.schema.business(UI.OWN), site.schema.faq(HOME_FAQ)],
     get body() {
       const trialHref = 'https://wa.me/' + C.whatsapp + '?text=' + encodeURIComponent(UI.waText(this, 'test'));
+      /* слайдер первого экрана: [слот картинки, решение, подпись] */
+      const slides = [['hero', 'magazin-odezhdy', 'Магазин одежды'], ['hero-kofejnya', 'kofejnya', 'Кофейня'], ['hero-salon', 'salon-krasoty', 'Салон красоты'], ['hero-ofis', 'ofis', 'Офис'], ['hero-otel', 'otel', 'Отель']]
+        .filter(([k]) => site.hasImg(k));
       return `
 <section class="hf">
   <div class="hf-panel">
@@ -62,8 +65,9 @@ function register(site) {
       <div class="hf-cta">${wa(this, 'test', TRIAL.short, 'btn btn-lg hf-b1')}<a class="btn btn-lg hf-b2" href="#ceny">Смотреть цены</a></div>
     </div>
   </div>
-  <div class="hf-media">
-    ${img('hero', { cls: 'hf-img', eager: true })}
+  <div class="hf-media" data-slider aria-roledescription="carousel" aria-label="Где мы ароматизируем">
+    ${slides.map(([k, slug, name], i) => `<figure class="hf-slide${i ? '' : ' on'}"${i ? ' aria-hidden="true"' : ''}>${img(k, { cls: 'hf-img', eager: !i })}<a class="hf-tag" href="/resheniya/${slug}/"${i ? ' tabindex="-1"' : ''}>${name} ${icon('arrow', 'ic ic-s')}</a></figure>`).join('')}
+    ${slides.length > 1 ? `<div class="hf-bars">${slides.map(([, , name], i) => `<button type="button" class="hf-bar${i ? '' : ' on'}" aria-label="${name}"><i></i></button>`).join('')}</div>` : ''}
     <a class="hf-trial" href="${esc(trialHref)}" target="_blank" rel="noopener" data-ev="wa_click" data-wa="test"><span class="hf-dd"><b>${TRIAL.days}</b>дня</span><span class="hf-tx"><b>Бесплатный тест</b>Подключим к вентиляции и настроим, не подойдёт — отключим</span><span class="hf-go">${icon('arrow')}</span></a>
   </div>
 </section>

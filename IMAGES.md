@@ -3,7 +3,7 @@
 Сгенерируйте в ChatGPT, сохраните в `src/assets/img/` под указанным именем (png, jpg или webp) и пересоберите: `node build.js`.
 Пока файла нет, на сайте стоит подписанная заглушка того же размера.
 
-Готово: 31 из 31.
+Готово: 35 из 35.
 
 ## ✅ `device` — Диффузор Nova, студийный рендер
 
@@ -44,6 +44,66 @@ The large window looks onto a quiet green-free courtyard: soft blurred daylight,
 Composition: vertical frame 4:5, eye-level view down the aisle, rails on both sides leading the eye to the window at the back; the most important content in the centre so the frame can be cropped to a horizontal banner.
 
 Аппарат подключается к вентиляции, поэтому в кадре его нет. Город в окне не показываем.
+```
+
+## ✅ `hero-kofejnya` — Слайдер первого экрана: кофейня
+
+- Формат: 4:5
+- Где на сайте: главная, слайдер первого экрана
+- Alt: Кофейня: аромат подаётся через вентиляцию
+
+```text
+Photorealistic editorial interior photograph of a bright cosy specialty coffee shop: a light oak bar counter with a matte white espresso machine, ceramic cups, a glass case with croissants, cream upholstered bench seating with small round oak tables, a navy ceramic vase. Soft natural daylight plus warm gentle lighting.
+Colour palette strictly: white walls and ceiling, warm milky-beige and cream textiles, light oak wood, a few accents of deep navy blue (#284B63), slim graphite-black metal details. No green walls, no orange.
+A clean white ceiling with a slim, discreet linear ventilation slot (the air vent is built into the ceiling and barely noticeable). There is NO diffuser device, no aroma machine, no gadget anywhere in the scene.
+If a window is visible it looks onto a quiet courtyard: soft blurred daylight, a light stone wall and a few bare tree branches. No city view, no buildings, no towers outside.
+No people, no faces, no text, no logos, no signage, no price tags, no watermarks. Shot on a 35 mm lens at f/4, high detail, realistic materials, calm premium editorial mood.
+Composition: vertical frame 4:5, eye-level, the most important content in the centre so the frame can be cropped to a horizontal banner.
+```
+
+## ✅ `hero-salon` — Слайдер первого экрана: салон красоты
+
+- Формат: 4:5
+- Где на сайте: главная, слайдер первого экрана
+- Alt: Салон красоты: аромат подаётся через вентиляцию
+
+```text
+Photorealistic editorial interior photograph of a light minimal beauty salon: large round mirrors with warm backlight, cream boucle styling chairs, oak shelves with a few unlabelled cream bottles and towels, fresh white flowers in a vase, a navy velvet pouf. Soft natural daylight plus warm gentle lighting.
+Colour palette strictly: white walls and ceiling, warm milky-beige and cream textiles, light oak wood, a few accents of deep navy blue (#284B63), slim graphite-black metal details. No green walls, no orange.
+A clean white ceiling with a slim, discreet linear ventilation slot (the air vent is built into the ceiling and barely noticeable). There is NO diffuser device, no aroma machine, no gadget anywhere in the scene.
+If a window is visible it looks onto a quiet courtyard: soft blurred daylight, a light stone wall and a few bare tree branches. No city view, no buildings, no towers outside.
+No people, no faces, no text, no logos, no signage, no price tags, no watermarks. Shot on a 35 mm lens at f/4, high detail, realistic materials, calm premium editorial mood.
+Composition: vertical frame 4:5, eye-level, the most important content in the centre so the frame can be cropped to a horizontal banner.
+```
+
+## ✅ `hero-ofis` — Слайдер первого экрана: офис
+
+- Формат: 4:5
+- Где на сайте: главная, слайдер первого экрана
+- Alt: Офис: аромат подаётся через вентиляцию
+
+```text
+Photorealistic editorial interior photograph of a calm modern office reception: a long light oak reception desk, a lounge area with a cream sofa and navy armchairs, large potted olive tree, light stone floor, open workspace with oak desks softly out of focus behind. Soft natural daylight plus warm gentle lighting.
+Colour palette strictly: white walls and ceiling, warm milky-beige and cream textiles, light oak wood, a few accents of deep navy blue (#284B63), slim graphite-black metal details. No green walls, no orange.
+A clean white ceiling with a slim, discreet linear ventilation slot (the air vent is built into the ceiling and barely noticeable). There is NO diffuser device, no aroma machine, no gadget anywhere in the scene.
+If a window is visible it looks onto a quiet courtyard: soft blurred daylight, a light stone wall and a few bare tree branches. No city view, no buildings, no towers outside.
+No people, no faces, no text, no logos, no signage, no price tags, no watermarks. Shot on a 35 mm lens at f/4, high detail, realistic materials, calm premium editorial mood.
+Composition: vertical frame 4:5, eye-level, the most important content in the centre so the frame can be cropped to a horizontal banner.
+```
+
+## ✅ `hero-otel` — Слайдер первого экрана: лобби отеля
+
+- Формат: 4:5
+- Где на сайте: главная, слайдер первого экрана
+- Alt: Лобби отеля: аромат подаётся через вентиляцию
+
+```text
+Photorealistic editorial interior photograph of a calm boutique hotel lobby: a long reception desk of warm travertine and oak, a lounge with cream sofas and navy velvet armchairs, a low oak coffee table with books, soft warm lamps. Soft natural daylight plus warm gentle lighting.
+Colour palette strictly: white walls and ceiling, warm milky-beige and cream textiles, light oak wood, a few accents of deep navy blue (#284B63), slim graphite-black metal details. No green walls, no orange.
+A clean white ceiling with a slim, discreet linear ventilation slot (the air vent is built into the ceiling and barely noticeable). There is NO diffuser device, no aroma machine, no gadget anywhere in the scene.
+If a window is visible it looks onto a quiet courtyard: soft blurred daylight, a light stone wall and a few bare tree branches. No city view, no buildings, no towers outside.
+No people, no faces, no text, no logos, no signage, no price tags, no watermarks. Shot on a 35 mm lens at f/4, high detail, realistic materials, calm premium editorial mood.
+Composition: vertical frame 4:5, eye-level, the most important content in the centre so the frame can be cropped to a horizontal banner.
 ```
 
 ## ✅ `sol-ofis` — Офис
