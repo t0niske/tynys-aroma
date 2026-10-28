@@ -65,7 +65,7 @@ function header(p) {
   return `<a class="skip" href="#main">К содержанию</a>
 <header class="hdr" id="hdr">
   <div class="hdr-in">
-    <a class="logo" href="/" aria-label="Tynys — на главную">${logo()}<span>Tynys</span></a>
+    <a class="logo" href="/" aria-label="Вдох — на главную">${logo()}<span>Вдох</span></a>
     <nav class="menu" id="menu" aria-label="Основное меню">
       <div class="dd">
         <button class="dd-btn${cur === 'resheniya/' ? ' on' : ''}" type="button" aria-expanded="false" aria-controls="dd-sol">Решения ${icon('chevron', 'ic ic-s')}</button>
@@ -85,14 +85,14 @@ function header(p) {
 }
 
 function logo() {
-  return `<svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="15" fill="#0B6B58"/><path d="M8 18c2.5-3 5.5 3 8 0s5.5 3 8 0M8 13c2.5-3 5.5 3 8 0s5.5 3 8 0" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>`;
+  return `<svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="15" fill="#284B63"/><path d="M8 18c2.5-3 5.5 3 8 0s5.5 3 8 0M8 13c2.5-3 5.5 3 8 0s5.5 3 8 0" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>`;
 }
 
 function footer(p) {
   return `<footer class="ftr">
   <div class="wrap ftr-in">
     <div class="ftr-brand">
-      <a class="logo logo-light" href="/">${logo()}<span>Tynys</span></a>
+      <a class="logo logo-light" href="/">${logo()}<span>Вдох</span></a>
       <p>Ароматизация помещений в Астане. Аппарат в аренду, масла, обслуживание и гарантия — в одной подписке от ${D.fmt(D.minPerMonth())} в месяц.</p>
       <address>
         ${call('', icon('phone') + C.phone)}
@@ -106,7 +106,7 @@ function footer(p) {
     <nav class="ftr-col" aria-label="Ароматы"><h2>Ароматы</h2><a href="/aromaty/">Каталог ароматов</a>${D.categories.map(c => `<a href="/aromaty/${c.slug}/">${c.name}</a>`).join('')}</nav>
     <nav class="ftr-col" aria-label="Компания"><h2>Компания</h2><a href="/oborudovanie/">Аромамашины</a><a href="/oborudovanie/nova-300/">Nova 300</a><a href="/oborudovanie/nova-1000/">Nova 1000</a><a href="/ceny/">Цены</a><a href="/kak-my-rabotaem/">Как работаем</a><a href="/aromamarketing/">Аромамаркетинг</a><a href="/blog/">Статьи</a><a href="/voprosy/">Вопросы и ответы</a><a href="/kontakty/">Контакты</a></nav>
   </div>
-  <div class="wrap ftr-bot"><span>© 2026 Tynys · Астана</span><a href="/politika-konfidencialnosti/">Политика конфиденциальности</a></div>
+  <div class="wrap ftr-bot"><span>© 2026 Вдох · Астана</span><a href="/politika-konfidencialnosti/">Политика конфиденциальности</a></div>
 </footer>
 <nav class="mbar" aria-label="Связаться">${wa(p, 'test', 'WhatsApp', 'mbar-wa')}${call('mbar-call', icon('phone') + 'Позвонить')}</nav>`;
 }
@@ -335,8 +335,8 @@ function compare() {
   <div class="wrap">
     <div class="sec-head"><span class="eyebrow">Сравнение</span><h2 class="h2">Почему не купить освежитель</h2><p class="lead">Освежитель и домашний диффузор подходят для комнаты. Для зала, где весь день люди, нужен ровный фон без участия персонала.</p></div>
     <div class="cmp-wrap" data-scroll-x><table class="cmp">
-      <thead><tr><th scope="col"><span class="sr">Параметр</span></th><th scope="col">Аэрозольный освежитель</th><th scope="col">Домашний диффузор</th><th scope="col" class="us">Tynys</th></tr></thead>
-      <tbody>${CMP.map(([k, a, b, c]) => `<tr><th scope="row">${k}</th><td data-l="Аэрозоль">${icon('x', 'ic ic-s')}${a}</td><td data-l="Домашний диффузор">${icon('x', 'ic ic-s')}${b}</td><td class="us" data-l="Tynys">${icon('check', 'ic ic-s')}${c}</td></tr>`).join('')}</tbody>
+      <thead><tr><th scope="col"><span class="sr">Параметр</span></th><th scope="col">Аэрозольный освежитель</th><th scope="col">Домашний диффузор</th><th scope="col" class="us">Вдох</th></tr></thead>
+      <tbody>${CMP.map(([k, a, b, c]) => `<tr><th scope="row">${k}</th><td data-l="Аэрозоль">${icon('x', 'ic ic-s')}${a}</td><td data-l="Домашний диффузор">${icon('x', 'ic ic-s')}${b}</td><td class="us" data-l="Вдох">${icon('check', 'ic ic-s')}${c}</td></tr>`).join('')}</tbody>
     </table></div>
   </div>
 </section>`;

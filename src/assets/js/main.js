@@ -6,7 +6,7 @@
   var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
   var page = document.body.getAttribute('data-page') || document.title;
   var wa = function (text) { return 'https://wa.me/' + (T.wa || D.contacts.whatsapp) + '?text=' + encodeURIComponent(text); };
-  var head = function () { return 'Здравствуйте! Пишу с сайта ' + (T.brand || 'Tynys') + ', страница «' + page + '». '; };
+  var head = function () { return 'Здравствуйте! Пишу с сайта ' + (T.brand || 'Вдох') + ', страница «' + page + '». '; };
 
   /* аналитика: цели Метрики и события GA4; без ID счётчиков события копятся в dataLayer */
   function track(ev, params) {

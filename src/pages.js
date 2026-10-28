@@ -46,29 +46,25 @@ function register(site) {
   /* ── Главная ───────────────────────────────────────── */
   add({
     path: '', section: '', priority: '1.0', bodyClass: 'home', label: 'Главная',
-    title: 'Ароматизация помещений в Астане — от 33 333 ₸ в месяц | Tynys',
+    title: 'Ароматизация помещений в Астане — от 33 333 ₸ в месяц | Вдох',
     description: 'Ароматизация помещений в Астане: аппарат, масла и обслуживание одной подпиской от 33 333 ₸ в месяц. Запуск за 1 день, тест 3 дня бесплатно.',
     schema: [site.schema.website(), site.schema.business(UI.OWN), site.schema.faq(HOME_FAQ)],
     get body() {
-      const chips = [['kofejnya', 'Кофейня'], ['restoran-kafe', 'Ресторан'], ['salon-krasoty', 'Салон красоты'], ['magazin-odezhdy', 'Магазин одежды'], ['ofis', 'Офис'], ['klinika', 'Клиника']];
+      const trialHref = 'https://wa.me/' + C.whatsapp + '?text=' + encodeURIComponent(UI.waText(this, 'test'));
       return `
-<section class="hero">
-  <div class="aurora" aria-hidden="true"><i class="a1"></i><i class="a2"></i><i class="a3"></i><i class="a4"></i></div>
-  <div class="wrap hero-grid">
-    <div class="hero-txt">
-      <h1>Ароматизация помещений в Астане</h1>
-      <p class="lead">Аппарат, масла и обслуживание — одной подпиской. Запуск за 1 день.</p>
-      <p class="hero-price"><b>от ${D.fmt(D.minPerMonth())}</b> в месяц<span>при оплате за 6 месяцев · ${D.fmt(D.devices[0].plans[0].total)} помесячно · помещение до 300 м²</span></p>
-      <div class="hero-cta">${wa(this, 'test', TRIAL.short, 'btn btn-acc btn-lg')}<a class="btn btn-light btn-lg" href="#ceny">Цены</a></div>
-      <p class="reply">${icon('clock', 'ic ic-s')}${UI.REPLY}</p>
-      <nav class="strip" aria-label="Ваш бизнес" data-scroll-x><span>Ваш бизнес:</span>${chips.map(([s, n]) => `<a href="/resheniya/${s}/">${n}</a>`).join('')}<a href="/resheniya/">Ещё ${icon('arrow', 'ic ic-s')}</a></nav>
+<section class="hf">
+  <div class="hf-panel">
+    <svg class="hf-waves" viewBox="0 0 600 300" aria-hidden="true"><path d="M30 120c60-50 120-50 180 0s120 50 180 0 120-50 180 0M30 190c60-50 120-50 180 0s120 50 180 0 120-50 180 0"/></svg>
+    <div class="hf-body">
+      <span class="hf-pill">Астана · запуск за 1 день</span>
+      <h1>Ароматизация помещений в&nbsp;Астане</h1>
+      <p class="hf-sub">Клиенты дольше остаются и чаще возвращаются туда, где приятно пахнет — подключим аромат к вентиляции за 1 день, без покупки оборудования</p>
+      <div class="hf-cta">${wa(this, 'test', TRIAL.short, 'btn btn-lg hf-b1')}<a class="btn btn-lg hf-b2" href="#ceny">Смотреть цены</a></div>
     </div>
-    <div class="hero-media">
-      ${img('hero', { cls: 'hero-img', eager: true })}
-      <div class="hero-badge b1"><b>&lt; 35 дБ</b><span>тише шёпота</span></div>
-      <div class="hero-badge b2"><b>Масла включены</b><span>замена по графику</span></div>
-      ${site.hasImg('nova-360') ? `<div class="hero-3d">${UI.spin(img('device', { cls: 'stage-img', alt: 'Аромамашина Nova 300' }), 'mini-spin', 'Покрутите')}<span>Nova 300 · 360°</span></div>` : ''}
-    </div>
+  </div>
+  <div class="hf-media">
+    ${img('hero', { cls: 'hf-img', eager: true })}
+    <a class="hf-trial" href="${esc(trialHref)}" target="_blank" rel="noopener" data-ev="wa_click" data-wa="test"><span class="hf-dd"><b>${TRIAL.days}</b>дня</span><span class="hf-tx"><b>Бесплатный тест</b>Подключим к вентиляции и настроим, не подойдёт — отключим</span><span class="hf-go">${icon('arrow')}</span></a>
   </div>
 </section>
 
@@ -232,8 +228,8 @@ ${UI.related('Другие решения', others.map(o => [o.h1, `resheniya/${
   <div class="wrap">
     <div class="sec-head"><span class="eyebrow">Аренда или покупка</span><h2 class="h2">Почему аренда, а не покупка</h2><p class="lead">Аппарат — только начало: дальше нужны масла, настройка и ремонт. В аренде это наша забота.</p></div>
     <div class="cmp-wrap" data-scroll-x><table class="cmp cmp-2">
-      <thead><tr><th scope="col"><span class="sr">Что</span></th><th scope="col">Покупка аппарата</th><th scope="col" class="us">Аренда в Tynys</th></tr></thead>
-      <tbody>${RENT.map(([k, a, b]) => `<tr><th scope="row">${k}</th><td data-l="Покупка">${icon('x', 'ic ic-s')}${a}</td><td class="us" data-l="Аренда в Tynys">${icon('check', 'ic ic-s')}${b}</td></tr>`).join('')}</tbody>
+      <thead><tr><th scope="col"><span class="sr">Что</span></th><th scope="col">Покупка аппарата</th><th scope="col" class="us">Подписка Вдох</th></tr></thead>
+      <tbody>${RENT.map(([k, a, b]) => `<tr><th scope="row">${k}</th><td data-l="Покупка">${icon('x', 'ic ic-s')}${a}</td><td class="us" data-l="Подписка Вдох">${icon('check', 'ic ic-s')}${b}</td></tr>`).join('')}</tbody>
     </table></div>
     <p class="more">Подробно — в статье «<a href="/blog/arenda-ili-pokupka-aromatizatora/">Аромамашина для бизнеса: аренда или покупка</a>».</p>
   </div>
@@ -407,7 +403,7 @@ ${UI.related('Другие семейства', D.categories.filter(o => o !== c
   add({
     path: 'kak-my-rabotaem/', section: 'kak-my-rabotaem/', label: 'Как работаем',
     title: 'Как мы работаем: тест 3 дня, установка и обслуживание',
-    description: 'Как проходит ароматизация помещения с Tynys: заявка, подбор аромата, бесплатный тест 3 дня, договор, замена масел и обслуживание по подписке.',
+    description: 'Как проходит ароматизация помещения по подписке: заявка, подбор аромата, бесплатный тест 3 дня, договор, замена масел и обслуживание.',
     h1: 'Как мы работаем',
     breadcrumbs: [HOME, ['Как мы работаем', 'kak-my-rabotaem/']],
     get body() {
@@ -485,7 +481,7 @@ ${UI.related('Другие семейства', D.categories.filter(o => o !== c
   /* ── Статьи ────────────────────────────────────────── */
   add({
     path: 'blog/', section: 'blog/', label: 'Статьи',
-    title: 'Статьи об ароматизации помещений и аромамаркетинге — Tynys',
+    title: 'Статьи об ароматизации помещений и аромамаркетинге — Вдох',
     description: 'Статьи об ароматизации помещений: примеры аромамаркетинга, как выбрать аромат, сколько стоит, аренда или покупка аромамашины, безопасность и расчёт.',
     h1: 'Статьи об ароматизации',
     breadcrumbs: [HOME, ['Статьи', 'blog/']],
@@ -523,7 +519,7 @@ ${UI.related('Читайте также', ART.filter(o => o !== a).slice(0, 3).m
   const allQ = FAQ_GROUPS.flatMap(g => g[1]);
   add({
     path: 'voprosy/', section: 'voprosy/',
-    title: 'Вопросы и ответы об ароматизации помещений — Tynys',
+    title: 'Вопросы и ответы об ароматизации помещений — Вдох',
     description: 'Ответы на частые вопросы об ароматизации: бесплатный тест, аренда аромамашины, установка, замена масел, договор и цены подписки в Астане.',
     h1: 'Вопросы и ответы',
     breadcrumbs: [HOME, ['Вопросы и ответы', 'voprosy/']],
@@ -537,8 +533,8 @@ ${UI.related('Читайте также', ART.filter(o => o !== a).slice(0, 3).m
   /* ── Контакты ──────────────────────────────────────── */
   add({
     path: 'kontakty/', section: 'kontakty/',
-    title: 'Контакты Tynys — ароматизация помещений в Астане',
-    description: `Контакты Tynys в Астане: телефон, WhatsApp, адрес и часы работы. ${UI.REPLY}. Запуск ароматизации за 1 день, тест 3 дня бесплатно.`,
+    title: 'Контакты Вдох — ароматизация помещений в Астане',
+    description: `Контакты Вдох в Астане: телефон, WhatsApp, адрес и часы работы. ${UI.REPLY}. Запуск ароматизации за 1 день, тест 3 дня бесплатно.`,
     h1: 'Контакты',
     breadcrumbs: [HOME, ['Контакты', 'kontakty/']],
     schema: [site.schema.business(UI.OWN)],
@@ -566,8 +562,8 @@ ${UI.related('Читайте также', ART.filter(o => o !== a).slice(0, 3).m
   /* ── Служебные ─────────────────────────────────────── */
   add({
     path: 'politika-konfidencialnosti/', noindex: true, noCta: true,
-    title: 'Политика конфиденциальности — Tynys',
-    description: 'Политика обработки персональных данных сайта Tynys: какие данные мы получаем через формы заявок и мессенджеры и как их используем.',
+    title: 'Политика конфиденциальности — Вдох',
+    description: 'Политика обработки персональных данных сайта Вдох: какие данные мы получаем через формы заявок и мессенджеры и как их используем.',
     h1: 'Политика конфиденциальности',
     breadcrumbs: [HOME, ['Политика конфиденциальности', 'politika-konfidencialnosti/']],
     get body() {
@@ -582,8 +578,8 @@ ${UI.related('Читайте также', ART.filter(o => o !== a).slice(0, 3).m
 
   add({
     path: '404.html', noindex: true, noCta: true, label: '404',
-    title: 'Страница не найдена — Tynys',
-    description: 'Такой страницы нет. Перейдите на главную или в каталог ароматов Tynys.',
+    title: 'Страница не найдена — Вдох',
+    description: 'Такой страницы нет. Перейдите на главную или в каталог ароматов Вдох.',
     body: `<section class="sec nf"><div class="wrap narrow center"><p class="nf-code">404</p><h1>Страница не найдена</h1><p class="lead">Возможно, её переместили. Начните с главной или каталога ароматов.</p><div class="hero-cta center"><a class="btn btn-dark btn-lg" href="/">На главную</a><a class="btn btn-light btn-lg" href="/aromaty/">Каталог ароматов</a></div></div></section>`
   });
 }

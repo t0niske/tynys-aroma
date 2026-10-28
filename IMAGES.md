@@ -1,4 +1,4 @@
-# Картинки для Tynys
+# Картинки для Вдох
 
 Сгенерируйте в ChatGPT, сохраните в `src/assets/img/` под указанным именем (png, jpg или webp) и пересоберите: `node build.js`.
 Пока файла нет, на сайте стоит подписанная заглушка того же размера.
@@ -29,17 +29,21 @@ Macro close-up product photograph of the front of a compact rectangular aroma di
 Приложите фото аппарата из PDF как референс.
 ```
 
-## ✅ `hero` — Аппарат в интерьере кофейни
+## ✅ `hero` — Магазин одежды (аппарат скрыт в вентиляции)
 
 - Формат: 4:5
 - Где на сайте: главная, первый экран
-- Alt: Аромамашина Nova на стойке кофейни в Астане
+- Alt: Магазин одежды, где аромат подаётся через вентиляцию
 
 ```text
-Photorealistic editorial interior photograph, soft natural daylight, airy and clean modern minimal design, palette of white, warm light oak and muted sage green, shot on a 35 mm lens at f/4, high detail, realistic materials. No text, no logos, no watermarks, no visible faces.
-Scene: a bright cosy specialty coffee shop in Astana, Kazakhstan, morning light from a large window, an espresso machine and a glass case with pastries softly out of focus in the background.
-In the foreground, a compact rectangular aroma diffuser about 20 cm tall made of matte graphite-grey powder-coated metal with slightly rounded edges, a narrow vertical black glossy glass panel on the right half of the front with small glowing blue LED digits and a tiny red power icon, a round black fan grille on the top, a small round port on the left side, four short black rubber feet, stands on the light oak counter next to a ceramic cup of cappuccino. A barely visible soft mist rises from the top grille.
-Composition: vertical frame, the diffuser in the lower right third, sharp and clearly visible, about a quarter of the frame height; calm out-of-focus interior above. Aspect ratio 4:5.
+Photorealistic editorial interior photograph of a bright minimal clothing store. Soft natural daylight from a large window plus warm gentle spotlights. Calm, premium, airy.
+Colour palette strictly: white walls and ceiling, warm sand-beige (#D9C3A5) and cream textiles, light oak wood, accents of deep navy blue (#284B63) clothing, slim graphite-black metal rails. No green, no orange.
+Interior: clothing rails with neatly spaced shirts, knitwear and coats in beige, cream, white and deep navy; folded knitwear on a light oak table; a cream linen curtain of a fitting room; a few sculptural vases with dry pampas grass.
+A clean white ceiling with a slim, discreet linear ventilation slot (the air vent is built into the ceiling and barely noticeable). There is NO diffuser device, no gadget, no electronics anywhere in the scene.
+The large window looks onto a quiet green-free courtyard: soft blurred daylight, a light stone wall and a few bare tree branches. No city view, no buildings, no towers outside. No people, no faces, no text, no logos, no price tags, no watermarks. Shot on a 35 mm lens at f/4, high detail, realistic materials.
+Composition: vertical frame 4:5, eye-level view down the aisle, rails on both sides leading the eye to the window at the back; the most important content in the centre so the frame can be cropped to a horizontal banner.
+
+Аппарат подключается к вентиляции, поэтому в кадре его нет. Город в окне не показываем.
 ```
 
 ## ✅ `sol-ofis` — Офис
@@ -358,7 +362,7 @@ Minimal editorial still life on a light oak table: neatly folded knitwear and li
 
 - Формат: 16:9
 - Где на сайте: превью ссылок в мессенджерах
-- Alt: Tynys — ароматизация помещений в Астане
+- Alt: Вдох — ароматизация помещений в Астане
 
 ```text
 Wide hero image: a compact rectangular aroma diffuser about 20 cm tall made of matte graphite-grey powder-coated metal with slightly rounded edges, a narrow vertical black glossy glass panel on the right half of the front with small glowing blue LED digits and a tiny red power icon, a round black fan grille on the top, a small round port on the left side, four short black rubber feet on the right on a light oak surface, soft mint-to-white gradient background with delicate translucent aurora-like light waves, generous empty space on the left for a headline. Premium, calm, fresh. No text, no logos. Aspect ratio 16:9 (будет обрезано до 1200×630).

@@ -9,7 +9,7 @@ const { register } = require('./src/pages');
 
 const site = createSite({
   root: __dirname,
-  name: 'Tynys',
+  name: 'Вдох',
   origin: 'https://t0niske.github.io',
   base: '/tynys-aroma/',
   description: 'Ароматизация помещений для бизнеса и дома в Астане',
