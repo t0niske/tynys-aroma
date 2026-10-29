@@ -3,7 +3,7 @@
 Сгенерируйте в ChatGPT, сохраните в `src/assets/img/` под указанным именем (png, jpg или webp) и пересоберите: `node build.js`.
 Пока файла нет, на сайте стоит подписанная заглушка того же размера.
 
-Готово: 35 из 35.
+Готово: 42 из 42.
 
 ## ✅ `device` — Диффузор Nova, студийный рендер
 
@@ -99,6 +99,111 @@ Composition: vertical frame 4:5, eye-level, the most important content in the ce
 
 ```text
 Photorealistic editorial interior photograph of a calm boutique hotel lobby: a long reception desk of warm travertine and oak, a lounge with cream sofas and navy velvet armchairs, a low oak coffee table with books, soft warm lamps. Soft natural daylight plus warm gentle lighting.
+Colour palette strictly: white walls and ceiling, warm milky-beige and cream textiles, light oak wood, a few accents of deep navy blue (#284B63), slim graphite-black metal details. No green walls, no orange.
+A clean white ceiling with a slim, discreet linear ventilation slot (the air vent is built into the ceiling and barely noticeable). There is NO diffuser device, no aroma machine, no gadget anywhere in the scene.
+If a window is visible it looks onto a quiet courtyard: soft blurred daylight, a light stone wall and a few bare tree branches. No city view, no buildings, no towers outside.
+No people, no faces, no text, no logos, no signage, no price tags, no watermarks. Shot on a 35 mm lens at f/4, high detail, realistic materials, calm premium editorial mood.
+Composition: vertical frame 4:5, eye-level, the most important content in the centre so the frame can be cropped to a horizontal banner.
+```
+
+## ✅ `hero-magazin` — Блок «Ваш бизнес»: бутик
+
+- Формат: 4:5
+- Где на сайте: главная, блок «Ваш бизнес»
+- Alt: Бутик: аромат подаётся через вентиляцию
+
+```text
+Photorealistic editorial interior photograph of a minimal fashion and jewellery boutique: travertine plinths with a few leather handbags and jewellery trays, a slim graphite rail with a few cream and navy garments, a fitting room with a cream linen curtain, light oak floor, a navy velvet bench. Soft natural daylight plus warm gentle lighting.
+Colour palette strictly: white walls and ceiling, warm milky-beige and cream textiles, light oak wood, a few accents of deep navy blue (#284B63), slim graphite-black metal details. No green walls, no orange.
+A clean white ceiling with a slim, discreet linear ventilation slot (the air vent is built into the ceiling and barely noticeable). There is NO diffuser device, no aroma machine, no gadget anywhere in the scene.
+If a window is visible it looks onto a quiet courtyard: soft blurred daylight, a light stone wall and a few bare tree branches. No city view, no buildings, no towers outside.
+No people, no faces, no text, no logos, no signage, no price tags, no watermarks. Shot on a 35 mm lens at f/4, high detail, realistic materials, calm premium editorial mood.
+Composition: vertical frame 4:5, eye-level, the most important content in the centre so the frame can be cropped to a horizontal banner.
+```
+
+## ✅ `hero-produkty` — Блок «Ваш бизнес»: продуктовый магазин
+
+- Формат: 4:5
+- Где на сайте: главная, блок «Ваш бизнес»
+- Alt: Продуктовый магазин: аромат подаётся через вентиляцию
+
+```text
+Photorealistic editorial interior photograph of a clean modern premium grocery minimarket: light oak shelving with neatly arranged crates of fresh fruit and vegetables, baskets of bread, rows of glass jars without labels, a cream checkout counter, navy painted shelf edges. Soft natural daylight plus warm gentle lighting.
+Colour palette strictly: white walls and ceiling, warm milky-beige and cream textiles, light oak wood, a few accents of deep navy blue (#284B63), slim graphite-black metal details. No green walls, no orange.
+A clean white ceiling with a slim, discreet linear ventilation slot (the air vent is built into the ceiling and barely noticeable). There is NO diffuser device, no aroma machine, no gadget anywhere in the scene.
+If a window is visible it looks onto a quiet courtyard: soft blurred daylight, a light stone wall and a few bare tree branches. No city view, no buildings, no towers outside.
+No people, no faces, no text, no logos, no signage, no price tags, no watermarks. Shot on a 35 mm lens at f/4, high detail, realistic materials, calm premium editorial mood.
+Composition: vertical frame 4:5, eye-level, the most important content in the centre so the frame can be cropped to a horizontal banner.
+```
+
+## ✅ `hero-restoran` — Блок «Ваш бизнес»: ресторан
+
+- Формат: 4:5
+- Где на сайте: главная, блок «Ваш бизнес»
+- Alt: Ресторан: аромат подаётся через вентиляцию
+
+```text
+Photorealistic editorial interior photograph of a warm calm restaurant dining room: oak tables set with white linen and ceramic plates, cream upholstered banquettes, navy velvet chairs, soft pendant lamps, a bar counter softly out of focus behind. Soft natural daylight plus warm gentle lighting.
+Colour palette strictly: white walls and ceiling, warm milky-beige and cream textiles, light oak wood, a few accents of deep navy blue (#284B63), slim graphite-black metal details. No green walls, no orange.
+A clean white ceiling with a slim, discreet linear ventilation slot (the air vent is built into the ceiling and barely noticeable). There is NO diffuser device, no aroma machine, no gadget anywhere in the scene.
+If a window is visible it looks onto a quiet courtyard: soft blurred daylight, a light stone wall and a few bare tree branches. No city view, no buildings, no towers outside.
+No people, no faces, no text, no logos, no signage, no price tags, no watermarks. Shot on a 35 mm lens at f/4, high detail, realistic materials, calm premium editorial mood.
+Composition: vertical frame 4:5, eye-level, the most important content in the centre so the frame can be cropped to a horizontal banner.
+```
+
+## ✅ `hero-klinika` — Блок «Ваш бизнес»: клиника
+
+- Формат: 4:5
+- Где на сайте: главная, блок «Ваш бизнес»
+- Alt: Клиника: аромат подаётся через вентиляцию
+
+```text
+Photorealistic editorial interior photograph of a calm modern private clinic reception: a white and light oak reception desk, cream waiting armchairs, one navy accent armchair, a potted olive tree, very clean and bright, a corridor with white doors softly out of focus. Soft natural daylight plus warm gentle lighting.
+Colour palette strictly: white walls and ceiling, warm milky-beige and cream textiles, light oak wood, a few accents of deep navy blue (#284B63), slim graphite-black metal details. No green walls, no orange.
+A clean white ceiling with a slim, discreet linear ventilation slot (the air vent is built into the ceiling and barely noticeable). There is NO diffuser device, no aroma machine, no gadget anywhere in the scene.
+If a window is visible it looks onto a quiet courtyard: soft blurred daylight, a light stone wall and a few bare tree branches. No city view, no buildings, no towers outside.
+No people, no faces, no text, no logos, no signage, no price tags, no watermarks. Shot on a 35 mm lens at f/4, high detail, realistic materials, calm premium editorial mood.
+Composition: vertical frame 4:5, eye-level, the most important content in the centre so the frame can be cropped to a horizontal banner.
+```
+
+## ✅ `hero-fitnes` — Блок «Ваш бизнес»: фитнес-клуб
+
+- Формат: 4:5
+- Где на сайте: главная, блок «Ваш бизнес»
+- Alt: Фитнес-клуб: аромат подаётся через вентиляцию
+
+```text
+Photorealistic editorial interior photograph of a premium boutique fitness club: light oak floor, a row of matte graphite treadmills, an oak rack with a few dumbbells, rolled navy yoga mats, cream walls, a large window to the courtyard. Soft natural daylight plus warm gentle lighting.
+Colour palette strictly: white walls and ceiling, warm milky-beige and cream textiles, light oak wood, a few accents of deep navy blue (#284B63), slim graphite-black metal details. No green walls, no orange.
+A clean white ceiling with a slim, discreet linear ventilation slot (the air vent is built into the ceiling and barely noticeable). There is NO diffuser device, no aroma machine, no gadget anywhere in the scene.
+If a window is visible it looks onto a quiet courtyard: soft blurred daylight, a light stone wall and a few bare tree branches. No city view, no buildings, no towers outside.
+No people, no faces, no text, no logos, no signage, no price tags, no watermarks. Shot on a 35 mm lens at f/4, high detail, realistic materials, calm premium editorial mood.
+Composition: vertical frame 4:5, eye-level, the most important content in the centre so the frame can be cropped to a horizontal banner.
+```
+
+## ✅ `hero-avtosalon` — Блок «Ваш бизнес»: автосалон
+
+- Формат: 4:5
+- Где на сайте: главная, блок «Ваш бизнес»
+- Alt: Автосалон: аромат подаётся через вентиляцию
+
+```text
+Photorealistic editorial interior photograph of a premium car showroom: one elegant dark navy sedan without any badges on a light polished stone floor, oak slatted and cream walls, a small lounge with cream armchairs and a low oak table. Soft natural daylight plus warm gentle lighting.
+Colour palette strictly: white walls and ceiling, warm milky-beige and cream textiles, light oak wood, a few accents of deep navy blue (#284B63), slim graphite-black metal details. No green walls, no orange.
+A clean white ceiling with a slim, discreet linear ventilation slot (the air vent is built into the ceiling and barely noticeable). There is NO diffuser device, no aroma machine, no gadget anywhere in the scene.
+If a window is visible it looks onto a quiet courtyard: soft blurred daylight, a light stone wall and a few bare tree branches. No city view, no buildings, no towers outside.
+No people, no faces, no text, no logos, no signage, no price tags, no watermarks. Shot on a 35 mm lens at f/4, high detail, realistic materials, calm premium editorial mood.
+Composition: vertical frame 4:5, eye-level, the most important content in the centre so the frame can be cropped to a horizontal banner.
+```
+
+## ✅ `hero-zhk` — Блок «Ваш бизнес»: лобби ЖК
+
+- Формат: 4:5
+- Где на сайте: главная, блок «Ваш бизнес»
+- Alt: Лобби жилого комплекса: аромат подаётся через вентиляцию
+
+```text
+Photorealistic editorial interior photograph of a residential building lobby and sales office: a high-ceilinged lobby with a travertine reception desk, cream sofas, navy armchairs, an oak slatted wall, a white architectural scale model of houses on a low table. Soft natural daylight plus warm gentle lighting.
 Colour palette strictly: white walls and ceiling, warm milky-beige and cream textiles, light oak wood, a few accents of deep navy blue (#284B63), slim graphite-black metal details. No green walls, no orange.
 A clean white ceiling with a slim, discreet linear ventilation slot (the air vent is built into the ceiling and barely noticeable). There is NO diffuser device, no aroma machine, no gadget anywhere in the scene.
 If a window is visible it looks onto a quiet courtyard: soft blurred daylight, a light stone wall and a few bare tree branches. No city view, no buildings, no towers outside.

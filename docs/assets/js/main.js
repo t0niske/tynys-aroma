@@ -180,6 +180,32 @@
     run();
   });
 
+  /* блок «Ваш бизнес»: наведение или фокус на строке меняет фото и карточку, клик ведёт на страницу решения */
+  $$('[data-biz]').forEach(function (box) {
+    var slides = $$('.bz-slide', box), rows = $$('.bz-list a', box);
+    var pick = function (n) {
+      wake();
+      slides.forEach(function (s, k) {
+        s.classList.toggle('on', k === n);
+        s.setAttribute('aria-hidden', k === n ? 'false' : 'true');
+        var a = $('a', s); if (a) a.tabIndex = k === n ? 0 : -1;
+      });
+      rows.forEach(function (r, k) { r.classList.toggle('on', k === n); });
+    };
+    var hover = window.matchMedia && matchMedia('(hover: hover)').matches;
+    rows.forEach(function (r) {
+      var n = +r.getAttribute('data-k');
+      if (hover) r.addEventListener('mouseenter', function () { pick(n); });
+      r.addEventListener('focus', function () { pick(n); });
+    });
+    /* фото скрытых карточек подгружаем заранее, чтобы при наведении не было пустого кадра */
+    var wake = function () { slides.forEach(function (s) { var im = $('img', s); if (im) im.loading = 'eager'; }); };
+    if ('IntersectionObserver' in window) {
+      var io2 = new IntersectionObserver(function (es) { if (es[0].isIntersecting) { wake(); io2.disconnect(); } }, { rootMargin: '400px 0px' });
+      io2.observe(box);
+    } else wake();
+  });
+
   /* мягкое появление блоков */
   if ('IntersectionObserver' in window) {
     var io = new IntersectionObserver(function (es) {

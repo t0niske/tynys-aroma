@@ -19,6 +19,24 @@ const CAT_TEXT = {
   perfume: { h1: 'Парфюмерные ароматы для помещений', title: 'Парфюмерные ароматы для бутика и автосалона — каталог', lead: 'Кедр, сандал, кожа, табак, пряности. Ароматы с характером для премиальных пространств.', hits: [4, 11], text: ['Парфюмерные ароматы — самые выразительные в коллекции. Они построены как духи: с верхними нотами, сердцем и шлейфом, и подходят бутикам, шоурумам, барбершопам, автосалонам и кабинетам руководителей.', 'Такой аромат становится частью стиля бренда. Древесные и кожаные композиции подчёркивают мужской характер, а ванильные и пряные — создают атмосферу вечернего лаунжа.'] }
 };
 
+/* Блок «Ваш бизнес» на главной: фото без аппарата и короткая фраза о пользе (без точки в конце) */
+const BIZ_CARD = {
+  ofis: ['hero-ofis', 'Свежий воздух на ресепшен и в переговорных — гости запоминают компанию, команда меньше устаёт'],
+  magazin: ['hero-magazin', 'Фирменный аромат делает бутик узнаваемым — покупатели дольше остаются у витрин'],
+  'magazin-odezhdy': ['hero', 'Приятный запах в зале и примерочных — покупатели дольше выбирают и чаще возвращаются'],
+  'produktovyj-magazin': ['hero-produkty', 'Запах свежего хлеба и фруктов у входа — хочется взять что-то ещё'],
+  kofejnya: ['hero-kofejnya', 'Запах кофе и выпечки с порога — гости заказывают ещё и садятся надолго'],
+  'restoran-kafe': ['hero-restoran', 'Уютный фон без запахов кухни в зале — гости спокойно ужинают и приходят снова'],
+  otel: ['hero-otel', 'Фирменный аромат в лобби — гость запоминает отель с первого вдоха'],
+  'salon-krasoty': ['hero-salon', 'Вместо запаха краски и лака — спа-аромат, клиенты расслабляются с порога'],
+  klinika: ['hero-klinika', 'Вместо больничного запаха — спокойная свежесть, пациенты меньше волнуются'],
+  fitnes: ['hero-fitnes', 'Свежесть в залах и раздевалках — без запаха пота и с желанием вернуться'],
+  avtosalon: ['hero-avtosalon', 'Аромат кожи и дерева в шоуруме — машина ощущается дороже'],
+  'zhk-nedvizhimost': ['hero-zhk', 'Аромат в лобби и офисе продаж — покупатель влюбляется в дом с порога']
+};
+/* короткие подписи в списке, чтобы влезали в две колонки */
+const BIZ_LABEL = { 'produktovyj-magazin': 'Продуктовый', 'salon-krasoty': 'Салон и спа', klinika: 'Клиника' };
+
 const TEST_Q = ['Как проходит бесплатный тест?', TRIAL.text];
 const HOME_FAQ = [
   ['Не будет ли пахнуть слишком резко?', 'Нет. Интенсивность настраиваем под помещение: аромат заметен на входе и почти незаметен через несколько минут. Если покажется сильным — уменьшим.'],
@@ -54,6 +72,9 @@ function register(site) {
       /* слайдер первого экрана: [слот картинки, решение, подпись] */
       const slides = [['hero', 'magazin-odezhdy', 'Магазин одежды'], ['hero-kofejnya', 'kofejnya', 'Кофейня'], ['hero-salon', 'salon-krasoty', 'Салон красоты'], ['hero-ofis', 'ofis', 'Офис'], ['hero-otel', 'otel', 'Отель']]
         .filter(([k]) => site.hasImg(k));
+      /* блок «Ваш бизнес»: [решение, фото, фраза для карточки]; без фото бизнес не показываем */
+      const biz = UI.BIZ.map(s => [s, ...BIZ_CARD[s.slug]]).filter(([, k]) => site.hasImg(k));
+      const bizOn = Math.max(0, biz.findIndex(([s]) => s.slug === 'kofejnya'));
       return `
 <section class="hf">
   <div class="hf-panel">
@@ -72,11 +93,25 @@ function register(site) {
   </div>
 </section>
 
-<section class="sec sec-soft" id="biznes">
-  <div class="wrap">
-    <div class="sec-head row"><div><span class="eyebrow">Ваш бизнес</span><h2 class="h2">Найдите свой бизнес — там всё про вас</h2></div><a class="btn btn-light" href="/resheniya/">Все решения ${icon('arrow', 'ic ic-s')}</a></div>
-    <div class="sols sols-4">${UI.BIZ.map(UI.solCard).join('')}</div>
-    <p class="more">Для квартиры и дома — <a class="link" href="/resheniya/dom/">ароматизация под ключ с выездом техника ${icon('arrow', 'ic ic-s')}</a></p>
+<section class="bz" id="biznes" data-biz>
+  <div class="bz-media">
+    ${biz.map(([s, k, pitch], i) => `<figure class="bz-slide${i === bizOn ? ' on' : ''}"${i === bizOn ? '' : ' aria-hidden="true"'}>${img(k, { cls: 'bz-img' })}
+      <div class="bz-card"><div class="bz-tx"><b>${esc(s.name)}</b><span>${esc(pitch)}</span><span class="bz-sc">${s.scents.slice(0, 4).map(n => `<em>${esc(D.byN(n).name)}</em>`).join('')}</span></div><a class="btn bz-go" href="/resheniya/${s.slug}/"${i === bizOn ? '' : ' tabindex="-1"'}>Подробнее ${icon('arrow', 'ic ic-s')}</a></div>
+    </figure>`).join('')}
+    <span class="bz-tag"><i></i>Аромат подаётся через вентиляцию</span>
+  </div>
+  <div class="bz-panel">
+    <svg class="bz-waves" viewBox="0 0 600 300" aria-hidden="true"><path d="M30 120c60-50 120-50 180 0s120 50 180 0 120-50 180 0M30 190c60-50 120-50 180 0s120 50 180 0 120-50 180 0"/></svg>
+    <div class="bz-head">
+      <span class="hf-pill">Ваш бизнес</span>
+      <h2>Аромат под ваш бизнес</h2>
+      <p class="bz-sub">Для каждого бизнеса свои ароматы и мощность — выберите свой и посмотрите, как это работает у похожих</p>
+    </div>
+    <ul class="bz-list">${biz.map(([s], i) => `<li><a href="/resheniya/${s.slug}/" data-k="${i}"${i === bizOn ? ' class="on"' : ''}><span>${String(i + 1).padStart(2, '0')}</span>${esc(BIZ_LABEL[s.slug] || s.name)}${icon('arrow', 'ic ic-s')}</a></li>`).join('')}</ul>
+    <div class="bz-foot">
+      <p><b>Нет вашего бизнеса?</b>Оставьте заявку — подберём аромат и мощность под ваше помещение</p>
+      <a class="btn bz-all" href="#zayavka">Оставить заявку ${icon('arrow', 'ic ic-s')}</a>
+    </div>
   </div>
 </section>
 
