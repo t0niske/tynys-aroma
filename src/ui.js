@@ -304,23 +304,6 @@ function scheme(s) {
 </div>`;
 }
 
-/* «Почему аромат работает»: только исследования со ссылками, никаких выдуманных отзывов */
-const STUDIES = [
-  ['Запах вызывает самые эмоциональные воспоминания', 'Участники исследования оценивали воспоминания, вызванные запахом, как более эмоциональные, чем вызванные видом или звуком того же предмета.', 'Herz R. S., Chemical Senses, 2004', 'https://doi.org/10.1093/chemse/bjh025'],
-  ['Магазин с ароматом оценивают выше', 'В эксперименте с торговым залом магазин и товары в помещении с приятным ароматом оценивали лучше, чем такой же зал без аромата.', 'Spangenberg, Crowley, Henderson, Journal of Marketing, 1996', 'https://doi.org/10.1177/002224299606000205'],
-  ['Аромат под аудиторию увеличивает покупки', 'В магазине одежды покупатели тратили больше, когда аромат совпадал с отделом: ваниль — в женском, пряный «rose maroc» — в мужском.', 'Spangenberg и др., Journal of Business Research, 2006', 'https://doi.org/10.1016/j.jbusres.2006.08.006'],
-  ['Работает не любой аромат', 'В ресторане с ароматом лаванды гости оставались дольше и тратили больше, а аромат лимона на поведение не повлиял. Поэтому аромат подбирают под задачу и проверяют на месте.', 'Guéguen, Petr, International Journal of Hospitality Management, 2006', 'https://doi.org/10.1016/j.ijhm.2005.04.007']
-];
-function trust(p) {
-  return `<section class="sec" id="pochemu">
-  <div class="wrap">
-    <div class="sec-head"><span class="eyebrow">Почему аромат работает</span><h2 class="h2">Что известно из исследований</h2><p class="lead">Мы не публикуем отзывы, которых нет. Вот что говорят исследования — со ссылками на первоисточники. А лучшая проверка — ${TRIAL.days} дня с аппаратом у вас.</p></div>
-    <div class="studies">${STUDIES.map(([h, t, src, url]) => `<article class="st"><h3>${h}</h3><p>${t}</p><a class="st-src" href="${url}" target="_blank" rel="noopener">${icon('doc', 'ic ic-s')}${esc(src)}</a></article>`).join('')}</div>
-    <div class="trust-cta">${wa(p, 'test', 'Проверить у себя бесплатно', 'btn btn-acc btn-lg')}${C.reviews2gis ? `<a class="btn btn-light btn-lg" href="${C.reviews2gis}" target="_blank" rel="noopener">Отзывы о нас в 2ГИС</a>` : ''}</div>
-  </div>
-</section>`;
-}
-
 /* Сравнение: аэрозоль, домашний диффузор и подписка Tynys */
 const CMP = [
   ['Площадь', 'одна комната или санузел', 'небольшая комната', 'до 300 м² (Nova 300) или до 1000 м² (Nova 1000) одним аппаратом'],
@@ -378,4 +361,4 @@ function related(title, links) {
   return `<section class="sec sec-tight"><div class="wrap"><h2 class="h3">${title}</h2><div class="chips">${links.map(([n, h]) => `<a class="chip" href="/${h}">${esc(n)}${icon('arrow', 'ic ic-s')}</a>`).join('')}</div></div></section>`;
 }
 
-module.exports = { init, layout, icon, pageHead, actions, faq, cta, scentCard, solCard, deviceCard, priceBlock, nichePrice, scheme, trust, compare, deviceSvg, spin, related, pm, wa, waText, months, C, OWN: own, CFG, BIZ, REPLY, TRIAL, WA_SVG };
+module.exports = { init, layout, icon, pageHead, actions, faq, cta, scentCard, solCard, deviceCard, priceBlock, nichePrice, scheme, compare, deviceSvg, spin, related, pm, wa, waText, months, C, OWN: own, CFG, BIZ, REPLY, TRIAL, WA_SVG };

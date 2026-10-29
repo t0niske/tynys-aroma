@@ -42,7 +42,7 @@ ul,ol{margin:0;padding:0;list-style:none}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:999px;padding:12px 20px;font:600 15px/1.1 var(--f);text-decoration:none;border:1px solid transparent;cursor:pointer;transition:transform .2s var(--ease),background .25s,border-color .25s,box-shadow .25s;white-space:nowrap}
 .btn:active{transform:scale(.97)}
 .btn-lg{padding:16px 26px;font-size:16px}
-@media (max-width:560px){.btn-lg{white-space:normal;text-align:center;line-height:1.25}.trust-cta .btn{width:100%}}
+@media (max-width:560px){.btn-lg{white-space:normal;text-align:center;line-height:1.25}}
 .btn-dark{background:var(--ink);color:#fff}
 .btn-dark:hover{background:var(--acc)}
 .btn-light{background:#fff;color:var(--ink);border-color:var(--line);box-shadow:0 1px 2px rgba(0,0,0,.04)}
@@ -472,17 +472,53 @@ a.bb-c:hover .bb-go{background:var(--n);color:#fff}
 @media (max-width:980px){.steps{grid-template-columns:1fr 1fr}}
 @media (max-width:560px){.steps{grid-template-columns:1fr}}
 
-/* trust: исследования со ссылками */
-.studies{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
-.st{display:grid;gap:10px;align-content:start;padding:24px 22px;border-radius:var(--r);background:var(--soft);border-top:3px solid var(--acc-l)}
-.st h3{font-size:19px;letter-spacing:-.015em}
-.st p{font-size:15px;color:var(--ink2);line-height:1.5}
-.st-src{display:inline-flex;gap:6px;align-items:flex-start;margin-top:4px;font-size:13.5px;color:var(--acc);font-weight:500;text-decoration:none;line-height:1.35}
-.st-src .ic{margin-top:1px}
-.st-src:hover{text-decoration:underline;text-underline-offset:3px}
-.trust-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
-@media (max-width:1100px){.studies{grid-template-columns:1fr 1fr}}
-@media (max-width:560px){.studies{grid-template-columns:1fr}}
+/* ── главная: «Аромат работает на кассу» — слева пункты и кнопка, справа цифры исследований; кнопка и сноска на одной линии ── */
+.ks{--n:#284B63;--milk:#EDE3D3;--milk3:#F3EEE6;--gr:#343434;--gr2:#5A5D60;--gr3:#86898C;
+  display:grid;grid-template-columns:5fr 7fr;gap:clamp(28px,4vw,64px);margin:12px;padding:64px clamp(20px,4vw,64px);border-radius:36px;background:#fff;box-shadow:inset 0 0 0 1.5px #EEE7DC}
+.ks-l{display:flex;flex-direction:column;align-items:flex-start}
+.ks h2{max-width:8em;margin-top:18px;font-size:clamp(34px,3.8vw,56px);font-weight:800;text-transform:uppercase;letter-spacing:-.02em;line-height:.95;color:var(--n)}
+.ks-lead{margin-top:18px;max-width:480px;font-size:18px;line-height:1.5;color:var(--gr2)}
+.ks-pts{list-style:none;margin:30px 0 34px;padding:0;display:grid;gap:18px}
+.ks-pts li{display:grid;grid-template-columns:44px 1fr;gap:14px;align-items:start}
+.ks-pts i{width:44px;height:44px;border-radius:14px;background:var(--milk3);color:var(--n);display:grid;place-items:center;font-style:normal;font-weight:800;font-size:15px}
+.ks-pts b{display:block;font-size:17px;font-weight:800;color:var(--gr)}
+.ks-pts p{margin-top:3px;font-size:15px;line-height:1.5;color:var(--gr2)}
+.ks-cta{margin-top:auto;height:54px;padding:0 24px;border-radius:999px;background:var(--n);color:#fff;font-size:15.5px;box-shadow:0 10px 24px -12px rgba(40,75,99,.7)}
+.ks-cta:hover{background:#1E3A4D;color:#fff}
+.ks-r{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto auto 1fr;gap:12px}
+.ks-n{position:relative;overflow:hidden;padding:26px 26px 22px;border-radius:24px;background:var(--milk3);display:flex;flex-direction:column;min-height:250px}
+.ks-n>:not(.ks-wv){position:relative}
+.ks-n b{font-size:clamp(56px,6vw,88px);font-weight:900;letter-spacing:-.04em;line-height:.9;color:var(--n)}
+.ks-n b small{font-size:.45em;letter-spacing:-.02em;margin-left:4px}
+.ks-n>div{display:flex;flex-direction:column;flex:1}
+.ks-n p{margin-top:16px;font-size:15.5px;line-height:1.45;color:var(--gr)}
+.ks-r a{display:block;margin-top:auto;padding-top:18px;font-size:12px;line-height:1.4;color:var(--gr3);text-decoration:none}
+.ks-r a:hover{text-decoration:underline;text-underline-offset:3px}
+.ks-n.hi{grid-column:span 2;min-height:0;flex-direction:row;align-items:center;gap:30px;padding:30px;background:linear-gradient(135deg,#2F5674 0%,#284B63 55%,#1E3A4D 100%)}
+.ks-n.hi b{flex:none;font-size:clamp(80px,8vw,120px);color:#fff}
+.ks-n.hi p{margin:0;font-size:17px;color:#E3EBF1}
+.ks-n.hi a{padding-top:10px;color:#9DB7CB}
+.ks-wv{position:absolute;right:-60px;top:-30px;width:340px;opacity:.14;pointer-events:none}
+.ks-wv path{fill:none;stroke:#fff;stroke-width:22;stroke-linecap:round}
+.ks-fx{grid-column:span 2;display:grid;grid-template-columns:1fr 1fr;gap:28px;padding:26px;border-radius:24px;background:var(--milk)}
+.ks-fx h3{font-size:15px;font-weight:800;text-transform:uppercase;color:var(--n)}
+.ks-fx p{margin-top:6px;font-size:15.5px;line-height:1.45;color:var(--gr)}
+.ks-fx a{padding-top:10px}
+/* сноска по низу колонки и по центру кнопки слева */
+.ks-note{grid-column:span 2;align-self:end;min-height:54px;display:flex;align-items:center;margin-top:6px;font-size:12.5px;line-height:1.5;color:var(--gr3)}
+@media (max-width:900px){
+  .ks{grid-template-columns:minmax(0,1fr);margin:8px;padding:34px 16px 16px;border-radius:28px;gap:28px}
+  .ks-l{padding:0 4px}
+  .ks h2{font-size:9vw}.ks-lead{font-size:16px}
+  .ks-pts p{font-size:14px}
+  .ks-cta{width:100%;margin-top:0}
+  .ks-r{grid-template-columns:minmax(0,1fr);grid-template-rows:none;gap:8px}
+  .ks-n,.ks-n.hi{grid-column:auto;min-height:0;flex-direction:column;align-items:flex-start;gap:12px;padding:22px 20px;border-radius:20px}
+  .ks-n b{font-size:48px}.ks-n.hi b{font-size:72px}
+  .ks-n p,.ks-n.hi p{margin:0;font-size:15px}
+  .ks-fx{grid-column:auto;grid-template-columns:1fr;gap:18px;padding:22px 20px;border-radius:20px}
+  .ks-note{grid-column:auto;min-height:0;margin-top:4px}
+}
 
 /* сравнение */
 .cmp-wrap{overflow-x:auto;border-radius:var(--r);background:#fff;border:1px solid var(--line)}
