@@ -253,6 +253,8 @@ ul,ol{margin:0;padding:0;list-style:none}
 .bz-foot{position:relative;margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 14px 18px 22px;border-radius:22px;background:var(--milk3)}
 .bz-foot p{font-size:14.5px;line-height:1.4;color:var(--gr2);max-width:340px}
 .bz-foot p b{display:block;font-size:18px;font-weight:800;color:var(--gr);margin-bottom:2px}
+/* планшет: фото под списком, иначе длинные названия не влезают в две колонки */
+@media (max-width:1100px){.bz{grid-template-columns:minmax(0,1fr)}.bz-panel{order:-1}.bz-media{min-height:0;height:min(70vw,620px)}}
 @media (max-width:900px){
   .bz{grid-template-columns:minmax(0,1fr);margin:8px;padding:8px;border-radius:28px}
   .bz-panel{order:-1;padding:28px 20px 20px}
@@ -267,6 +269,38 @@ ul,ol{margin:0;padding:0;list-style:none}
   .bz-foot{flex-direction:column;align-items:stretch;padding:18px}
 }
 @media (prefers-reduced-motion:reduce){.bz-slide,.bz-slide.on{transition:none}}
+
+/* ── главная: «Почему мы» — заголовок по центру, иллюстрации по краям, сетка 3×2, вторая карточка navy ── */
+.pl{--n:#284B63;--n2:#1E3A4D;--milk3:#F3EEE6;--gr:#343434;--gr2:#5A5D60;
+  position:relative;overflow:hidden;margin:12px;padding:56px clamp(20px,4vw,56px);border-radius:36px;background:#F8F4EE}
+.pl-fig{position:absolute;top:-20px;width:340px;height:auto;pointer-events:none}
+.pl-l{left:-10px}.pl-r{right:-10px}
+.pl-head{position:relative;text-align:center;max-width:860px;margin:0 auto}
+.pl h2{text-wrap:wrap;margin-top:18px;font-size:clamp(34px,4.2vw,62px);font-weight:800;text-transform:uppercase;letter-spacing:-.02em;line-height:.95;color:var(--n)}
+.pl-sub{margin:18px auto 0;max-width:600px;font-size:18px;line-height:1.5;color:var(--gr2)}
+.pl-grid{position:relative;list-style:none;margin:48px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.pc{position:relative;overflow:hidden;min-height:250px;padding:26px 28px 28px;border-radius:24px;background:var(--milk3);display:flex;flex-direction:column}
+.pc>*{position:relative}
+.pc-ico{width:60px;height:60px;border-radius:16px;background:var(--n);color:#fff;display:grid;place-items:center}
+.pc-ico svg{width:30px;height:30px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.pc h3{margin-top:64px;font-size:17px;font-weight:800;text-transform:uppercase;line-height:1.15;color:var(--n)}
+.pc p{margin-top:10px;max-width:380px;font-size:15.5px;line-height:1.5;color:var(--gr2)}
+.pc.hi{background:linear-gradient(135deg,#2F5674 0%,#284B63 55%,#1E3A4D 100%)}
+.pc.hi .pc-ico{background:#fff;color:var(--n)}
+.pc.hi h3{color:#fff}.pc.hi p{color:#D5E0E9}
+.pc .pc-bg{position:absolute;right:-60px;top:-30px;width:360px;opacity:.16;pointer-events:none}
+.pc-bg path{fill:none;stroke:#fff;stroke-width:22;stroke-linecap:round}
+@media (max-width:1100px){.pl-fig{width:240px;top:-30px}.pl-l{left:-50px}.pl-r{right:-50px}}
+@media (max-width:900px){
+  .pl{margin:8px;padding:36px 14px 14px;border-radius:28px}
+  .pl-fig{width:110px;top:-14px}.pl-l{left:-22px}.pl-r{right:-22px}
+  .pl-head{padding-top:4px}
+  .pl h2{font-size:clamp(28px,8.4vw,44px)}.pl-sub{font-size:16px;padding:0 6px}
+  .pl-grid{grid-template-columns:minmax(0,1fr);gap:8px;margin-top:30px}
+  .pc{min-height:0;padding:20px;border-radius:20px;display:grid;grid-template-columns:52px minmax(0,1fr);column-gap:16px;align-items:start}
+  .pc-ico{width:52px;height:52px;border-radius:14px;grid-row:span 2}.pc-ico svg{width:26px;height:26px}
+  .pc h3{margin-top:0;padding-top:4px;font-size:15px}.pc p{margin-top:6px;font-size:14px}
+}
 
 /* ── sections ── */
 .sec{position:relative;padding:clamp(64px,8vw,112px) 0}
