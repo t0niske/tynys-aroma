@@ -122,28 +122,6 @@ function register(site) {
   </ul>
 </section>
 
-<section class="bz" id="biznes" data-biz>
-  <div class="bz-media">
-    ${biz.map(([s, k, pitch], i) => `<figure class="bz-slide${i === bizOn ? ' on' : ''}"${i === bizOn ? '' : ' aria-hidden="true"'}>${img(k, { cls: 'bz-img' })}
-      <div class="bz-card"><div class="bz-tx"><b>${esc(s.name)}</b><span>${esc(pitch)}</span><span class="bz-sc">${s.scents.slice(0, 4).map(n => `<em>${esc(D.byN(n).name)}</em>`).join('')}</span></div><a class="btn bz-go" href="/resheniya/${s.slug}/"${i === bizOn ? '' : ' tabindex="-1"'}>Подробнее ${icon('arrow', 'ic ic-s')}</a></div>
-    </figure>`).join('')}
-    <span class="bz-tag"><i></i>Аромат подаётся через вентиляцию</span>
-  </div>
-  <div class="bz-panel">
-    <svg class="bz-waves" viewBox="0 0 600 300" aria-hidden="true"><path d="M30 120c60-50 120-50 180 0s120 50 180 0 120-50 180 0M30 190c60-50 120-50 180 0s120 50 180 0 120-50 180 0"/></svg>
-    <div class="bz-head">
-      <span class="hf-pill">Ваш бизнес</span>
-      <h2>Аромат под ваш бизнес</h2>
-      <p class="bz-sub">Для каждого бизнеса свои ароматы и мощность — выберите свой и посмотрите, как это работает у похожих</p>
-    </div>
-    <ul class="bz-list">${biz.map(([s], i) => `<li><a href="/resheniya/${s.slug}/" data-k="${i}"${i === bizOn ? ' class="on"' : ''}><span>${String(i + 1).padStart(2, '0')}</span>${esc(BIZ_LABEL[s.slug] || s.name)}${icon('arrow', 'ic ic-s')}</a></li>`).join('')}</ul>
-    <div class="bz-foot">
-      <p><b>Нет вашего бизнеса?</b>Оставьте заявку — подберём аромат и мощность под ваше помещение</p>
-      <a class="btn bz-all" href="#zayavka">Оставить заявку ${icon('arrow', 'ic ic-s')}</a>
-    </div>
-  </div>
-</section>
-
 <section class="dv" id="apparat" data-dev="${esc(JSON.stringify(devs))}">
   <div class="dv-media">
     <svg class="dv-waves" viewBox="0 0 600 300" aria-hidden="true"><path d="M30 120c60-50 120-50 180 0s120 50 180 0 120-50 180 0M30 190c60-50 120-50 180 0s120 50 180 0 120-50 180 0"/></svg>
@@ -168,6 +146,28 @@ function register(site) {
     <div class="dv-foot">
       <p class="dv-price"><b data-v="pm">${dev0.pm}</b>в месяц при подписке на 6 месяцев, масла и сервис включены</p>
       <a class="btn dv-go" href="#ceny">Подобрать по площади ${icon('arrow', 'ic ic-s')}</a>
+    </div>
+  </div>
+</section>
+
+<section class="bz" id="biznes" data-biz>
+  <div class="bz-media">
+    ${biz.map(([s, k, pitch], i) => `<figure class="bz-slide${i === bizOn ? ' on' : ''}"${i === bizOn ? '' : ' aria-hidden="true"'}>${img(k, { cls: 'bz-img' })}
+      <div class="bz-card"><div class="bz-tx"><b>${esc(s.name)}</b><span>${esc(pitch)}</span><span class="bz-sc">${s.scents.slice(0, 4).map(n => `<em>${esc(D.byN(n).name)}</em>`).join('')}</span></div><a class="btn bz-go" href="/resheniya/${s.slug}/"${i === bizOn ? '' : ' tabindex="-1"'}>Подробнее ${icon('arrow', 'ic ic-s')}</a></div>
+    </figure>`).join('')}
+    <span class="bz-tag"><i></i>Аромат подаётся через вентиляцию</span>
+  </div>
+  <div class="bz-panel">
+    <svg class="bz-waves" viewBox="0 0 600 300" aria-hidden="true"><path d="M30 120c60-50 120-50 180 0s120 50 180 0 120-50 180 0M30 190c60-50 120-50 180 0s120 50 180 0 120-50 180 0"/></svg>
+    <div class="bz-head">
+      <span class="hf-pill">Ваш бизнес</span>
+      <h2>Аромат под ваш бизнес</h2>
+      <p class="bz-sub">Для каждого бизнеса свои ароматы и мощность — выберите свой и посмотрите, как это работает у похожих</p>
+    </div>
+    <ul class="bz-list">${biz.map(([s], i) => `<li><a href="/resheniya/${s.slug}/" data-k="${i}"${i === bizOn ? ' class="on"' : ''}><span>${String(i + 1).padStart(2, '0')}</span>${esc(BIZ_LABEL[s.slug] || s.name)}${icon('arrow', 'ic ic-s')}</a></li>`).join('')}</ul>
+    <div class="bz-foot">
+      <p><b>Нет вашего бизнеса?</b>Оставьте заявку — подберём аромат и мощность под ваше помещение</p>
+      <a class="btn bz-all" href="#zayavka">Оставить заявку ${icon('arrow', 'ic ic-s')}</a>
     </div>
   </div>
 </section>
