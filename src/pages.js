@@ -165,6 +165,21 @@ function register(site) {
   </div>
 </section>
 
+<section class="ks" id="pochemu">
+  <div class="ks-l">
+    <span class="hf-pill">Что говорят исследования</span>
+    <h2>Аромат работает на&nbsp;кассу</h2>
+    <p class="ks-lead">Посетитель редко замечает запах осознанно, зато настроение от него появляется с порога. Учёные проверяли это не в лаборатории, а в настоящих залах — на чеках и выручке</p>
+    <ul class="ks-pts">${KASSA_PTS.map(([t, d], i) => `<li><i>${String(i + 1).padStart(2, '0')}</i><div><b>${t}</b><p>${d}</p></div></li>`).join('')}</ul>
+    ${wa(this, 'test', `Попробовать ${TRIAL.days} дня бесплатно`, 'btn ks-cta')}
+  </div>
+  <div class="ks-r">
+    ${KASSA_NUM.map(([n, u, t, src, url], i) => `<div class="ks-n${i ? '' : ' hi'}">${i ? '' : '<svg class="ks-wv" viewBox="0 0 600 300" aria-hidden="true"><path d="M30 120c60-50 120-50 180 0s120 50 180 0 120-50 180 0M30 190c60-50 120-50 180 0s120 50 180 0 120-50 180 0"/></svg>'}<b>${n}<small>${u}</small></b><div><p>${t}</p><a href="${url}" target="_blank" rel="noopener">${esc(src)}</a></div></div>`).join('')}
+    <div class="ks-fx">${KASSA_FX.map(([h, t, src, url]) => `<div><h3>${h}</h3><p>${t}</p><a href="${url}" target="_blank" rel="noopener">${esc(src)}</a></div>`).join('')}</div>
+    <p class="ks-note">Цифры взяты из научных работ, опубликованных в Европе и США. Ваш зал и ваш аромат — отдельная история, поэтому начинаем с бесплатных ${TRIAL.days} дней</p>
+  </div>
+</section>
+
 <section class="bb" id="biznes" data-biz>
   <svg class="bb-waves" viewBox="0 0 600 300" aria-hidden="true"><path d="M30 120c60-50 120-50 180 0s120 50 180 0 120-50 180 0M30 190c60-50 120-50 180 0s120 50 180 0 120-50 180 0"/></svg>
   <div class="bb-in">
@@ -179,21 +194,6 @@ function register(site) {
     <div class="bb-c bb-cta"><div><b>Нет вашего бизнеса?</b><p>Оставьте заявку — подберём аромат и мощность под ваше помещение</p></div><a class="btn" href="#zayavka">Оставить заявку ${icon('arrow', 'ic ic-s')}</a></div>
   </div>
   <div class="bb-bar" aria-hidden="true"><i></i></div>
-</section>
-
-<section class="ks" id="pochemu">
-  <div class="ks-l">
-    <span class="hf-pill">Что говорят исследования</span>
-    <h2>Аромат работает на&nbsp;кассу</h2>
-    <p class="ks-lead">Посетитель редко замечает запах осознанно, зато настроение от него появляется с порога. Учёные проверяли это не в лаборатории, а в настоящих залах — на чеках и выручке</p>
-    <ul class="ks-pts">${KASSA_PTS.map(([t, d], i) => `<li><i>${String(i + 1).padStart(2, '0')}</i><div><b>${t}</b><p>${d}</p></div></li>`).join('')}</ul>
-    ${wa(this, 'test', `Попробовать ${TRIAL.days} дня бесплатно`, 'btn ks-cta')}
-  </div>
-  <div class="ks-r">
-    ${KASSA_NUM.map(([n, u, t, src, url], i) => `<div class="ks-n${i ? '' : ' hi'}">${i ? '' : '<svg class="ks-wv" viewBox="0 0 600 300" aria-hidden="true"><path d="M30 120c60-50 120-50 180 0s120 50 180 0 120-50 180 0M30 190c60-50 120-50 180 0s120 50 180 0 120-50 180 0"/></svg>'}<b>${n}<small>${u}</small></b><div><p>${t}</p><a href="${url}" target="_blank" rel="noopener">${esc(src)}</a></div></div>`).join('')}
-    <div class="ks-fx">${KASSA_FX.map(([h, t, src, url]) => `<div><h3>${h}</h3><p>${t}</p><a href="${url}" target="_blank" rel="noopener">${esc(src)}</a></div>`).join('')}</div>
-    <p class="ks-note">Цифры взяты из научных работ, опубликованных в Европе и США. Ваш зал и ваш аромат — отдельная история, поэтому начинаем с бесплатных ${TRIAL.days} дней</p>
-  </div>
 </section>
 
 <section class="sec sec-soft" id="ceny">
