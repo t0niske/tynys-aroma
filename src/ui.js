@@ -129,6 +129,9 @@ function analytics() {
   return s;
 }
 
+/* версия стилей и скрипта по содержимому файла — после правок браузер и CDN сразу берут новые */
+const ver = f => require('crypto').createHash('md5').update(require('fs').readFileSync(require('path').join(__dirname, 'assets', f))).digest('hex').slice(0, 8);
+const V = { css: ver('css/style.css'), js: ver('js/main.js') };
 function layout(p, head) {
   return `<!doctype html>
 <html lang="ru">
@@ -139,7 +142,7 @@ ${analytics()}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="/assets/css/style.css">
+<link rel="stylesheet" href="/assets/css/style.css?v=${V.css}">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 </head>
 <body class="${p.bodyClass || ''}" data-page="${esc(pageLabel(p))}">
@@ -150,7 +153,7 @@ ${p.noCta ? '' : cta(p)}
 </main>
 ${footer(p)}
 <script src="/assets/js/data.js"></script>
-<script src="/assets/js/main.js"></script>
+<script src="/assets/js/main.js?v=${V.js}"></script>
 </body>
 </html>`;
 }
