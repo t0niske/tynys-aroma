@@ -19,49 +19,58 @@ const CAT_TEXT = {
   perfume: { h1: 'Парфюмерные ароматы для помещений', title: 'Парфюмерные ароматы для бутика и автосалона — каталог', lead: 'Кедр, сандал, кожа, табак, пряности. Ароматы с характером для премиальных пространств.', hits: [4, 11], text: ['Парфюмерные ароматы — самые выразительные в коллекции. Они построены как духи: с верхними нотами, сердцем и шлейфом, и подходят бутикам, шоурумам, барбершопам, автосалонам и кабинетам руководителей.', 'Такой аромат становится частью стиля бренда. Древесные и кожаные композиции подчёркивают мужской характер, а ванильные и пряные — создают атмосферу вечернего лаунжа.'] }
 };
 
-/* Блок «Ваш бизнес» на главной — лента карточек в этом порядке: [решение, фото без аппарата, короткая фраза без точки, сфера, короткое название] */
-const BIZ_CARD = [
-  ['kofejnya', 'hero-kofejnya', 'Запах кофе и выпечки с порога — гости заказывают ещё и садятся надолго', 'eda'],
-  ['magazin-odezhdy', 'hero', 'Покупатели дольше выбирают и чаще возвращаются', 'torg'],
-  ['otel', 'hero-otel', 'Гость запоминает отель с первого вдоха', 'otel'],
-  ['salon-krasoty', 'hero-salon', 'Спа-аромат вместо запаха краски и лака', 'krasota', 'Салон и спа'],
-  ['ofis', 'hero-ofis', 'Гости запоминают компанию, команда меньше устаёт', 'ofis'],
-  ['restoran-kafe', 'hero-restoran', 'Уютный фон без запахов кухни — гости приходят снова', 'eda'],
-  ['magazin', 'hero-magazin', 'Фирменный аромат делает бутик узнаваемым', 'torg'],
-  ['klinika', 'hero-klinika', 'Спокойная свежесть вместо больничного запаха', 'krasota', 'Клиника'],
-  ['fitnes', 'hero-fitnes', 'Свежесть в залах и раздевалках', 'krasota'],
-  ['produktovyj-magazin', 'hero-produkty', 'Запах свежего хлеба у входа — хочется взять что-то ещё', 'torg', 'Продуктовый'],
-  ['avtosalon', 'hero-avtosalon', 'Аромат кожи и дерева — машина ощущается дороже', 'torg'],
-  ['zhk-nedvizhimost', 'hero-zhk', 'Покупатель влюбляется в дом с порога', 'otel']
+/* Главная. Подбор за 30 секунд: [решение, фото без аппарата, короткое название] */
+const PICK = [
+  ['kofejnya', 'hero-kofejnya', 'Кофейня'],
+  ['magazin-odezhdy', 'hero', 'Магазин одежды'],
+  ['salon-krasoty', 'hero-salon', 'Салон красоты'],
+  ['ofis', 'hero-ofis', 'Офис'],
+  ['restoran-kafe', 'hero-restoran', 'Ресторан'],
+  ['klinika', 'hero-klinika', 'Клиника'],
+  ['otel', 'hero-otel', 'Отель'],
+  ['fitnes', 'hero-fitnes', 'Фитнес']
 ];
-const BIZ_CATS = [['torg', 'Торговля'], ['eda', 'Еда и напитки'], ['krasota', 'Красота и здоровье'], ['otel', 'Отели и ЖК'], ['ofis', 'Офисы']];
-/* Блок «Почему мы» на главной: [значок, заголовок, текст]; вторая карточка выделена */
+/* Преимущества: [значок, заголовок, текст] */
 const PLUS = [
-  ['<path d="M4 9c2.7-2.4 5.3-2.4 8 0s5.3 2.4 8 0M4 15c2.7-2.4 5.3-2.4 8 0s5.3 2.4 8 0"/>', 'Через вентиляцию', 'Аромат расходится по всему помещению равномерно, а аппарата не видно ни гостям, ни сотрудникам'],
-  ['<path d="M5 12.5l4.5 4.5L19 7.5"/>', `Тест ${TRIAL.days} дня бесплатно`, 'Подключим и настроим за свой счёт — не понравится, отключим и ничего не возьмём'],
-  ['<path d="M13 3L5 13.5h6L10 21l8-10.5h-6z"/>', 'Запуск за 1 день', 'Утром обсудили помещение и аромат, вечером в зале уже приятно пахнет'],
-  ['<rect x="5" y="4" width="14" height="16" rx="3"/><path d="M9 9h6M9 13h6M9 17h3"/>', 'Без покупки оборудования', 'Аппарат в аренду на весь срок подписки — никаких вложений на старте'],
-  ['<path d="M12 3.5s6 6.4 6 10.5a6 6 0 0 1-12 0c0-4.1 6-10.5 6-10.5z"/>', 'Масла и сервис в цене', 'Техник сам привозит и меняет масло по графику, чистит и настраивает аппарат'],
-  ['<circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1"/>', `${D.scents.length} аромата на выбор`, 'Подберём под ваш бизнес и привезём пробники, а если аромат надоест — сменим']
+  ['<path d="M4 9c2.7-2.4 5.3-2.4 8 0s5.3 2.4 8 0M4 15c2.7-2.4 5.3-2.4 8 0s5.3 2.4 8 0"/>', 'Через вентиляцию', 'Аромат расходится по всему залу ровно, а аппарата не видно'],
+  ['<path d="M5 12.5l4.5 4.5L19 7.5"/>', `Тест ${TRIAL.days} дня бесплатно`, 'Не подошло — отключим и уедем, без оплаты'],
+  ['<path d="M13 3L5 13.5h6L10 21l8-10.5h-6z"/>', 'Запуск за 1 день', 'Утром договорились — вечером в зале уже пахнет'],
+  ['<rect x="5" y="4" width="14" height="16" rx="3"/><path d="M9 9h6M9 13h6M9 17h3"/>', 'Без покупки оборудования', 'Аппарат в аренду на весь срок подписки'],
+  ['<path d="M12 3.5s6 6.4 6 10.5a6 6 0 0 1-12 0c0-4.1 6-10.5 6-10.5z"/>', 'Масла и сервис в цене', 'Техник сам меняет масло по графику и следит за аппаратом'],
+  ['<circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1"/>', `${D.scents.length} аромата`, 'Подберём под ваш бизнес, надоест — сменим']
 ];
-/* строки характеристик в блоке «Аппарат Nova»; строка без значения у аппарата скрывается */
-const DEV_ROWS = ['Уровень шума', 'Корпус', 'Питание', 'Масса', 'Размер', 'Управление'];
-/* Блок «Аромат работает на кассу»: пункты слева и цифры исследований справа (формулировки свои, не как на Aromé) */
-const KASSA_PTS = [
-  ['Не спешат уходить', 'Когда в зале уютно, человек задерживается и успевает присмотреть что-то ещё'],
-  ['Чек становится выше', 'В хорошем настроении проще решиться: взять вещь, добавить десерт, выбрать вариант получше'],
-  ['Место остаётся в памяти', 'Запах прочно связывается с вывеской, и о вас вспоминают, когда снова нужно что-то купить']
+/* Этапы теста: [название, когда, текст, цвет карточки]; между вторым и третьим — фото */
+const STEPS = [
+  ['Пишете нам', 'Сегодня', `Отвечаем в WhatsApp за ${CFG.replyMinutes} минут, уточняем площадь и что у вас за место`, ''],
+  ['Подключаем', 'День 1', 'Аппарат встраиваем в вентиляцию и настраиваем силу запаха — гости его не видят', 'dk'],
+  ['Наблюдаете', 'Дни 2–3', 'Смотрите, как ведут себя гости. Резко — убавим, хочется другой аромат — поменяем', 'dk'],
+  ['Решаете', 'После теста', 'Подошло — договор на 1, 3 или 6 месяцев. Нет — отключаем, платить ничего не нужно', 'lt']
 ];
-/* [цифра, единица, подпись, источник, ссылка]; первая — крупная navy-карточка */
+const stepCard = ([t, when, d, cls], i) => `<div class="h-st${cls ? ' ' + cls : ''}"><div class="h-st-h"><b>${String(STEPS.findIndex(s => s[0] === t) + 1).padStart(2, '0')}</b><h3>${t}<small>${when}</small></h3></div><p>${d}</p></div>`;
+/* Аромат в цифрах: [цифра, единица, подпись, источник, ссылка] — формулировки свои, не как на Aromé */
 const KASSA_NUM = [
-  ['+20', '%', 'к сумме покупок добавили посетители магазина домашних товаров, пока в зале пахло апельсином', 'Herrmann и др., Journal of Retailing, 2013', 'https://doi.org/10.1016/j.jretai.2012.08.002'],
-  ['+14', 'мин', 'столько лишнего времени гости пиццерии провели за ужином при лёгком запахе лаванды — и счёт у них тоже вырос', 'Guéguen, Petr, International Journal of Hospitality Management, 2006', 'https://doi.org/10.1016/j.ijhm.2005.04.007'],
-  ['24', 'ч', 'прошли, а марки, замеченные в ароматном зале, люди всё ещё называли увереннее остальных', 'Morrin, Ratneshwar, Journal of Marketing Research, 2003', 'https://doi.org/10.1509/jmkr.40.1.10.19128']
+  ['+20', '%', 'к сумме покупок в магазине, пока в зале пахло апельсином', 'Herrmann и др., Journal of Retailing, 2013', 'https://doi.org/10.1016/j.jretai.2012.08.002'],
+  ['+14', 'мин', 'дольше гости пиццерии сидели за ужином при запахе лаванды', 'Guéguen, Petr, International Journal of Hospitality Management, 2006', 'https://doi.org/10.1016/j.ijhm.2005.04.007'],
+  ['24', 'ч', 'спустя люди лучше помнили марки из зала с ароматом', 'Morrin, Ratneshwar, Journal of Marketing Research, 2003', 'https://doi.org/10.1509/jmkr.40.1.10.19128']
 ];
-/* [заголовок, текст, источник, ссылка] — молочная плашка в две колонки */
-const KASSA_FX = [
-  ['Магазин', 'В зале с приятным ароматом покупатели оценивали и сам магазин, и товары выше', 'Spangenberg, Crowley, Henderson, Journal of Marketing, 1996', 'https://doi.org/10.1177/002224299606000205'],
-  ['Премиум-товары', 'Тёплые ароматы — ваниль, корица — подталкивают выбирать товары дороже', 'Madzharov, Block, Morrin, Journal of Marketing, 2015', 'https://doi.org/10.1509/jm.13.0263']
+/* Настроения: [семейство, название, для кого] — фото и ароматы берутся из семейства */
+const MOODS = [
+  ['fresh', 'Бодрит', 'офис, фитнес, автосалон'],
+  ['spa', 'Успокаивает', 'салон, спа, клиника'],
+  ['gourmand', 'Уютно', 'кофейня, пекарня, ресторан'],
+  ['hotel', 'Дорого', 'отель, лобби ЖК, ресепшн'],
+  ['floral', 'Нежно', 'салон красоты, цветы, свадебный салон'],
+  ['perfume', 'С характером', 'бутик, шоурум, барбершоп']
+];
+/* Что входит в подписку: [жирное начало, продолжение] */
+const INCL = [
+  ['Аппарат в аренду', 'на весь срок — покупать ничего не нужно'],
+  ['Подключение к вентиляции', 'и настройка силы запаха под зал'],
+  ['Подбор аромата', `из ${D.scents.length} и пробники перед стартом`],
+  ['Масла по графику', '— техник привозит и меняет сам'],
+  ['Обслуживание и гарантия:', 'сломается — починим или заменим'],
+  ['Смена аромата,', 'если прежний надоел'],
+  ['Договор с юрлицом и ИП,', 'цена фиксирована на весь срок']
 ];
 
 const TEST_Q = ['Как проходит бесплатный тест?', TRIAL.text];
@@ -81,154 +90,108 @@ function register(site) {
   const postCard = a => `<a class="post" href="/blog/${a.slug}/">${img('blog-' + a.slug, { cls: 'post-img' })}<span class="post-m">${dateRu(a.date)} · ${a.read} мин</span><h3>${esc(a.h1)}</h3><p>${esc(a.lead)}</p></a>`;
   const catCard = c => `<a class="cat" href="/aromaty/${c.slug}/">${img('cat-' + c.slug, { cls: 'cat-img' })}<span class="cat-t"><b>${c.name}</b><span>${c.mood}</span><em>${CAT_TEXT[c.id].hits.map(n => esc(D.byN(n).name)).join(' · ')}</em></span><span class="cat-n">${D.scents.filter(s => s.cat === c.id).length}</span></a>`;
   const samplesBox = (p, names = '') => `<div class="samples">${icon('box')}<div><h3 class="h4">Закажите пробники</h3><p>${CFG.samples}</p></div>${wa(p, 'sample', 'Заказать пробники', 'btn btn-dark', names)}</div>`;
-  const steps = [
-    ['Заявка', `Пишете в WhatsApp или оставляете телефон. ${UI.REPLY} в рабочее время.`],
-    [`Тест ${TRIAL.days} дня`, 'Привозим и настраиваем аппарат с выбранным ароматом. Три дня он работает бесплатно.'],
-    ['Договор', 'Подошло — заключаем договор на 1, 3 или 6 месяцев с юрлицом или ИП. Цена фиксирована на весь срок.'],
-    ['Обслуживание', 'Меняем масла по графику, следим за аппаратом, при поломке ремонтируем или заменяем.']
-  ];
 
   /* ── Главная ───────────────────────────────────────── */
   add({
-    path: '', section: '', priority: '1.0', bodyClass: 'home', label: 'Главная',
+    path: '', section: '', priority: '1.0', bodyClass: 'home', label: 'Главная', noCta: true,
     title: 'Ароматизация помещений в Астане — от 33 333 ₸ в месяц | Вдох',
     description: 'Ароматизация помещений в Астане: аппарат, масла и обслуживание одной подпиской от 33 333 ₸ в месяц. Запуск за 1 день, тест 3 дня бесплатно.',
     schema: [site.schema.website(), site.schema.business(UI.OWN), site.schema.faq(HOME_FAQ)],
     get body() {
-      const trialHref = 'https://wa.me/' + C.whatsapp + '?text=' + encodeURIComponent(UI.waText(this, 'test'));
-      /* слайдер первого экрана: [слот картинки, решение, подпись] */
-      const slides = [['hero', 'magazin-odezhdy', 'Магазин одежды'], ['hero-kofejnya', 'kofejnya', 'Кофейня'], ['hero-salon', 'salon-krasoty', 'Салон красоты'], ['hero-ofis', 'ofis', 'Офис'], ['hero-otel', 'otel', 'Отель']]
-        .filter(([k]) => site.hasImg(k));
-      /* блок «Ваш бизнес»: [решение, фото, фраза для карточки]; без фото бизнес не показываем */
-      const biz = BIZ_CARD.map(([slug, k, pitch, cat, label]) => [bySlug(slug), k, pitch, cat, label]).filter(([s, k]) => s && site.hasImg(k));
-      /* блок «Аппарат Nova»: значения обеих мощностей уходят в data-dev, переключатель в main.js подставляет их */
-      const spec = (d, k) => (d.specs.find(([n]) => n === k) || [])[1] || '';
-      const devVals = d => ({ area: `${d.area} м²`, vol: `${d.volume} мл`, flow: `${String(d.flow).replace('.', ',')} мл/ч`, pm: `от ${UI.pm(d)}`, fits: d.fits.slice(0, 5).join(', '), ...Object.fromEntries(DEV_ROWS.map(k => [k, spec(d, k)])) });
-      const devs = Object.fromEntries(D.devices.map(d => [d.id, devVals(d)]));
-      const dev0 = devs[D.devices[0].id];
+      const go = label => `${label} <i>${icon('arrow', 'ic ic-s')}</i>`;
+      /* слайдер первого экрана: [слот картинки, подпись]; без фото слайд не показываем */
+      const slides = [['hero-kofejnya', 'Кофейня'], ['hero-salon', 'Салон красоты'], ['hero-otel', 'Отель'], ['hero-ofis', 'Офис'], ['hero', 'Магазин одежды']].filter(([k]) => site.hasImg(k));
+      /* подбор: бизнесы с фото, первые три аромата решения; аппарат выбирается по площади в main.js */
+      const pick = PICK.map(([slug, k, name]) => [bySlug(slug), k, name]).filter(([s, k]) => s && site.hasImg(k));
+      const pickData = { biz: pick.map(([s, , name]) => ({ n: name, sc: s.scents.slice(0, 3).map(n => D.byN(n).name) })), dev: D.devices.map(d => ({ n: d.name, area: d.area, pm: `от ${UI.pm(d)}` })) };
+      /* цены: в месяц по каждому сроку и итог за срок, как в data.js */
+      const priceData = D.devices.map(d => d.plans.map(p => [D.fmt(D.perMonth(p)), D.fmt(p.total), p.months]));
+      const best = D.devices[0].plans.length - 1;
       return `
-<section class="hf">
-  <div class="hf-panel">
-    <svg class="hf-waves" viewBox="0 0 600 300" aria-hidden="true"><path d="M30 120c60-50 120-50 180 0s120 50 180 0 120-50 180 0M30 190c60-50 120-50 180 0s120 50 180 0 120-50 180 0"/></svg>
-    <div class="hf-body">
-      <span class="hf-pill">Астана · запуск за 1 день</span>
-      <h1>Ароматизация помещений в&nbsp;Астане</h1>
-      <p class="hf-sub">Клиенты дольше остаются и чаще возвращаются туда, где приятно пахнет — подключим аромат к вентиляции за 1 день, без покупки оборудования</p>
-      <div class="hf-cta">${wa(this, 'test', TRIAL.short, 'btn btn-lg hf-b1')}<a class="btn btn-lg hf-b2" href="#ceny">Смотреть цены</a></div>
-    </div>
+<div class="h-w">
+<section class="h-hero">
+  <div class="h-hero-t">
+    <h1>Ароматизация помещений в&nbsp;Астане с&nbsp;тестом ${TRIAL.days}&nbsp;дня</h1>
+    <p>Подключим аромат к вентиляции за один день. Не понравится — отключим и ничего не возьмём</p>
+    ${wa(this, 'test', go('Попробовать бесплатно'), 'h-go')}
+    <div class="h-stats"><div><b>1 день</b><span>на запуск</span></div><div><b>${D.scents.length}</b><span>аромата на выбор</span></div><div><b>от ${UI.pm(D.devices[0])}</b><span>в месяц, масла и сервис в цене</span></div></div>
   </div>
-  <div class="hf-media" data-slider aria-roledescription="carousel" aria-label="Где мы ароматизируем">
-    ${slides.map(([k, slug, name], i) => `<figure class="hf-slide${i ? '' : ' on'}"${i ? ' aria-hidden="true"' : ''}>${img(k, { cls: 'hf-img', eager: !i })}<a class="hf-tag" href="/resheniya/${slug}/"${i ? ' tabindex="-1"' : ''}>${name} ${icon('arrow', 'ic ic-s')}</a></figure>`).join('')}
-    ${slides.length > 1 ? `<div class="hf-bars">${slides.map(([, , name], i) => `<button type="button" class="hf-bar${i ? '' : ' on'}" aria-label="${name}"><i></i></button>`).join('')}</div>` : ''}
-    <a class="hf-trial" href="${esc(trialHref)}" target="_blank" rel="noopener" data-ev="wa_click" data-wa="test"><span class="hf-dd"><b>${TRIAL.days}</b>дня</span><span class="hf-tx"><b>Бесплатный тест</b>Подключим к вентиляции и настроим, не подойдёт — отключим</span><span class="hf-go">${icon('arrow')}</span></a>
+  <div class="h-sl" data-slider aria-roledescription="carousel" aria-label="Где мы ароматизируем">
+    ${slides.map(([k, name], i) => `<figure class="h-slide${i ? '' : ' on'}" data-slide${i ? ' aria-hidden="true"' : ''}>${img(k, { cls: 'h-slide-img', eager: !i })}<figcaption>${name}</figcaption></figure>`).join('')}
+    ${slides.length > 1 ? `<div class="h-bars">${slides.map(([, name], i) => `<button type="button" class="h-bar${i ? '' : ' on'}" data-bar aria-label="${name}"><i></i></button>`).join('')}</div>` : ''}
   </div>
 </section>
 
-<section class="pl">
-  <img class="pl-fig pl-l" src="/assets/img/plus-l.webp" alt="Ноты ароматов: цитрус, кофе, ваниль, листья" width="640" height="640" loading="lazy" decoding="async">
-  <img class="pl-fig pl-r" src="/assets/img/plus-r.webp" alt="Флакон аромамасла с цветком" width="640" height="640" loading="lazy" decoding="async">
-  <div class="pl-head">
-    <span class="hf-pill">Почему мы</span>
-    <h2>Приятный воздух без&nbsp;забот</h2>
-    <p class="pl-sub">Берём на себя всё — от подбора аромата до заправки, а вы просто замечаете, что гостям у вас нравится</p>
-  </div>
-  <ul class="pl-grid">
-    ${PLUS.map(([ic, t, d], i) => `<li class="pc${i === 1 ? ' hi' : ''}">${i === 1 ? '<svg class="pc-bg" viewBox="0 0 600 300" aria-hidden="true"><path d="M30 120c60-50 120-50 180 0s120 50 180 0 120-50 180 0M30 190c60-50 120-50 180 0s120 50 180 0 120-50 180 0"/></svg>' : ''}<span class="pc-ico"><svg viewBox="0 0 24 24" aria-hidden="true">${ic}</svg></span><h3>${t}</h3><p>${d}</p></li>`).join('')}
-  </ul>
+<section class="h-sec">
+  <div class="h-head"><div><h2>Вам ничего не нужно делать</h2><p class="h-lead">Берём на себя всё — от подбора аромата до замены масла</p></div></div>
+  <ul class="h-adv">${PLUS.map(([ic, t, d]) => `<li><i><svg viewBox="0 0 24 24" aria-hidden="true">${ic}</svg></i><div><h3>${t}</h3><p>${d}</p></div></li>`).join('')}</ul>
 </section>
 
-<section class="dv" id="apparat" data-dev="${esc(JSON.stringify(devs))}">
-  <div class="dv-media">
-    <svg class="dv-waves" viewBox="0 0 600 300" aria-hidden="true"><path d="M30 120c60-50 120-50 180 0s120 50 180 0 120-50 180 0M30 190c60-50 120-50 180 0s120 50 180 0 120-50 180 0"/></svg>
-    <span class="dv-tag"><i></i>Подключается к вентиляции, гостям не виден</span>
-    ${img('device', { cls: 'dv-img', alt: 'Аппарат Nova для ароматизации помещений' })}
-    <span class="dv-chip c1"><b>${esc(dev0['Уровень шума'])}</b>тише шёпота</span>
-    <span class="dv-chip c2"><b>${esc(dev0['Размер'].replace(' мм', ''))}</b>мм, ${esc(dev0['Корпус'])}</span>
-    <span class="dv-chip c3"><b data-v="vol">${dev0.vol}</b>объём флакона</span>
-  </div>
-  <div class="dv-panel">
-    <span class="hf-pill">Оборудование</span>
-    <h2>Аппарат Nova</h2>
-    <p class="dv-sub">Один корпус — две мощности. Подберём по площади помещения, привезём и подключим к вентиляции</p>
-    <div class="dv-sw" role="group" aria-label="Мощность аппарата">${D.devices.map((d, i) => `<button type="button" data-m="${d.id}" aria-pressed="${!i}">${d.name}</button>`).join('')}</div>
-    <p class="dv-for">Подходит: <b data-v="fits">${esc(dev0.fits)}</b></p>
-    <div class="dv-big">
-      <div><b data-v="area">${dev0.area}</b><span>площадь покрытия</span></div>
-      <div><b data-v="vol">${dev0.vol}</b><span>объём флакона</span></div>
-      <div><b data-v="flow">${dev0.flow}</b><span>расход масла</span></div>
+<section class="h-sec" id="podbor">
+  <div class="h-head"><div><h2>Подбор за 30 секунд</h2><p class="h-lead">Выберите место и площадь — сразу появится аппарат, ароматы и цена</p></div></div>
+  <div class="h-pk" data-pick="${esc(JSON.stringify(pickData))}">
+    <div class="h-card h-pk-l">
+      <p class="h-lab">Ваш бизнес</p>
+      <div class="h-pk-biz" role="group" aria-label="Ваш бизнес" data-scroll-x>${pick.map(([s, k, name], i) => `<button type="button" class="h-pk-b" data-i="${i}" aria-pressed="${!i}">${img(k, { cls: 'h-pk-img', alt: `${name}: аромат подаётся через вентиляцию` })}<span>${name}</span></button>`).join('')}</div>
+      <div class="h-pk-area"><div class="h-pk-ah"><label class="h-lab" for="pk-area">Площадь зала</label><b data-area-v>120 м²</b></div><input id="pk-area" type="range" min="30" max="1000" step="10" value="120" data-area><div class="h-pk-ticks"><span>30</span><span>300</span><span>600</span><span>1000 м²</span></div></div>
     </div>
-    <ul class="dv-spec">${DEV_ROWS.map(k => `<li${dev0[k] ? '' : ' hidden'}><span>${k}</span><b data-v="${k}">${esc(dev0[k])}</b></li>`).join('')}</ul>
-    <div class="dv-foot">
-      <p class="dv-price"><b data-v="pm">${dev0.pm}</b>в месяц при подписке на 6 месяцев, масла и сервис включены</p>
-      <a class="btn dv-go" href="#ceny">Подобрать по площади ${icon('arrow', 'ic ic-s')}</a>
+    <div class="h-pk-r">
+      <small data-for></small>
+      <p class="h-pk-dev"><span data-dev></span><span class="h-pk-dd" data-dev-d></span></p>
+      <ul class="h-pk-sc" data-sc></ul>
+      <div class="h-pk-pr"><div><b data-pm></b><span>в месяц при подписке на 6 месяцев</span></div>${wa(this, 'test', go('На тест'), 'h-go h-go-sm h-pk-go')}</div>
     </div>
   </div>
 </section>
 
-<section class="ks" id="pochemu">
-  <div class="ks-l">
-    <span class="hf-pill">Что говорят исследования</span>
-    <h2>Аромат работает на&nbsp;кассу</h2>
-    <p class="ks-lead">Посетитель редко замечает запах осознанно, зато настроение от него появляется с порога. Учёные проверяли это не в лаборатории, а в настоящих залах — на чеках и выручке</p>
-    <ul class="ks-pts">${KASSA_PTS.map(([t, d], i) => `<li><i>${String(i + 1).padStart(2, '0')}</i><div><b>${t}</b><p>${d}</p></div></li>`).join('')}</ul>
-    ${wa(this, 'test', `Попробовать ${TRIAL.days} дня бесплатно`, 'btn ks-cta')}
-  </div>
-  <div class="ks-r">
-    ${KASSA_NUM.map(([n, u, t, src, url], i) => `<div class="ks-n${i ? '' : ' hi'}">${i ? '' : '<svg class="ks-wv" viewBox="0 0 600 300" aria-hidden="true"><path d="M30 120c60-50 120-50 180 0s120 50 180 0 120-50 180 0M30 190c60-50 120-50 180 0s120 50 180 0 120-50 180 0"/></svg>'}<b>${n}<small>${u}</small></b><div><p>${t}</p><a href="${url}" target="_blank" rel="noopener">${esc(src)}</a></div></div>`).join('')}
-    <div class="ks-fx">${KASSA_FX.map(([h, t, src, url]) => `<div><h3>${h}</h3><p>${t}</p><a href="${url}" target="_blank" rel="noopener">${esc(src)}</a></div>`).join('')}</div>
-    <p class="ks-note">Цифры взяты из научных работ, опубликованных в Европе и США. Ваш зал и ваш аромат — отдельная история, поэтому начинаем с бесплатных ${TRIAL.days} дней</p>
+<section class="h-sec">
+  <div class="h-head"><div><h2>Как проходят ${TRIAL.days} дня теста</h2><p class="h-lead">Решение принимаете, когда уже всё почувствовали сами</p></div></div>
+  <div class="h-steps">
+    ${STEPS.slice(0, 2).map(stepCard).join('')}
+    ${site.hasImg('hero-salon') ? `<div class="h-st-ph h-w2">${img('hero-salon', { alt: 'Салон красоты: аромат подаётся через вентиляцию' })}</div>` : ''}
+    ${site.hasImg('hero-restoran') ? `<div class="h-st-ph h-hm">${img('hero-restoran', { alt: 'Ресторан: аромат подаётся через вентиляцию' })}</div>` : ''}
+    ${STEPS.slice(2).map(stepCard).join('')}
+    <div class="h-st-q"><p>Остались вопросы про тест? Ответим за ${CFG.replyMinutes} минут</p>${wa(this, 'test', go('Написать'), 'h-go')}</div>
   </div>
 </section>
 
-<section class="bb" id="biznes" data-biz>
-  <svg class="bb-waves" viewBox="0 0 600 300" aria-hidden="true"><path d="M30 120c60-50 120-50 180 0s120 50 180 0 120-50 180 0M30 190c60-50 120-50 180 0s120 50 180 0 120-50 180 0"/></svg>
-  <div class="bb-in">
-    <div class="bb-head">
-      <div><span class="bb-pill">Ваш бизнес</span><h2>Аромат под ваш бизнес</h2><p>Для каждого бизнеса свои ароматы и мощность — найдите свой и посмотрите, как это работает у похожих</p></div>
-      <div class="bb-nav"><button type="button" class="bb-prev" aria-label="Назад">${icon('arrow')}</button><button type="button" class="bb-next" aria-label="Вперёд">${icon('arrow')}</button></div>
+<section class="h-sec" id="pochemu">
+  <div class="h-head"><div><h2>Аромат в цифрах</h2><p class="h-lead">Что показали эксперименты в магазинах и ресторанах — со ссылками на первоисточники</p></div></div>
+  <div class="h-nums">${KASSA_NUM.map(([n, u, t, src, url]) => `<div class="h-card h-num"><b>${n}<small>${u}</small></b><p>${t}</p><a href="${url}" target="_blank" rel="noopener">${esc(src)}</a></div>`).join('')}</div>
+</section>
+
+<section class="h-sec" id="nastroenie">
+  <div class="h-head"><div><h2>Начните с настроения</h2><p class="h-lead">Шесть настроений вместо ${D.scents.length} названий — выберите, что должен почувствовать гость</p></div><a class="h-lnk" href="/aromaty/">Все ароматы ${icon('arrow', 'ic ic-s')}</a></div>
+  <div class="h-mo" data-moods>
+    <ul class="h-mo-list">${MOODS.map(([id, name, fits], k) => { const c = D.categories.find(x => x.id === id); return `<li class="h-mo-i${k ? '' : ' on'}" data-k="${k}"><small>0${k + 1}</small><button type="button"><b>${name}</b><span>${fits}</span></button><a href="/aromaty/${c.slug}/" aria-label="${c.name}">${icon('arrow', 'ic ic-s')}</a></li>`; }).join('')}</ul>
+    <div class="h-mo-ph">
+      ${MOODS.map(([id, name], k) => { const c = D.categories.find(x => x.id === id), n = D.scents.filter(s => s.cat === id).length; return `<figure class="h-mo-f${k ? '' : ' on'}">${img('cat-' + c.slug, { cls: 'h-mo-img', alt: `Ароматы настроения «${name}»` })}<figcaption><div><small>${c.short} · ${n} ${n < 5 ? 'аромата' : 'ароматов'}</small><b>${CAT_TEXT[id].hits.map(x => esc(D.byN(x).name)).join(', ')}</b></div><a href="/aromaty/${c.slug}/">Подробнее ${icon('arrow', 'ic ic-s')}</a></figcaption></figure>`; }).join('')}
     </div>
-    <div class="bb-cats" role="group" aria-label="Сфера бизнеса" data-scroll-x><button type="button" data-c="all" aria-pressed="true">Все<sup>${biz.length}</sup></button>${BIZ_CATS.map(([c, name]) => [c, name, biz.filter(b => b[3] === c).length]).filter(([, , n]) => n).map(([c, name, n]) => `<button type="button" data-c="${c}" aria-pressed="false">${name}<sup>${n}</sup></button>`).join('')}</div>
-  </div>
-  <div class="bb-row" data-scroll-x>
-    ${biz.map(([s, k, pitch, cat, label], i) => `<a class="bb-c" href="/resheniya/${s.slug}/" data-c="${cat}"><span class="bb-ph">${img(k, { cls: 'bb-img' })}<span class="bb-n">${String(i + 1).padStart(2, '0')} / ${biz.length}</span></span><span class="bb-tx"><span><b>${esc(label || s.name)}</b><span>${esc(pitch)}</span></span><span class="bb-go">${icon('arrow')}</span></span></a>`).join('')}
-    <div class="bb-c bb-cta"><div><b>Нет вашего бизнеса?</b><p>Оставьте заявку — подберём аромат и мощность под ваше помещение</p></div><a class="btn" href="#zayavka">Оставить заявку ${icon('arrow', 'ic ic-s')}</a></div>
-  </div>
-  <div class="bb-bar" aria-hidden="true"><i></i></div>
-</section>
-
-<section class="sec sec-soft" id="ceny">
-  <div class="wrap">
-    <div class="sec-head"><span class="eyebrow">Цены</span><h2 class="h2">Два аппарата, три срока — цена сразу</h2><p class="lead">Цена за один аппарат в месяц. Чем дольше подписка, тем ниже цена. Введите площадь — подскажем, что подойдёт.</p></div>
-    ${UI.priceBlock(this)}
-    <p class="more"><a class="link" href="/ceny/">Примеры расчёта и вопросы о цене ${icon('arrow', 'ic ic-s')}</a></p>
   </div>
 </section>
 
-<section class="sec sec-dark">
-  <div class="wrap">
-    <div class="sec-head"><span class="eyebrow">Как начать</span><h2 class="h2">Четыре шага, первый — бесплатный тест</h2></div>
-    <ol class="steps">${steps.map(([t, d], i) => `<li><span>${String(i + 1).padStart(2, '0')}</span><h3>${t}</h3><p>${d}</p></li>`).join('')}</ol>
-    <a class="link link-light" href="/kak-my-rabotaem/">Подробнее о процессе ${icon('arrow', 'ic ic-s')}</a>
+<section class="h-sec" id="ceny">
+  <div class="h-head"><div><h2>Одна подписка — всё включено</h2><p class="h-lead">Цена за один аппарат в месяц. Чем дольше срок, тем ниже цена</p></div><a class="h-lnk" href="/ceny/">Примеры расчёта ${icon('arrow', 'ic ic-s')}</a></div>
+  <div class="h-pr" data-prices="${esc(JSON.stringify(priceData))}">
+    <div class="h-pr-l">
+      <h3>Что входит в подписку</h3>
+      <ul>${INCL.map(([b, t]) => `<li><span><b>${b}</b> ${t}</span></li>`).join('')}</ul>
+    </div>
+    <div class="h-pr-r">
+      <div class="h-pr-top"><span>Срок подписки</span><div class="h-pr-sw" role="group" aria-label="Срок подписки">${D.devices[0].plans.map((p, i) => `<button type="button" data-m="${i}" aria-pressed="${i === best}">${p.months} мес</button>`).join('')}</div></div>
+      <div class="h-pr-devs">${D.devices.map((d, k) => { const [pmv, tot, m] = priceData[k][best]; return `<a class="h-pr-d" href="/oborudovanie/${d.slug}/">${img('device', { cls: 'h-pr-img', alt: `Аппарат ${d.name}` })}<h4>${d.name}</h4><p>до ${d.area} м² — ${d.fits.slice(0, 4).join(', ')}</p><b data-pm="${k}">${pmv}</b><small data-tot="${k}">в месяц · ${tot} за ${months(m)}</small></a>`; }).join('')}</div>
+      <div class="h-pr-act">${wa(this, 'test', go(`Начать с теста ${TRIAL.days} дня`), 'h-go')}<small>Сначала ${TRIAL.days} дня бесплатно, договор — только если аромат подошёл</small></div>
+    </div>
   </div>
 </section>
 
-<section class="sec">
-  <div class="wrap">
-    <div class="sec-head row"><div><span class="eyebrow">Ароматы</span><h2 class="h2">32 аромата в 6 семействах</h2></div><a class="btn btn-light" href="/aromaty/">Весь каталог ${icon('arrow', 'ic ic-s')}</a></div>
-    <div class="cats">${D.categories.map(catCard).join('')}</div>
-    ${samplesBox(this)}
+<section class="h-sec" id="faq">
+  <div class="h-faq">
+    <div class="h-card h-faq-l"><h2>Частые вопросы</h2><p class="h-lead">Не нашли ответ — напишите, ответим за ${CFG.replyMinutes} минут</p>${wa(this, 'test', go('Задать вопрос'), 'h-go')}</div>
+    <div class="h-card h-qs">${HOME_FAQ.map(([q, a], i) => `<details${i ? '' : ' open'}><summary>${esc(q)}</summary><p>${a}</p></details>`).join('')}</div>
   </div>
 </section>
-
-${UI.compare()}
-${UI.faq(HOME_FAQ)}
-
-<section class="sec sec-soft">
-  <div class="wrap">
-    <div class="sec-head row"><div><span class="eyebrow">Статьи</span><h2 class="h2">Если вы ещё разбираетесь</h2></div><a class="btn btn-light" href="/blog/">Все статьи ${icon('arrow', 'ic ic-s')}</a></div>
-    <div class="posts">${ART.slice(0, 3).map(postCard).join('')}</div>
-  </div>
-</section>`;
+</div>`;
     }
   });
 

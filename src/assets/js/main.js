@@ -137,9 +137,9 @@
     'requestIdleCallback' in window ? requestIdleCallback(load, { timeout: 2500 }) : setTimeout(load, 1200);
   });
 
-  /* слайдер первого экрана: смена раз в 5 с, полоски внизу шапки фото, свайп, пауза при наведении */
+  /* слайдер первого экрана: смена раз в 5 с, полоски внизу фото, свайп, пауза при наведении */
   $$('[data-slider]').forEach(function (box) {
-    var slides = $$('.hf-slide', box), bars = $$('.hf-bar', box), N = slides.length;
+    var slides = $$('[data-slide]', box), bars = $$('[data-bar]', box), N = slides.length;
     if (N < 2) return;
     var DUR = 5000, i = 0, timer = null, left = DUR, started = 0;
     var still = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -180,49 +180,50 @@
     run();
   });
 
-  /* блок «Ваш бизнес»: фильтр по сферам, стрелки листают ленту, полоска показывает, где мы в ленте */
-  $$('[data-biz]').forEach(function (box) {
-    var row = $('.bb-row', box), bar = $('.bb-bar i', box), prev = $('.bb-prev', box), next = $('.bb-next', box), cats = $$('.bb-cats button', box);
-    var sync = function () {
-      var w = row.scrollWidth, v = row.clientWidth, x = row.scrollLeft;
-      if (bar) { bar.style.width = Math.min(100, v / w * 100) + '%'; bar.style.left = x / w * 100 + '%'; bar.parentNode.style.visibility = w > v + 4 ? '' : 'hidden'; }
-      if (prev) prev.disabled = x < 4;
-      if (next) next.disabled = x + v > w - 4;
+  /* подбор за 30 секунд: бизнес и площадь → аппарат, ароматы и цена; кнопка теста уходит в WhatsApp с подбором */
+  $$('[data-pick]').forEach(function (box) {
+    var P = JSON.parse(box.getAttribute('data-pick')), btns = $$('.h-pk-b', box), area = $('[data-area]', box), go = $('.h-pk-go', box), cur = 0;
+    var set = function (sel, t) { var el = $(sel, box); if (el) el.textContent = t; };
+    var draw = function () {
+      var a = +area.value, d = P.dev[a > P.dev[0].area ? 1 : 0], b = P.biz[cur];
+      set('[data-area-v]', a + ' м²');
+      set('[data-for]', 'Для вас: ' + b.n.toLowerCase() + ', ' + a + ' м²');
+      set('[data-dev]', d.n);
+      set('[data-dev-d]', 'до ' + d.area + ' м², через вентиляцию');
+      set('[data-pm]', d.pm);
+      $('[data-sc]', box).innerHTML = b.sc.map(function (n, i) { return '<li><b></b><span>' + (i ? 'на выбор' : 'чаще всего') + '</span></li>'; }).join('');
+      $$('[data-sc] b', box).forEach(function (el, i) { el.textContent = b.sc[i]; });
+      btns.forEach(function (x, i) { x.setAttribute('aria-pressed', i === cur); });
+      if (go) go.href = wa(head() + 'Хочу тест ' + (T.days || 3) + ' дня: ' + b.n.toLowerCase() + ', ' + a + ' м², ' + d.n + '. Ароматы: ' + b.sc.join(', '));
     };
-    var step = function (d) {
-      var c = $('.bb-c:not([hidden])', row);
-      row.scrollBy({ left: d * (c ? c.offsetWidth + 12 : row.clientWidth), behavior: 'smooth' });
-    };
-    if (prev) prev.addEventListener('click', function () { step(-1); });
-    if (next) next.addEventListener('click', function () { step(1); });
-    cats.forEach(function (b) {
-      b.addEventListener('click', function () {
-        var c = b.getAttribute('data-c');
-        cats.forEach(function (x) { x.setAttribute('aria-pressed', x === b); });
-        $$('a.bb-c', row).forEach(function (a) { a.hidden = c !== 'all' && a.getAttribute('data-c') !== c; });
-        row.scrollTo({ left: 0 });
-        sync();
-        track('biz_filter', { cat: c });
-      });
-    });
-    row.addEventListener('scroll', sync, { passive: true });
-    window.addEventListener('resize', sync);
-    sync();
+    btns.forEach(function (x, i) { x.addEventListener('click', function () { cur = i; draw(); track('pick_biz', { biz: P.biz[i].n }); }); });
+    area.addEventListener('input', draw);
+    draw();
   });
 
-  /* блок «Аппарат Nova»: переключатель мощности подставляет цифры выбранного аппарата */
-  $$('[data-dev]').forEach(function (box) {
-    var V = JSON.parse(box.getAttribute('data-dev')), btns = $$('.dv-sw button', box);
-    btns.forEach(function (b) {
+  /* настроения: наведение или нажатие на строку меняет большое фото */
+  $$('[data-moods]').forEach(function (box) {
+    var rows = $$('.h-mo-i', box), figs = $$('.h-mo-f', box);
+    var set = function (k) { rows.forEach(function (r, i) { r.classList.toggle('on', i === k); figs[i].classList.toggle('on', i === k); }); };
+    rows.forEach(function (r, i) {
+      r.addEventListener('mouseenter', function () { set(i); });
+      $('button', r).addEventListener('click', function () { set(i); track('mood', { mood: i }); });
+    });
+  });
+
+  /* цены: срок подписки меняет цену в месяц и итог у обоих аппаратов */
+  $$('[data-prices]').forEach(function (box) {
+    var P = JSON.parse(box.getAttribute('data-prices')), btns = $$('.h-pr-sw button', box);
+    var mon = function (m) { return m + ' ' + (m === 1 ? 'месяц' : m < 5 ? 'месяца' : 'месяцев'); };
+    btns.forEach(function (b, i) {
       b.addEventListener('click', function () {
-        var v = V[b.getAttribute('data-m')];
         btns.forEach(function (x) { x.setAttribute('aria-pressed', x === b); });
-        $$('[data-v]', box).forEach(function (el) {
-          var t = v[el.getAttribute('data-v')] || '';
-          el.textContent = t;
-          if (el.closest('li')) el.closest('li').hidden = !t;
+        P.forEach(function (pl, d) {
+          var v = pl[i];
+          $('[data-pm="' + d + '"]', box).textContent = v[0];
+          $('[data-tot="' + d + '"]', box).textContent = v[2] === 1 ? 'в месяц, помесячно' : 'в месяц · ' + v[1] + ' за ' + mon(v[2]);
         });
-        track('device_switch', { device: b.getAttribute('data-m') });
+        track('price_term', { months: P[0][i][2] });
       });
     });
   });

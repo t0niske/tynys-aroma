@@ -88,25 +88,34 @@ function logo() {
   return `<svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="15" fill="#284B63"/><path d="M8 18c2.5-3 5.5 3 8 0s5.5 3 8 0M8 13c2.5-3 5.5 3 8 0s5.5 3 8 0" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>`;
 }
 
+/* Футер: на индиго; на страницах без финальной заявки сверху справа крупное имя, фраза и кнопка теста */
 function footer(p) {
-  return `<footer class="ftr">
-  <div class="wrap ftr-in">
-    <div class="ftr-brand">
-      <a class="logo logo-light" href="/">${logo()}<span>Вдох</span></a>
-      <p>Ароматизация помещений в Астане. Аппарат в аренду, масла, обслуживание и гарантия — в одной подписке от ${D.fmt(D.minPerMonth())} в месяц.</p>
-      <address>
-        ${call('', icon('phone') + C.phone)}
-        <a href="${esc(waHref(waText(p)))}" target="_blank" rel="noopener" data-ev="wa_click">${icon('chat')}WhatsApp</a>
-        <a href="${C.map2gis}" target="_blank" rel="noopener">${icon('pin')}${C.address}</a>
-        <span>${icon('clock')}${C.hours}</span>
-        ${C.reviews2gis ? `<a href="${C.reviews2gis}" target="_blank" rel="noopener">${icon('chat')}Отзывы о нас в 2ГИС</a>` : ''}
-      </address>
+  return `<footer class="fo">
+  <div class="wrap">
+    ${p.noCta ? `<div class="fo-top">
+      <span class="fo-name">${CFG.brand}</span>
+      <p>Аромат для вашего бизнеса через вентиляцию, без покупки оборудования. Сначала ${TRIAL.days} дня бесплатно</p>
+      ${wa(p, 'test', 'Начать тест в WhatsApp', 'fo-btn')}
+    </div>` : ''}
+    <div class="fo-mid">
+      <div class="fo-about">
+        <a class="fo-logo" href="/">${CFG.brand}</a>
+        <p>Ароматизация помещений в Астане: аппарат, масла и обслуживание одной подпиской от ${D.fmt(D.minPerMonth())} в месяц</p>
+        <address>
+          ${call('', icon('phone') + C.phone)}
+          <a href="${esc(waHref(waText(p)))}" target="_blank" rel="noopener" data-ev="wa_click">${icon('chat')}WhatsApp</a>
+          <a href="${C.map2gis}" target="_blank" rel="noopener">${icon('pin')}${C.address}</a>
+          <span>${icon('clock')}${C.hours}</span>
+          ${C.reviews2gis ? `<a href="${C.reviews2gis}" target="_blank" rel="noopener">${icon('chat')}Отзывы о нас в 2ГИС</a>` : ''}
+        </address>
+        <div class="fo-legal"><a href="/politika-konfidencialnosti/">Политика конфиденциальности</a><a href="/kontakty/">Контакты</a></div>
+      </div>
+      <nav aria-label="Решения"><h2>Решения</h2>${SOL.map(s => `<a href="/resheniya/${s.slug}/">${esc(s.name)}</a>`).join('')}</nav>
+      <nav aria-label="Ароматы"><h2>Ароматы</h2><a href="/aromaty/">Каталог ароматов</a>${D.categories.map(c => `<a href="/aromaty/${c.slug}/">${c.name}</a>`).join('')}</nav>
+      <nav aria-label="Компания"><h2>Компания</h2><a href="/oborudovanie/">Аромамашины</a><a href="/ceny/">Цены</a><a href="/kak-my-rabotaem/">Как работаем</a><a href="/aromamarketing/">Аромамаркетинг</a><a href="/blog/">Статьи</a><a href="/voprosy/">Вопросы и ответы</a></nav>
     </div>
-    <nav class="ftr-col" aria-label="Решения"><h2>Решения</h2>${SOL.map(s => `<a href="/resheniya/${s.slug}/">${esc(s.name)}</a>`).join('')}</nav>
-    <nav class="ftr-col" aria-label="Ароматы"><h2>Ароматы</h2><a href="/aromaty/">Каталог ароматов</a>${D.categories.map(c => `<a href="/aromaty/${c.slug}/">${c.name}</a>`).join('')}</nav>
-    <nav class="ftr-col" aria-label="Компания"><h2>Компания</h2><a href="/oborudovanie/">Аромамашины</a><a href="/oborudovanie/nova-300/">Nova 300</a><a href="/oborudovanie/nova-1000/">Nova 1000</a><a href="/ceny/">Цены</a><a href="/kak-my-rabotaem/">Как работаем</a><a href="/aromamarketing/">Аромамаркетинг</a><a href="/blog/">Статьи</a><a href="/voprosy/">Вопросы и ответы</a><a href="/kontakty/">Контакты</a></nav>
   </div>
-  <div class="wrap ftr-bot"><span>© 2026 Вдох · Астана</span><a href="/politika-konfidencialnosti/">Политика конфиденциальности</a></div>
+  <p class="fo-copy">© 2026 ${CFG.brand}. Ароматизация помещений в Астане</p>
 </footer>
 <nav class="mbar" aria-label="Связаться">${wa(p, 'test', 'WhatsApp', 'mbar-wa')}${call('mbar-call', icon('phone') + 'Позвонить')}</nav>`;
 }
@@ -114,7 +123,7 @@ function footer(p) {
 /* Метрика (с Вебвизором) и GA4 подключаются, только когда в config.js есть ID */
 function analytics() {
   const { metrika, ga4 } = CFG.analytics;
-  let s = `<script>window.TYNYS=${JSON.stringify({ metrika, ga4, wa: C.whatsapp, brand: CFG.brand })};window.dataLayer=window.dataLayer||[];</script>`;
+  let s = `<script>window.TYNYS=${JSON.stringify({ metrika, ga4, wa: C.whatsapp, brand: CFG.brand, days: TRIAL.days })};window.dataLayer=window.dataLayer||[];</script>`;
   if (metrika) s += `\n<script>(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window,document,'script','https://mc.yandex.ru/metrika/tag.js','ym');ym(${Number(metrika)},'init',{clickmap:true,trackLinks:true,accurateTrackBounce:true,webvisor:true});</script>`;
   if (ga4) s += `\n<script async src="https://www.googletagmanager.com/gtag/js?id=${esc(ga4)}"></script><script>function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','${esc(ga4)}');</script>`;
   return s;
