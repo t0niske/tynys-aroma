@@ -43,6 +43,8 @@ const PLUS = [
   ['<path d="M12 3.5s6 6.4 6 10.5a6 6 0 0 1-12 0c0-4.1 6-10.5 6-10.5z"/>', 'Масла и сервис в цене', 'Техник сам привозит и меняет масло по графику, чистит и настраивает аппарат'],
   ['<circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1"/>', `${D.scents.length} аромата на выбор`, 'Подберём под ваш бизнес и привезём пробники, а если аромат надоест — сменим']
 ];
+/* строки характеристик в блоке «Аппарат Nova»; строка без значения у аппарата скрывается */
+const DEV_ROWS = ['Уровень шума', 'Корпус', 'Питание', 'Масса', 'Размер', 'Управление'];
 /* короткие подписи в списке, чтобы влезали в две колонки */
 const BIZ_LABEL = { 'produktovyj-magazin': 'Продуктовый', 'salon-krasoty': 'Салон и спа', klinika: 'Клиника' };
 
@@ -84,6 +86,11 @@ function register(site) {
       /* блок «Ваш бизнес»: [решение, фото, фраза для карточки]; без фото бизнес не показываем */
       const biz = UI.BIZ.map(s => [s, ...BIZ_CARD[s.slug]]).filter(([, k]) => site.hasImg(k));
       const bizOn = Math.max(0, biz.findIndex(([s]) => s.slug === 'kofejnya'));
+      /* блок «Аппарат Nova»: значения обеих мощностей уходят в data-dev, переключатель в main.js подставляет их */
+      const spec = (d, k) => (d.specs.find(([n]) => n === k) || [])[1] || '';
+      const devVals = d => ({ area: `${d.area} м²`, vol: `${d.volume} мл`, flow: `${String(d.flow).replace('.', ',')} мл/ч`, pm: `от ${UI.pm(d)}`, fits: d.fits.slice(0, 5).join(', '), ...Object.fromEntries(DEV_ROWS.map(k => [k, spec(d, k)])) });
+      const devs = Object.fromEntries(D.devices.map(d => [d.id, devVals(d)]));
+      const dev0 = devs[D.devices[0].id];
       return `
 <section class="hf">
   <div class="hf-panel">
@@ -133,6 +140,34 @@ function register(site) {
     <div class="bz-foot">
       <p><b>Нет вашего бизнеса?</b>Оставьте заявку — подберём аромат и мощность под ваше помещение</p>
       <a class="btn bz-all" href="#zayavka">Оставить заявку ${icon('arrow', 'ic ic-s')}</a>
+    </div>
+  </div>
+</section>
+
+<section class="dv" id="apparat" data-dev="${esc(JSON.stringify(devs))}">
+  <div class="dv-media">
+    <svg class="dv-waves" viewBox="0 0 600 300" aria-hidden="true"><path d="M30 120c60-50 120-50 180 0s120 50 180 0 120-50 180 0M30 190c60-50 120-50 180 0s120 50 180 0 120-50 180 0"/></svg>
+    <span class="dv-tag"><i></i>Подключается к вентиляции, гостям не виден</span>
+    ${img('device', { cls: 'dv-img', alt: 'Аппарат Nova для ароматизации помещений' })}
+    <span class="dv-chip c1"><b>${esc(dev0['Уровень шума'])}</b>тише шёпота</span>
+    <span class="dv-chip c2"><b>${esc(dev0['Размер'].replace(' мм', ''))}</b>мм, ${esc(dev0['Корпус'])}</span>
+    <span class="dv-chip c3"><b data-v="vol">${dev0.vol}</b>объём флакона</span>
+  </div>
+  <div class="dv-panel">
+    <span class="hf-pill">Оборудование</span>
+    <h2>Аппарат Nova</h2>
+    <p class="dv-sub">Один корпус — две мощности. Подберём по площади помещения, привезём и подключим к вентиляции</p>
+    <div class="dv-sw" role="group" aria-label="Мощность аппарата">${D.devices.map((d, i) => `<button type="button" data-m="${d.id}" aria-pressed="${!i}">${d.name}</button>`).join('')}</div>
+    <p class="dv-for">Подходит: <b data-v="fits">${esc(dev0.fits)}</b></p>
+    <div class="dv-big">
+      <div><b data-v="area">${dev0.area}</b><span>площадь покрытия</span></div>
+      <div><b data-v="vol">${dev0.vol}</b><span>объём флакона</span></div>
+      <div><b data-v="flow">${dev0.flow}</b><span>расход масла</span></div>
+    </div>
+    <ul class="dv-spec">${DEV_ROWS.map(k => `<li${dev0[k] ? '' : ' hidden'}><span>${k}</span><b data-v="${k}">${esc(dev0[k])}</b></li>`).join('')}</ul>
+    <div class="dv-foot">
+      <p class="dv-price"><b data-v="pm">${dev0.pm}</b>в месяц при подписке на 6 месяцев, масла и сервис включены</p>
+      <a class="btn dv-go" href="#ceny">Подобрать по площади ${icon('arrow', 'ic ic-s')}</a>
     </div>
   </div>
 </section>

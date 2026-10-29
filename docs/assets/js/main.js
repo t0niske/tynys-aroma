@@ -206,6 +206,23 @@
     } else wake();
   });
 
+  /* блок «Аппарат Nova»: переключатель мощности подставляет цифры выбранного аппарата */
+  $$('[data-dev]').forEach(function (box) {
+    var V = JSON.parse(box.getAttribute('data-dev')), btns = $$('.dv-sw button', box);
+    btns.forEach(function (b) {
+      b.addEventListener('click', function () {
+        var v = V[b.getAttribute('data-m')];
+        btns.forEach(function (x) { x.setAttribute('aria-pressed', x === b); });
+        $$('[data-v]', box).forEach(function (el) {
+          var t = v[el.getAttribute('data-v')] || '';
+          el.textContent = t;
+          if (el.closest('li')) el.closest('li').hidden = !t;
+        });
+        track('device_switch', { device: b.getAttribute('data-m') });
+      });
+    });
+  });
+
   /* мягкое появление блоков */
   if ('IntersectionObserver' in window) {
     var io = new IntersectionObserver(function (es) {

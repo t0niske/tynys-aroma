@@ -270,6 +270,57 @@ ul,ol{margin:0;padding:0;list-style:none}
 }
 @media (prefers-reduced-motion:reduce){.bz-slide,.bz-slide.on{transition:none}}
 
+/* ── главная: «Аппарат Nova» — один корпус, переключатель мощности меняет цифры ── */
+.dv{--n:#284B63;--n2:#1E3A4D;--milk:#EDE3D3;--milk2:#EEE7DC;--milk3:#F3EEE6;--gr:#343434;--gr2:#5A5D60;--gr3:#86898C;
+  display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px;padding:12px;border-radius:36px;background:var(--n);scroll-margin-top:90px}
+.dv-media{position:relative;overflow:hidden;border-radius:26px;min-height:640px;display:grid;place-items:center;background:radial-gradient(circle at 50% 48%,#fff 0,#FBF8F3 34%,var(--milk3) 62%,var(--milk) 100%)}
+.dv-waves{position:absolute;left:0;bottom:-20px;width:100%;opacity:.8;pointer-events:none}
+.dv-waves path{fill:none;stroke:#fff;stroke-width:24;stroke-linecap:round}
+.dv-img{position:relative;width:min(78%,500px);height:auto;filter:drop-shadow(0 30px 40px rgba(40,75,99,.18))}
+.dv-tag{position:absolute;left:18px;top:18px;display:inline-flex;align-items:center;gap:8px;padding:9px 16px;border-radius:999px;background:#fff;color:var(--gr);font-size:14.5px;font-weight:700}
+.dv-tag i{width:8px;height:8px;border-radius:50%;background:var(--n)}
+.dv-chip{position:absolute;display:flex;flex-direction:column;padding:12px 16px;border-radius:18px;background:rgba(255,255,255,.92);box-shadow:0 14px 30px -18px rgba(40,75,99,.5);font-size:12.5px;line-height:1.3;color:var(--gr2)}
+.dv-chip b{font-size:17px;font-weight:800;color:var(--n)}
+.dv-chip.c1{right:22px;top:150px}.dv-chip.c2{left:22px;bottom:150px}.dv-chip.c3{right:22px;bottom:70px}
+.dv-panel{position:relative;overflow:hidden;background:#fff;border-radius:26px;padding:40px clamp(28px,3.4vw,48px) 32px;display:flex;flex-direction:column;align-items:flex-start}
+.dv h2{margin-top:18px;font-size:clamp(34px,3.6vw,54px);font-weight:800;text-transform:uppercase;letter-spacing:-.02em;line-height:.95;color:var(--n)}
+.dv-sub{margin-top:14px;max-width:470px;font-size:17px;line-height:1.5;color:var(--gr2)}
+.dv-sw{display:inline-grid;grid-template-columns:1fr 1fr;margin-top:28px;padding:5px;border-radius:999px;background:var(--milk3)}
+.dv-sw button{height:48px;padding:0 26px;border:0;border-radius:999px;background:none;font:700 16px var(--f);color:var(--gr2);cursor:pointer;transition:background .25s,color .25s}
+.dv-sw button[aria-pressed="true"]{background:var(--n);color:#fff;box-shadow:0 10px 24px -12px rgba(40,75,99,.7)}
+.dv-for{margin-top:12px;font-size:14.5px;color:var(--gr2)}
+.dv-for b{color:var(--gr)}
+.dv-big{align-self:stretch;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:22px}
+.dv-big div{padding:18px 18px 16px;border-radius:20px;background:var(--milk3)}
+.dv-big div:first-child{background:var(--n)}
+.dv-big b{display:block;font-size:30px;font-weight:900;letter-spacing:-.02em;line-height:1;color:var(--n);white-space:nowrap}
+.dv-big span{display:block;margin-top:8px;font-size:13px;font-weight:600;color:var(--gr2)}
+.dv-big div:first-child b{color:#fff}.dv-big div:first-child span{color:#C9D7E3}
+.dv-spec{align-self:stretch;list-style:none;margin:22px 0 0;padding:0;display:grid;grid-template-columns:1fr 1fr;column-gap:24px}
+.dv-spec li{display:flex;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1.5px solid var(--milk2);font-size:15px}
+.dv-spec li[hidden]{display:none}
+.dv-spec li span{color:var(--gr3)}
+.dv-spec li b{font-weight:700;text-align:right}
+.dv-foot{align-self:stretch;margin-top:auto;padding-top:26px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.dv-price{font-size:14px;line-height:1.35;color:var(--gr2)}
+.dv-price b{display:block;font-size:26px;font-weight:900;letter-spacing:-.02em;color:var(--gr)}
+.dv .dv-go{height:54px;padding:0 24px;border:0;background:var(--n);color:#fff;font-size:15.5px;font-weight:700;box-shadow:0 10px 24px -12px rgba(40,75,99,.7)}
+.dv .dv-go:hover{background:var(--n2)}
+@media (max-width:1100px){.dv{grid-template-columns:minmax(0,1fr)}.dv-media{min-height:0;height:min(70vw,560px)}}
+@media (max-width:900px){
+  .dv{margin:8px;padding:8px;border-radius:28px}
+  .dv-media{height:min(105vw,440px)}.dv-img{width:72%}
+  .dv-tag{left:10px;top:10px;padding:7px 12px;font-size:13px}
+  .dv-chip{padding:9px 12px;font-size:11px}.dv-chip b{font-size:14px}
+  .dv-chip.c1{right:10px;top:70px}.dv-chip.c2{left:10px;bottom:60px}.dv-chip.c3{right:10px;bottom:16px}
+  .dv-panel{padding:28px 20px 20px}
+  .dv h2{font-size:clamp(30px,9vw,52px)}.dv-sub{font-size:16px}
+  .dv-sw{align-self:stretch}.dv-sw button{padding:0 10px}
+  .dv-big b{font-size:19px}.dv-big div{padding:14px 12px}.dv-big span{font-size:11.5px}
+  .dv-spec{grid-template-columns:minmax(0,1fr)}
+  .dv-foot{flex-direction:column;align-items:stretch}
+}
+
 /* ── главная: «Почему мы» — заголовок по центру, иллюстрации по краям, сетка 3×2, вторая карточка navy ── */
 .pl{--n:#284B63;--n2:#1E3A4D;--milk3:#F3EEE6;--gr:#343434;--gr2:#5A5D60;
   position:relative;overflow:hidden;margin:12px;padding:56px clamp(20px,4vw,56px);border-radius:36px;background:#F8F4EE}
