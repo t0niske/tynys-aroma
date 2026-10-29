@@ -19,21 +19,22 @@ const CAT_TEXT = {
   perfume: { h1: 'Парфюмерные ароматы для помещений', title: 'Парфюмерные ароматы для бутика и автосалона — каталог', lead: 'Кедр, сандал, кожа, табак, пряности. Ароматы с характером для премиальных пространств.', hits: [4, 11], text: ['Парфюмерные ароматы — самые выразительные в коллекции. Они построены как духи: с верхними нотами, сердцем и шлейфом, и подходят бутикам, шоурумам, барбершопам, автосалонам и кабинетам руководителей.', 'Такой аромат становится частью стиля бренда. Древесные и кожаные композиции подчёркивают мужской характер, а ванильные и пряные — создают атмосферу вечернего лаунжа.'] }
 };
 
-/* Блок «Ваш бизнес» на главной: фото без аппарата и короткая фраза о пользе (без точки в конце) */
-const BIZ_CARD = {
-  ofis: ['hero-ofis', 'Свежий воздух на ресепшен и в переговорных — гости запоминают компанию, команда меньше устаёт'],
-  magazin: ['hero-magazin', 'Фирменный аромат делает бутик узнаваемым — покупатели дольше остаются у витрин'],
-  'magazin-odezhdy': ['hero', 'Приятный запах в зале и примерочных — покупатели дольше выбирают и чаще возвращаются'],
-  'produktovyj-magazin': ['hero-produkty', 'Запах свежего хлеба и фруктов у входа — хочется взять что-то ещё'],
-  kofejnya: ['hero-kofejnya', 'Запах кофе и выпечки с порога — гости заказывают ещё и садятся надолго'],
-  'restoran-kafe': ['hero-restoran', 'Уютный фон без запахов кухни в зале — гости спокойно ужинают и приходят снова'],
-  otel: ['hero-otel', 'Фирменный аромат в лобби — гость запоминает отель с первого вдоха'],
-  'salon-krasoty': ['hero-salon', 'Вместо запаха краски и лака — спа-аромат, клиенты расслабляются с порога'],
-  klinika: ['hero-klinika', 'Вместо больничного запаха — спокойная свежесть, пациенты меньше волнуются'],
-  fitnes: ['hero-fitnes', 'Свежесть в залах и раздевалках — без запаха пота и с желанием вернуться'],
-  avtosalon: ['hero-avtosalon', 'Аромат кожи и дерева в шоуруме — машина ощущается дороже'],
-  'zhk-nedvizhimost': ['hero-zhk', 'Аромат в лобби и офисе продаж — покупатель влюбляется в дом с порога']
-};
+/* Блок «Ваш бизнес» на главной — лента карточек в этом порядке: [решение, фото без аппарата, короткая фраза без точки, сфера, короткое название] */
+const BIZ_CARD = [
+  ['kofejnya', 'hero-kofejnya', 'Запах кофе и выпечки с порога — гости заказывают ещё и садятся надолго', 'eda'],
+  ['magazin-odezhdy', 'hero', 'Покупатели дольше выбирают и чаще возвращаются', 'torg'],
+  ['otel', 'hero-otel', 'Гость запоминает отель с первого вдоха', 'otel'],
+  ['salon-krasoty', 'hero-salon', 'Спа-аромат вместо запаха краски и лака', 'krasota', 'Салон и спа'],
+  ['ofis', 'hero-ofis', 'Гости запоминают компанию, команда меньше устаёт', 'ofis'],
+  ['restoran-kafe', 'hero-restoran', 'Уютный фон без запахов кухни — гости приходят снова', 'eda'],
+  ['magazin', 'hero-magazin', 'Фирменный аромат делает бутик узнаваемым', 'torg'],
+  ['klinika', 'hero-klinika', 'Спокойная свежесть вместо больничного запаха', 'krasota', 'Клиника'],
+  ['fitnes', 'hero-fitnes', 'Свежесть в залах и раздевалках', 'krasota'],
+  ['produktovyj-magazin', 'hero-produkty', 'Запах свежего хлеба у входа — хочется взять что-то ещё', 'torg', 'Продуктовый'],
+  ['avtosalon', 'hero-avtosalon', 'Аромат кожи и дерева — машина ощущается дороже', 'torg'],
+  ['zhk-nedvizhimost', 'hero-zhk', 'Покупатель влюбляется в дом с порога', 'otel']
+];
+const BIZ_CATS = [['torg', 'Торговля'], ['eda', 'Еда и напитки'], ['krasota', 'Красота и здоровье'], ['otel', 'Отели и ЖК'], ['ofis', 'Офисы']];
 /* Блок «Почему мы» на главной: [значок, заголовок, текст]; вторая карточка выделена */
 const PLUS = [
   ['<path d="M4 9c2.7-2.4 5.3-2.4 8 0s5.3 2.4 8 0M4 15c2.7-2.4 5.3-2.4 8 0s5.3 2.4 8 0"/>', 'Через вентиляцию', 'Аромат расходится по всему помещению равномерно, а аппарата не видно ни гостям, ни сотрудникам'],
@@ -45,8 +46,6 @@ const PLUS = [
 ];
 /* строки характеристик в блоке «Аппарат Nova»; строка без значения у аппарата скрывается */
 const DEV_ROWS = ['Уровень шума', 'Корпус', 'Питание', 'Масса', 'Размер', 'Управление'];
-/* короткие подписи в списке, чтобы влезали в две колонки */
-const BIZ_LABEL = { 'produktovyj-magazin': 'Продуктовый', 'salon-krasoty': 'Салон и спа', klinika: 'Клиника' };
 
 const TEST_Q = ['Как проходит бесплатный тест?', TRIAL.text];
 const HOME_FAQ = [
@@ -84,8 +83,7 @@ function register(site) {
       const slides = [['hero', 'magazin-odezhdy', 'Магазин одежды'], ['hero-kofejnya', 'kofejnya', 'Кофейня'], ['hero-salon', 'salon-krasoty', 'Салон красоты'], ['hero-ofis', 'ofis', 'Офис'], ['hero-otel', 'otel', 'Отель']]
         .filter(([k]) => site.hasImg(k));
       /* блок «Ваш бизнес»: [решение, фото, фраза для карточки]; без фото бизнес не показываем */
-      const biz = UI.BIZ.map(s => [s, ...BIZ_CARD[s.slug]]).filter(([, k]) => site.hasImg(k));
-      const bizOn = Math.max(0, biz.findIndex(([s]) => s.slug === 'kofejnya'));
+      const biz = BIZ_CARD.map(([slug, k, pitch, cat, label]) => [bySlug(slug), k, pitch, cat, label]).filter(([s, k]) => s && site.hasImg(k));
       /* блок «Аппарат Nova»: значения обеих мощностей уходят в data-dev, переключатель в main.js подставляет их */
       const spec = (d, k) => (d.specs.find(([n]) => n === k) || [])[1] || '';
       const devVals = d => ({ area: `${d.area} м²`, vol: `${d.volume} мл`, flow: `${String(d.flow).replace('.', ',')} мл/ч`, pm: `от ${UI.pm(d)}`, fits: d.fits.slice(0, 5).join(', '), ...Object.fromEntries(DEV_ROWS.map(k => [k, spec(d, k)])) });
@@ -150,26 +148,20 @@ function register(site) {
   </div>
 </section>
 
-<section class="bz" id="biznes" data-biz>
-  <div class="bz-media">
-    ${biz.map(([s, k, pitch], i) => `<figure class="bz-slide${i === bizOn ? ' on' : ''}"${i === bizOn ? '' : ' aria-hidden="true"'}>${img(k, { cls: 'bz-img' })}
-      <div class="bz-card"><div class="bz-tx"><b>${esc(s.name)}</b><span>${esc(pitch)}</span><span class="bz-sc">${s.scents.slice(0, 4).map(n => `<em>${esc(D.byN(n).name)}</em>`).join('')}</span></div><a class="btn bz-go" href="/resheniya/${s.slug}/"${i === bizOn ? '' : ' tabindex="-1"'}>Подробнее ${icon('arrow', 'ic ic-s')}</a></div>
-    </figure>`).join('')}
-    <span class="bz-tag"><i></i>Аромат подаётся через вентиляцию</span>
-  </div>
-  <div class="bz-panel">
-    <svg class="bz-waves" viewBox="0 0 600 300" aria-hidden="true"><path d="M30 120c60-50 120-50 180 0s120 50 180 0 120-50 180 0M30 190c60-50 120-50 180 0s120 50 180 0 120-50 180 0"/></svg>
-    <div class="bz-head">
-      <span class="hf-pill">Ваш бизнес</span>
-      <h2>Аромат под ваш бизнес</h2>
-      <p class="bz-sub">Для каждого бизнеса свои ароматы и мощность — выберите свой и посмотрите, как это работает у похожих</p>
+<section class="bb" id="biznes" data-biz>
+  <svg class="bb-waves" viewBox="0 0 600 300" aria-hidden="true"><path d="M30 120c60-50 120-50 180 0s120 50 180 0 120-50 180 0M30 190c60-50 120-50 180 0s120 50 180 0 120-50 180 0"/></svg>
+  <div class="bb-in">
+    <div class="bb-head">
+      <div><span class="bb-pill">Ваш бизнес</span><h2>Аромат под ваш бизнес</h2><p>Для каждого бизнеса свои ароматы и мощность — найдите свой и посмотрите, как это работает у похожих</p></div>
+      <div class="bb-nav"><button type="button" class="bb-prev" aria-label="Назад">${icon('arrow')}</button><button type="button" class="bb-next" aria-label="Вперёд">${icon('arrow')}</button></div>
     </div>
-    <ul class="bz-list">${biz.map(([s], i) => `<li><a href="/resheniya/${s.slug}/" data-k="${i}"${i === bizOn ? ' class="on"' : ''}><span>${String(i + 1).padStart(2, '0')}</span>${esc(BIZ_LABEL[s.slug] || s.name)}${icon('arrow', 'ic ic-s')}</a></li>`).join('')}</ul>
-    <div class="bz-foot">
-      <p><b>Нет вашего бизнеса?</b>Оставьте заявку — подберём аромат и мощность под ваше помещение</p>
-      <a class="btn bz-all" href="#zayavka">Оставить заявку ${icon('arrow', 'ic ic-s')}</a>
-    </div>
+    <div class="bb-cats" role="group" aria-label="Сфера бизнеса" data-scroll-x><button type="button" data-c="all" aria-pressed="true">Все<sup>${biz.length}</sup></button>${BIZ_CATS.map(([c, name]) => [c, name, biz.filter(b => b[3] === c).length]).filter(([, , n]) => n).map(([c, name, n]) => `<button type="button" data-c="${c}" aria-pressed="false">${name}<sup>${n}</sup></button>`).join('')}</div>
   </div>
+  <div class="bb-row" data-scroll-x>
+    ${biz.map(([s, k, pitch, cat, label], i) => `<a class="bb-c" href="/resheniya/${s.slug}/" data-c="${cat}"><span class="bb-ph">${img(k, { cls: 'bb-img' })}<span class="bb-n">${String(i + 1).padStart(2, '0')} / ${biz.length}</span></span><span class="bb-tx"><span><b>${esc(label || s.name)}</b><span>${esc(pitch)}</span></span><span class="bb-go">${icon('arrow')}</span></span></a>`).join('')}
+    <div class="bb-c bb-cta"><div><b>Нет вашего бизнеса?</b><p>Оставьте заявку — подберём аромат и мощность под ваше помещение</p></div><a class="btn" href="#zayavka">Оставить заявку ${icon('arrow', 'ic ic-s')}</a></div>
+  </div>
+  <div class="bb-bar" aria-hidden="true"><i></i></div>
 </section>
 
 <section class="sec sec-soft" id="ceny">

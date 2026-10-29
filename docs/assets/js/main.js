@@ -180,30 +180,34 @@
     run();
   });
 
-  /* блок «Ваш бизнес»: наведение или фокус на строке меняет фото и карточку, клик ведёт на страницу решения */
+  /* блок «Ваш бизнес»: фильтр по сферам, стрелки листают ленту, полоска показывает, где мы в ленте */
   $$('[data-biz]').forEach(function (box) {
-    var slides = $$('.bz-slide', box), rows = $$('.bz-list a', box);
-    var pick = function (n) {
-      wake();
-      slides.forEach(function (s, k) {
-        s.classList.toggle('on', k === n);
-        s.setAttribute('aria-hidden', k === n ? 'false' : 'true');
-        var a = $('a', s); if (a) a.tabIndex = k === n ? 0 : -1;
-      });
-      rows.forEach(function (r, k) { r.classList.toggle('on', k === n); });
+    var row = $('.bb-row', box), bar = $('.bb-bar i', box), prev = $('.bb-prev', box), next = $('.bb-next', box), cats = $$('.bb-cats button', box);
+    var sync = function () {
+      var w = row.scrollWidth, v = row.clientWidth, x = row.scrollLeft;
+      if (bar) { bar.style.width = Math.min(100, v / w * 100) + '%'; bar.style.left = x / w * 100 + '%'; bar.parentNode.style.visibility = w > v + 4 ? '' : 'hidden'; }
+      if (prev) prev.disabled = x < 4;
+      if (next) next.disabled = x + v > w - 4;
     };
-    var hover = window.matchMedia && matchMedia('(hover: hover)').matches;
-    rows.forEach(function (r) {
-      var n = +r.getAttribute('data-k');
-      if (hover) r.addEventListener('mouseenter', function () { pick(n); });
-      r.addEventListener('focus', function () { pick(n); });
+    var step = function (d) {
+      var c = $('.bb-c:not([hidden])', row);
+      row.scrollBy({ left: d * (c ? c.offsetWidth + 12 : row.clientWidth), behavior: 'smooth' });
+    };
+    if (prev) prev.addEventListener('click', function () { step(-1); });
+    if (next) next.addEventListener('click', function () { step(1); });
+    cats.forEach(function (b) {
+      b.addEventListener('click', function () {
+        var c = b.getAttribute('data-c');
+        cats.forEach(function (x) { x.setAttribute('aria-pressed', x === b); });
+        $$('a.bb-c', row).forEach(function (a) { a.hidden = c !== 'all' && a.getAttribute('data-c') !== c; });
+        row.scrollTo({ left: 0 });
+        sync();
+        track('biz_filter', { cat: c });
+      });
     });
-    /* фото скрытых карточек подгружаем заранее, чтобы при наведении не было пустого кадра */
-    var wake = function () { slides.forEach(function (s) { var im = $('img', s); if (im) im.loading = 'eager'; }); };
-    if ('IntersectionObserver' in window) {
-      var io2 = new IntersectionObserver(function (es) { if (es[0].isIntersecting) { wake(); io2.disconnect(); } }, { rootMargin: '400px 0px' });
-      io2.observe(box);
-    } else wake();
+    row.addEventListener('scroll', sync, { passive: true });
+    window.addEventListener('resize', sync);
+    sync();
   });
 
   /* блок «Аппарат Nova»: переключатель мощности подставляет цифры выбранного аппарата */
