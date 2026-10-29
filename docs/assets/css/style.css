@@ -204,15 +204,13 @@ ul,ol{margin:0;padding:0;list-style:none}
 .h-sl.paused .h-bar.on i::after{animation-play-state:paused}
 @keyframes hbar{from{width:0}to{width:100%}}
 
-/* преимущества: одна белая карточка 3×2, тонкие разделители */
-.h-adv{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-radius:24px;background:#fff;overflow:hidden}
-.h-adv li{display:grid;grid-template-columns:48px 1fr;gap:16px;padding:28px 28px 30px;border-right:1px solid var(--hl);border-bottom:1px solid var(--hl)}
-.h-adv li:nth-child(3n){border-right:0}
-.h-adv li:nth-child(n+4){border-bottom:0}
-.h-adv i{width:48px;height:48px;border-radius:50%;background:var(--sk);color:var(--in);display:grid;place-items:center}
-.h-adv svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-.h-adv h3{font-size:17px;font-weight:600;line-height:1.25;color:var(--hink)}
-.h-adv p{margin-top:6px;font-size:14.5px;line-height:1.5;color:var(--mu)}
+/* преимущества: без карточек — номер, крупный заголовок и текст в три колонки, тонкие линии сверху */
+.h-adv{list-style:none;margin:0;padding:8px 20px 0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 12px}
+.h-adv li{padding:26px 0 34px;border-top:1.5px solid #D9DCE4}
+.h-adv li:nth-child(-n+3){border-top-color:var(--in)}
+.h-adv b{display:block;font-size:15px;font-weight:600;color:var(--in)}
+.h-adv h3{margin-top:22px;font-size:26px;font-weight:600;letter-spacing:-.02em;line-height:1.15;color:var(--hink)}
+.h-adv p{margin-top:10px;max-width:360px;font-size:15.5px;line-height:1.55;color:var(--mu)}
 
 /* подбор: бизнес и площадь слева, ответ справа */
 .h-pk{display:grid;grid-template-columns:1.4fr 1fr;gap:12px}
@@ -341,11 +339,11 @@ ul,ol{margin:0;padding:0;list-style:none}
   .h-stats{display:grid;grid-template-columns:auto auto 1fr;gap:18px;padding-top:30px}.h-stats b{font-size:20px}.h-stats span{font-size:12px}
   .h-sl{min-height:300px;border-radius:20px}
   .h-slide figcaption{left:12px;bottom:12px}.h-bars{right:12px;bottom:23px}.h-bar{width:18px}
-  .h-adv{grid-template-columns:minmax(0,1fr)}
-  .h-adv li{grid-template-columns:42px 1fr;gap:14px;padding:18px;border-right:0}
-  .h-adv li:nth-child(n+4){border-bottom:1px solid var(--hl)}
-  .h-adv li:last-child{border-bottom:0}
-  .h-adv i{width:42px;height:42px}
+  .h-adv{grid-template-columns:minmax(0,1fr);padding:0 6px}
+  .h-adv li{padding:20px 0 24px}
+  .h-adv li:nth-child(-n+3){border-top-color:#D9DCE4}
+  .h-adv li:first-child{border-top-color:var(--in)}
+  .h-adv h3{margin-top:12px;font-size:21px}
   .h-pk{grid-template-columns:minmax(0,1fr);gap:8px}
   .h-pk-l,.h-pk-r{padding:20px 16px}
   .h-pk-biz{display:flex;overflow-x:auto;margin:12px -16px 0;padding:0 16px;scrollbar-width:none}
