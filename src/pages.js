@@ -102,6 +102,19 @@ function register(site) {
   </div>
 </section>
 
+<section class="pl">
+  <img class="pl-fig pl-l" src="/assets/img/plus-l.webp" alt="Ноты ароматов: цитрус, кофе, ваниль, листья" width="640" height="640" loading="lazy" decoding="async">
+  <img class="pl-fig pl-r" src="/assets/img/plus-r.webp" alt="Флакон аромамасла с цветком" width="640" height="640" loading="lazy" decoding="async">
+  <div class="pl-head">
+    <span class="hf-pill">Почему мы</span>
+    <h2>Приятный воздух без&nbsp;забот</h2>
+    <p class="pl-sub">Берём на себя всё — от подбора аромата до заправки, а вы просто замечаете, что гостям у вас нравится</p>
+  </div>
+  <ul class="pl-grid">
+    ${PLUS.map(([ic, t, d], i) => `<li class="pc${i === 1 ? ' hi' : ''}">${i === 1 ? '<svg class="pc-bg" viewBox="0 0 600 300" aria-hidden="true"><path d="M30 120c60-50 120-50 180 0s120 50 180 0 120-50 180 0M30 190c60-50 120-50 180 0s120 50 180 0 120-50 180 0"/></svg>' : ''}<span class="pc-ico"><svg viewBox="0 0 24 24" aria-hidden="true">${ic}</svg></span><h3>${t}</h3><p>${d}</p></li>`).join('')}
+  </ul>
+</section>
+
 <section class="bz" id="biznes" data-biz>
   <div class="bz-media">
     ${biz.map(([s, k, pitch], i) => `<figure class="bz-slide${i === bizOn ? ' on' : ''}"${i === bizOn ? '' : ' aria-hidden="true"'}>${img(k, { cls: 'bz-img' })}
@@ -122,19 +135,6 @@ function register(site) {
       <a class="btn bz-all" href="#zayavka">Оставить заявку ${icon('arrow', 'ic ic-s')}</a>
     </div>
   </div>
-</section>
-
-<section class="pl">
-  <img class="pl-fig pl-l" src="/assets/img/plus-l.webp" alt="Ноты ароматов: цитрус, кофе, ваниль, листья" width="640" height="640" loading="lazy" decoding="async">
-  <img class="pl-fig pl-r" src="/assets/img/plus-r.webp" alt="Флакон аромамасла с цветком" width="640" height="640" loading="lazy" decoding="async">
-  <div class="pl-head">
-    <span class="hf-pill">Почему мы</span>
-    <h2>Приятный воздух без&nbsp;забот</h2>
-    <p class="pl-sub">Берём на себя всё — от подбора аромата до заправки, а вы просто замечаете, что гостям у вас нравится</p>
-  </div>
-  <ul class="pl-grid">
-    ${PLUS.map(([ic, t, d], i) => `<li class="pc${i === 1 ? ' hi' : ''}">${i === 1 ? '<svg class="pc-bg" viewBox="0 0 600 300" aria-hidden="true"><path d="M30 120c60-50 120-50 180 0s120 50 180 0 120-50 180 0M30 190c60-50 120-50 180 0s120 50 180 0 120-50 180 0"/></svg>' : ''}<span class="pc-ico"><svg viewBox="0 0 24 24" aria-hidden="true">${ic}</svg></span><h3>${t}</h3><p>${d}</p></li>`).join('')}
-  </ul>
 </section>
 
 <section class="sec sec-soft" id="ceny">
