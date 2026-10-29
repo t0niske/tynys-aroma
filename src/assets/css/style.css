@@ -787,7 +787,7 @@ a.ct:hover{background:var(--mint)}
 @media (max-width:860px){.cta{grid-template-columns:1fr}}
 
 /* footer: индиго; сверху справа крупное имя, фраза и светлая кнопка (только где нет финальной заявки), ниже колонки ссылок */
-.fo{--in:#465984;background:var(--in);color:#fff}
+.fo{--in:#465984;margin:72px 12px 12px;border-radius:32px;overflow:hidden;background:var(--in);color:#fff}
 .fo-top{display:flex;flex-direction:column;align-items:flex-end;text-align:right;padding:64px 0 60px;border-bottom:1px solid rgba(255,255,255,.16)}
 .fo-name{font-size:76px;font-weight:700;letter-spacing:-.04em;line-height:.9}
 .fo-top p{margin-top:22px;max-width:560px;font-size:20px;line-height:1.5;color:#D9DFEC}
@@ -809,6 +809,7 @@ a.ct:hover{background:var(--mint)}
 .fo-copy{margin:0;padding:22px var(--gut) 30px;border-top:1px solid rgba(255,255,255,.12);text-align:center;font-size:13px;color:#AEB9D3}
 @media (max-width:980px){.fo-mid{grid-template-columns:1fr 1fr}.fo-about{grid-column:1 / -1}}
 @media (max-width:720px){
+  .fo{margin:44px 8px 8px;border-radius:26px}
   .fo-top{align-items:flex-start;text-align:left;padding:44px 0 40px}
   .fo-name{font-size:56px}
   .fo-top p{font-size:16.5px}
