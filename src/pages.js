@@ -62,6 +62,18 @@ const MOODS = [
   ['floral', 'нежные и праздничные', 'салон красоты, цветы, свадебный салон'],
   ['perfume', 'с характером, как духи', 'бутик, шоурум, барбершоп']
 ];
+/* «Что даст ароматизация» на страницах решений: источники исследований [подпись, ссылка] */
+const GAIN_SRC = {
+  herr: ['Herrmann и др., Journal of Retailing, 2013', 'https://doi.org/10.1016/j.jretai.2012.08.002'],
+  gue: ['Guéguen, Petr, International Journal of Hospitality Management, 2006', 'https://doi.org/10.1016/j.ijhm.2005.04.007'],
+  morrin: ['Morrin, Ratneshwar, Journal of Marketing Research, 2003', 'https://doi.org/10.1509/jmkr.40.1.10.19128'],
+  spang96: ['Spangenberg, Crowley, Henderson, Journal of Marketing, 1996', 'https://doi.org/10.1177/002224299606000205'],
+  spang06: ['Spangenberg и др., Journal of Business Research, 2006', 'https://doi.org/10.1016/j.jbusres.2006.08.006'],
+  madz: ['Madzharov, Block, Morrin, Journal of Marketing, 2015', 'https://doi.org/10.1509/jm.13.0263'],
+  roschk: ['Roschk, Hosseinpour, Journal of Marketing, 2020', 'https://doi.org/10.1177/0022242919881137'],
+  lehr: ['Lehrner и др., Physiology & Behavior, 2005', 'https://doi.org/10.1016/j.physbeh.2005.06.031'],
+  baron: ['Baron, Journal of Applied Social Psychology, 1990', 'https://doi.org/10.1111/j.1559-1816.1990.tb00417.x']
+};
 /* фото бизнеса без аппарата для карточек решений (sol-* — со старым аппаратом на столе) */
 const SOL_PHOTO = { ofis: 'hero-ofis', magazin: 'hero-magazin', 'magazin-odezhdy': 'hero', 'produktovyj-magazin': 'hero-produkty', kofejnya: 'hero-kofejnya', 'restoran-kafe': 'hero-restoran', otel: 'hero-otel', 'salon-krasoty': 'hero-salon', klinika: 'hero-klinika', fitnes: 'hero-fitnes', avtosalon: 'hero-avtosalon', 'zhk-nedvizhimost': 'hero-zhk' };
 /* Статьи на главной: первая — крупно с фото, остальные строками [статья, короткая подпись для строки] */
@@ -260,7 +272,7 @@ function register(site) {
       get body() {
         return UI.pageHead(this, {
           kicker: 'Решения', lead: s.lead, media: img('sol-' + s.slug, { eager: true }),
-          actions: `<p class="hero-price"><span class="hp-k">${esc(s.unit)} до ${dev.area} м²</span><b>от ${UI.pm(dev)}</b> в месяц</p>${UI.actions(this)}`
+          actions: `<p class="hero-price"><b>от ${UI.pm(D.devices[0])}</b> в месяц, масла и сервис в цене</p>${UI.actions(this)}`
         }) + `
 <section class="sec">
   <div class="wrap split sol-intro">
@@ -275,6 +287,12 @@ function register(site) {
         <div><dt>Тест</dt><dd>${TRIAL.days} дня бесплатно</dd></div>
       </dl>
     </aside>
+  </div>
+</section>
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head"><h2 class="h2">Что даст ароматизация ${esc(s.gen)}</h2><p class="lead">${s.gain.every(g => g[4]) ? 'Выводы из опубликованных исследований — со ссылками на первоисточники' : 'Что меняется, когда в помещении появляется аромат'}</p></div>
+    <div class="gn">${s.gain.map(([n, u, t, d, src]) => `<div class="gn-c">${n ? `<b>${n}<small>${u}</small></b>` : `<i>${icon('check', 'ic')}</i>`}<h3>${t}</h3><p>${d}</p>${src ? `<a href="${GAIN_SRC[src][1]}" target="_blank" rel="noopener">${esc(GAIN_SRC[src][0])}</a>` : ''}</div>`).join('')}</div>
   </div>
 </section>
 <section class="sec sec-soft">

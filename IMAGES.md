@@ -158,7 +158,7 @@ Composition: vertical frame 4:5, eye-level, the most important content in the ce
 - Alt: Клиника: аромат подаётся через вентиляцию
 
 ```text
-Photorealistic editorial interior photograph of a calm modern private clinic reception: a white and light oak reception desk, cream waiting armchairs, one navy accent armchair, a potted olive tree, very clean and bright, a corridor with white doors softly out of focus. Soft natural daylight plus warm gentle lighting.
+Photorealistic editorial interior photograph of a calm modern dental clinic reception: a white and light oak reception desk, cream waiting armchairs, one navy accent armchair, a potted olive tree, very clean and bright; through a glass partition behind, a white dental treatment chair with an overhead dental light is clearly visible. Soft natural daylight plus warm gentle lighting.
 Colour palette strictly: white walls and ceiling, warm milky-beige and cream textiles, light oak wood, a few accents of deep navy blue (#284B63), slim graphite-black metal details. No green walls, no orange.
 A clean white ceiling with a slim, discreet linear ventilation slot (the air vent is built into the ceiling and barely noticeable). There is NO diffuser device, no aroma machine, no gadget anywhere in the scene.
 If a window is visible it looks onto a quiet courtyard: soft blurred daylight, a light stone wall and a few bare tree branches. No city view, no buildings, no towers outside.
@@ -215,169 +215,195 @@ Composition: vertical frame 4:5, eye-level, the most important content in the ce
 
 - Формат: 3:2
 - Где на сайте: /resheniya/ofis/
-- Alt: Ароматизация офиса: диффузор на стойке ресепшн
+- Alt: Ароматизация офиса: аромат подаётся через вентиляцию
 
 ```text
-Photorealistic editorial interior photograph, soft natural daylight, airy and clean modern minimal design, palette of white, warm light oak and muted sage green, shot on a 35 mm lens at f/4, high detail, realistic materials. No text, no logos, no watermarks, no visible faces.
-Scene: a bright modern office reception and open space with light oak desks and plants in Astana, Kazakhstan.
-In the scene, a compact rectangular aroma diffuser about 20 cm tall made of matte graphite-grey powder-coated metal with slightly rounded edges, a narrow vertical black glossy glass panel on the right half of the front with small glowing blue LED digits and a tiny red power icon, a round black fan grille on the top, a small round port on the left side, four short black rubber feet, stands discreetly on the white reception counter. A barely visible soft mist rises from the top grille.
-Composition: wide horizontal frame, the diffuser in the right third, plenty of calm negative space on the left. Aspect ratio 3:2.
+Photorealistic editorial interior photograph of a bright modern office reception and open space with light oak desks and plants. Soft natural daylight plus warm gentle lighting.
+Colour palette: white walls and ceiling, warm milky-beige and cream textiles, light oak wood, a few accents of deep navy blue, slim graphite-black metal details.
+A clean white ceiling with a slim, discreet linear ventilation slot. There is NO diffuser device, no aroma machine, no gadget on shelves, tables or counters anywhere in the scene.
+If a window is visible it looks onto a quiet courtyard: soft blurred daylight, a light stone wall and a few bare tree branches. No city view, no buildings, no towers, no skyline outside.
+No people, no faces, no text, no logos, no signage, no price tags, no watermarks. Shot on a 35 mm lens at f/4, high detail, realistic materials, calm premium editorial mood.
+Composition: wide horizontal frame, eye-level, calm negative space. Aspect ratio 3:2.
 ```
 
 ## ✅ `sol-magazin` — Бутик
 
 - Формат: 3:2
 - Где на сайте: /resheniya/magazin/
-- Alt: Ароматизация бутика: диффузор в торговом зале
+- Alt: Ароматизация бутика: аромат подаётся через вентиляцию
 
 ```text
-Photorealistic editorial interior photograph, soft natural daylight, airy and clean modern minimal design, palette of white, warm light oak and muted sage green, shot on a 35 mm lens at f/4, high detail, realistic materials. No text, no logos, no watermarks, no visible faces.
-Scene: a minimal fashion boutique with clothing rails, travertine plinths and soft spotlights in Astana, Kazakhstan.
-In the scene, a compact rectangular aroma diffuser about 20 cm tall made of matte graphite-grey powder-coated metal with slightly rounded edges, a narrow vertical black glossy glass panel on the right half of the front with small glowing blue LED digits and a tiny red power icon, a round black fan grille on the top, a small round port on the left side, four short black rubber feet, stands discreetly on a low travertine plinth near the entrance. A barely visible soft mist rises from the top grille.
-Composition: wide horizontal frame, the diffuser in the right third, plenty of calm negative space on the left. Aspect ratio 3:2.
+Photorealistic editorial interior photograph of a minimal fashion boutique with clothing rails, travertine plinths and soft spotlights. Soft natural daylight plus warm gentle lighting.
+Colour palette: white walls and ceiling, warm milky-beige and cream textiles, light oak wood, a few accents of deep navy blue, slim graphite-black metal details.
+A clean white ceiling with a slim, discreet linear ventilation slot. There is NO diffuser device, no aroma machine, no gadget on shelves, tables or counters anywhere in the scene.
+If a window is visible it looks onto a quiet courtyard: soft blurred daylight, a light stone wall and a few bare tree branches. No city view, no buildings, no towers, no skyline outside.
+No people, no faces, no text, no logos, no signage, no price tags, no watermarks. Shot on a 35 mm lens at f/4, high detail, realistic materials, calm premium editorial mood.
+Composition: wide horizontal frame, eye-level, calm negative space. Aspect ratio 3:2.
 ```
 
 ## ✅ `sol-otel` — Лобби отеля
 
 - Формат: 3:2
 - Где на сайте: /resheniya/otel/
-- Alt: Ароматизация лобби отеля
+- Alt: Ароматизация лобби отеля: аромат подаётся через вентиляцию
 
 ```text
-Photorealistic editorial interior photograph, soft natural daylight, airy and clean modern minimal design, palette of white, warm light oak and muted sage green, shot on a 35 mm lens at f/4, high detail, realistic materials. No text, no logos, no watermarks, no visible faces.
-Scene: a calm five-star hotel lobby with a long reception desk, warm stone, brass details and a lounge area in Astana, Kazakhstan.
-In the scene, a compact rectangular aroma diffuser about 20 cm tall made of matte graphite-grey powder-coated metal with slightly rounded edges, a narrow vertical black glossy glass panel on the right half of the front with small glowing blue LED digits and a tiny red power icon, a round black fan grille on the top, a small round port on the left side, four short black rubber feet, stands discreetly on a side console next to the reception. A barely visible soft mist rises from the top grille.
-Composition: wide horizontal frame, the diffuser in the right third, plenty of calm negative space on the left. Aspect ratio 3:2.
+Photorealistic editorial interior photograph of a calm five-star hotel lobby with a long reception desk, warm stone, brass details and a lounge area. Soft natural daylight plus warm gentle lighting.
+Colour palette: white walls and ceiling, warm milky-beige and cream textiles, light oak wood, a few accents of deep navy blue, slim graphite-black metal details.
+A clean white ceiling with a slim, discreet linear ventilation slot. There is NO diffuser device, no aroma machine, no gadget on shelves, tables or counters anywhere in the scene.
+If a window is visible it looks onto a quiet courtyard: soft blurred daylight, a light stone wall and a few bare tree branches. No city view, no buildings, no towers, no skyline outside.
+No people, no faces, no text, no logos, no signage, no price tags, no watermarks. Shot on a 35 mm lens at f/4, high detail, realistic materials, calm premium editorial mood.
+Composition: wide horizontal frame, eye-level, calm negative space. Aspect ratio 3:2.
 ```
 
 ## ✅ `sol-kofejnya` — Кофейня
 
 - Формат: 3:2
 - Где на сайте: /resheniya/kofejnya/
-- Alt: Ароматизация кофейни: аромамашина на полке у бара
+- Alt: Ароматизация кофейни: аромат подаётся через вентиляцию
 
 ```text
-Photorealistic editorial interior photograph, soft natural daylight, airy and clean modern minimal design, palette of white, warm light oak and muted sage green, shot on a 35 mm lens at f/4, high detail, realistic materials. No text, no logos, no watermarks, no visible faces.
-Scene: a cosy specialty coffee shop with an espresso machine, pastries in a glass case and wooden shelves in Astana, Kazakhstan.
-In the scene, a compact rectangular aroma diffuser about 20 cm tall made of matte graphite-grey powder-coated metal with slightly rounded edges, a narrow vertical black glossy glass panel on the right half of the front with small glowing blue LED digits and a tiny red power icon, a round black fan grille on the top, a small round port on the left side, four short black rubber feet, stands discreetly on a wooden shelf behind the bar. A barely visible soft mist rises from the top grille.
-Composition: wide horizontal frame, the diffuser in the right third, plenty of calm negative space on the left. Aspect ratio 3:2.
+Photorealistic editorial interior photograph of a cosy specialty coffee shop with an espresso machine, pastries in a glass case and wooden shelves. Soft natural daylight plus warm gentle lighting.
+Colour palette: white walls and ceiling, warm milky-beige and cream textiles, light oak wood, a few accents of deep navy blue, slim graphite-black metal details.
+A clean white ceiling with a slim, discreet linear ventilation slot. There is NO diffuser device, no aroma machine, no gadget on shelves, tables or counters anywhere in the scene.
+If a window is visible it looks onto a quiet courtyard: soft blurred daylight, a light stone wall and a few bare tree branches. No city view, no buildings, no towers, no skyline outside.
+No people, no faces, no text, no logos, no signage, no price tags, no watermarks. Shot on a 35 mm lens at f/4, high detail, realistic materials, calm premium editorial mood.
+Composition: wide horizontal frame, eye-level, calm negative space. Aspect ratio 3:2.
 ```
 
 ## ✅ `sol-restoran-kafe` — Ресторан
 
 - Формат: 3:2
 - Где на сайте: /resheniya/restoran-kafe/
-- Alt: Ароматизация ресторана: аромамашина у входа в зал
+- Alt: Ароматизация ресторана: аромат подаётся через вентиляцию
 
 ```text
-Photorealistic editorial interior photograph, soft natural daylight, airy and clean modern minimal design, palette of white, warm light oak and muted sage green, shot on a 35 mm lens at f/4, high detail, realistic materials. No text, no logos, no watermarks, no visible faces.
-Scene: an elegant restaurant dining hall in the evening with warm pendant lights, set tables with white linen, green velvet chairs and a host stand at the entrance in Astana, Kazakhstan.
-In the scene, a compact rectangular aroma diffuser about 20 cm tall made of matte graphite-grey powder-coated metal with slightly rounded edges, a narrow vertical black glossy glass panel on the right half of the front with small glowing blue LED digits and a tiny red power icon, a round black fan grille on the top, a small round port on the left side, four short black rubber feet, stands discreetly on the wooden host stand at the entrance to the hall. A barely visible soft mist rises from the top grille.
-Composition: wide horizontal frame, the diffuser in the right third, plenty of calm negative space on the left. Aspect ratio 3:2.
+Photorealistic editorial interior photograph of an elegant restaurant dining hall in the evening with warm pendant lights, set tables with white linen, green velvet chairs and a host stand at the entrance. Soft natural daylight plus warm gentle lighting.
+Colour palette: white walls and ceiling, warm milky-beige and cream textiles, light oak wood, a few accents of deep navy blue, slim graphite-black metal details.
+A clean white ceiling with a slim, discreet linear ventilation slot. There is NO diffuser device, no aroma machine, no gadget on shelves, tables or counters anywhere in the scene.
+If a window is visible it looks onto a quiet courtyard: soft blurred daylight, a light stone wall and a few bare tree branches. No city view, no buildings, no towers, no skyline outside.
+No people, no faces, no text, no logos, no signage, no price tags, no watermarks. Shot on a 35 mm lens at f/4, high detail, realistic materials, calm premium editorial mood.
+Composition: wide horizontal frame, eye-level, calm negative space. Aspect ratio 3:2.
 ```
 
 ## ✅ `sol-magazin-odezhdy` — Магазин одежды
 
 - Формат: 3:2
 - Где на сайте: /resheniya/magazin-odezhdy/
-- Alt: Ароматизация магазина одежды: аромамашина у примерочных
+- Alt: Ароматизация магазина одежды: аромат подаётся через вентиляцию
 
 ```text
-Photorealistic editorial interior photograph, soft natural daylight, airy and clean modern minimal design, palette of white, warm light oak and muted sage green, shot on a 35 mm lens at f/4, high detail, realistic materials. No text, no logos, no watermarks, no visible faces.
-Scene: a bright clothing store with long rails of shirts and knitwear, folded jeans on oak tables and fitting rooms with linen curtains in Astana, Kazakhstan.
-In the scene, a compact rectangular aroma diffuser about 20 cm tall made of matte graphite-grey powder-coated metal with slightly rounded edges, a narrow vertical black glossy glass panel on the right half of the front with small glowing blue LED digits and a tiny red power icon, a round black fan grille on the top, a small round port on the left side, four short black rubber feet, stands discreetly on an oak table with folded knitwear near the fitting rooms. A barely visible soft mist rises from the top grille.
-Composition: wide horizontal frame, the diffuser in the right third, plenty of calm negative space on the left. Aspect ratio 3:2.
+Photorealistic editorial interior photograph of a bright clothing store with long rails of shirts and knitwear, folded jeans on oak tables and fitting rooms with linen curtains. Soft natural daylight plus warm gentle lighting.
+Colour palette: white walls and ceiling, warm milky-beige and cream textiles, light oak wood, a few accents of deep navy blue, slim graphite-black metal details.
+A clean white ceiling with a slim, discreet linear ventilation slot. There is NO diffuser device, no aroma machine, no gadget on shelves, tables or counters anywhere in the scene.
+If a window is visible it looks onto a quiet courtyard: soft blurred daylight, a light stone wall and a few bare tree branches. No city view, no buildings, no towers, no skyline outside.
+No people, no faces, no text, no logos, no signage, no price tags, no watermarks. Shot on a 35 mm lens at f/4, high detail, realistic materials, calm premium editorial mood.
+Composition: wide horizontal frame, eye-level, calm negative space. Aspect ratio 3:2.
 ```
 
 ## ✅ `sol-produktovyj-magazin` — Продуктовый магазин
 
 - Формат: 3:2
 - Где на сайте: /resheniya/produktovyj-magazin/
-- Alt: Ароматизация продуктового магазина: аромамашина у входа
+- Alt: Ароматизация продуктового магазина: аромат подаётся через вентиляцию
 
 ```text
-Photorealistic editorial interior photograph, soft natural daylight, airy and clean modern minimal design, palette of white, warm light oak and muted sage green, shot on a 35 mm lens at f/4, high detail, realistic materials. No text, no logos, no watermarks, no visible faces.
-Scene: a clean modern neighbourhood grocery store with wooden crates of fresh fruit and vegetables, a bakery shelf with bread and bright aisles in Astana, Kazakhstan.
-In the scene, a compact rectangular aroma diffuser about 20 cm tall made of matte graphite-grey powder-coated metal with slightly rounded edges, a narrow vertical black glossy glass panel on the right half of the front with small glowing blue LED digits and a tiny red power icon, a round black fan grille on the top, a small round port on the left side, four short black rubber feet, stands discreetly on a shelf above the fresh bread near the entrance. A barely visible soft mist rises from the top grille.
-Composition: wide horizontal frame, the diffuser in the right third, plenty of calm negative space on the left. Aspect ratio 3:2.
+Photorealistic editorial interior photograph of a clean modern neighbourhood grocery store with wooden crates of fresh fruit and vegetables, a bakery shelf with bread and bright aisles. Soft natural daylight plus warm gentle lighting.
+Colour palette: white walls and ceiling, warm milky-beige and cream textiles, light oak wood, a few accents of deep navy blue, slim graphite-black metal details.
+A clean white ceiling with a slim, discreet linear ventilation slot. There is NO diffuser device, no aroma machine, no gadget on shelves, tables or counters anywhere in the scene.
+If a window is visible it looks onto a quiet courtyard: soft blurred daylight, a light stone wall and a few bare tree branches. No city view, no buildings, no towers, no skyline outside.
+No people, no faces, no text, no logos, no signage, no price tags, no watermarks. Shot on a 35 mm lens at f/4, high detail, realistic materials, calm premium editorial mood.
+Composition: wide horizontal frame, eye-level, calm negative space. Aspect ratio 3:2.
 ```
 
 ## ✅ `sol-fitnes` — Фитнес-клуб
 
 - Формат: 3:2
 - Где на сайте: /resheniya/fitnes/
-- Alt: Ароматизация фитнес-клуба
+- Alt: Ароматизация фитнес-клуба: аромат подаётся через вентиляцию
 
 ```text
-Photorealistic editorial interior photograph, soft natural daylight, airy and clean modern minimal design, palette of white, warm light oak and muted sage green, shot on a 35 mm lens at f/4, high detail, realistic materials. No text, no logos, no watermarks, no visible faces.
-Scene: a premium fitness club with treadmills, rubber floor, large windows and a reception counter in Astana, Kazakhstan.
-In the scene, a compact rectangular aroma diffuser about 20 cm tall made of matte graphite-grey powder-coated metal with slightly rounded edges, a narrow vertical black glossy glass panel on the right half of the front with small glowing blue LED digits and a tiny red power icon, a round black fan grille on the top, a small round port on the left side, four short black rubber feet, stands discreetly on the reception counter near the entrance to the gym. A barely visible soft mist rises from the top grille.
-Composition: wide horizontal frame, the diffuser in the right third, plenty of calm negative space on the left. Aspect ratio 3:2.
+Photorealistic editorial interior photograph of a premium fitness club with treadmills, rubber floor, large windows and a reception counter. Soft natural daylight plus warm gentle lighting.
+Colour palette: white walls and ceiling, warm milky-beige and cream textiles, light oak wood, a few accents of deep navy blue, slim graphite-black metal details.
+A clean white ceiling with a slim, discreet linear ventilation slot. There is NO diffuser device, no aroma machine, no gadget on shelves, tables or counters anywhere in the scene.
+If a window is visible it looks onto a quiet courtyard: soft blurred daylight, a light stone wall and a few bare tree branches. No city view, no buildings, no towers, no skyline outside.
+No people, no faces, no text, no logos, no signage, no price tags, no watermarks. Shot on a 35 mm lens at f/4, high detail, realistic materials, calm premium editorial mood.
+Composition: wide horizontal frame, eye-level, calm negative space. Aspect ratio 3:2.
 ```
 
 ## ✅ `sol-salon-krasoty` — Салон красоты
 
 - Формат: 3:2
 - Где на сайте: /resheniya/salon-krasoty/
-- Alt: Ароматизация салона красоты
+- Alt: Ароматизация салона красоты: аромат подаётся через вентиляцию
 
 ```text
-Photorealistic editorial interior photograph, soft natural daylight, airy and clean modern minimal design, palette of white, warm light oak and muted sage green, shot on a 35 mm lens at f/4, high detail, realistic materials. No text, no logos, no watermarks, no visible faces.
-Scene: a light beauty salon with mirrors, soft pink-beige chairs and fresh flowers in Astana, Kazakhstan.
-In the scene, a compact rectangular aroma diffuser about 20 cm tall made of matte graphite-grey powder-coated metal with slightly rounded edges, a narrow vertical black glossy glass panel on the right half of the front with small glowing blue LED digits and a tiny red power icon, a round black fan grille on the top, a small round port on the left side, four short black rubber feet, stands discreetly on a shelf between the mirrors. A barely visible soft mist rises from the top grille.
-Composition: wide horizontal frame, the diffuser in the right third, plenty of calm negative space on the left. Aspect ratio 3:2.
+Photorealistic editorial interior photograph of a light beauty salon with mirrors, soft pink-beige chairs and fresh flowers. Soft natural daylight plus warm gentle lighting.
+Colour palette: white walls and ceiling, warm milky-beige and cream textiles, light oak wood, a few accents of deep navy blue, slim graphite-black metal details.
+A clean white ceiling with a slim, discreet linear ventilation slot. There is NO diffuser device, no aroma machine, no gadget on shelves, tables or counters anywhere in the scene.
+If a window is visible it looks onto a quiet courtyard: soft blurred daylight, a light stone wall and a few bare tree branches. No city view, no buildings, no towers, no skyline outside.
+No people, no faces, no text, no logos, no signage, no price tags, no watermarks. Shot on a 35 mm lens at f/4, high detail, realistic materials, calm premium editorial mood.
+Composition: wide horizontal frame, eye-level, calm negative space. Aspect ratio 3:2.
 ```
 
 ## ✅ `sol-klinika` — Клиника
 
 - Формат: 3:2
 - Где на сайте: /resheniya/klinika/
-- Alt: Ароматизация клиники: диффузор в зоне ожидания
+- Alt: Ароматизация клиники: аромат подаётся через вентиляцию
 
 ```text
-Photorealistic editorial interior photograph, soft natural daylight, airy and clean modern minimal design, palette of white, warm light oak and muted sage green, shot on a 35 mm lens at f/4, high detail, realistic materials. No text, no logos, no watermarks, no visible faces.
-Scene: a modern dental clinic waiting area with white walls, light wood benches and plants in Astana, Kazakhstan.
-In the scene, a compact rectangular aroma diffuser about 20 cm tall made of matte graphite-grey powder-coated metal with slightly rounded edges, a narrow vertical black glossy glass panel on the right half of the front with small glowing blue LED digits and a tiny red power icon, a round black fan grille on the top, a small round port on the left side, four short black rubber feet, stands discreetly on a small side table in the waiting area. A barely visible soft mist rises from the top grille.
-Composition: wide horizontal frame, the diffuser in the right third, plenty of calm negative space on the left. Aspect ratio 3:2.
+Photorealistic editorial interior photograph of a modern dental clinic: a bright waiting area with light wood benches, and through a wide glass wall a white dental treatment chair with an overhead dental light and a small instrument tray is clearly visible in the treatment room. Soft natural daylight plus warm gentle lighting.
+Colour palette: white walls and ceiling, warm milky-beige and cream textiles, light oak wood, a few accents of deep navy blue, slim graphite-black metal details.
+A clean white ceiling with a slim, discreet linear ventilation slot. There is NO diffuser device, no aroma machine, no gadget on shelves, tables or counters anywhere in the scene.
+If a window is visible it looks onto a quiet courtyard: soft blurred daylight, a light stone wall and a few bare tree branches. No city view, no buildings, no towers, no skyline outside.
+No people, no faces, no text, no logos, no signage, no price tags, no watermarks. Shot on a 35 mm lens at f/4, high detail, realistic materials, calm premium editorial mood.
+Composition: wide horizontal frame, eye-level, calm negative space. Aspect ratio 3:2.
 ```
 
 ## ✅ `sol-zhk-nedvizhimost` — Лобби ЖК
 
 - Формат: 3:2
 - Где на сайте: /resheniya/zhk-nedvizhimost/
-- Alt: Ароматизация лобби жилого комплекса
+- Alt: Ароматизация лобби жилого комплекса: аромат подаётся через вентиляцию
 
 ```text
-Photorealistic editorial interior photograph, soft natural daylight, airy and clean modern minimal design, palette of white, warm light oak and muted sage green, shot on a 35 mm lens at f/4, high detail, realistic materials. No text, no logos, no watermarks, no visible faces.
-Scene: a premium residential building lobby with a concierge desk, stone floor and a seating area in Astana, Kazakhstan.
-In the scene, a compact rectangular aroma diffuser about 20 cm tall made of matte graphite-grey powder-coated metal with slightly rounded edges, a narrow vertical black glossy glass panel on the right half of the front with small glowing blue LED digits and a tiny red power icon, a round black fan grille on the top, a small round port on the left side, four short black rubber feet, stands discreetly on the concierge desk. A barely visible soft mist rises from the top grille.
-Composition: wide horizontal frame, the diffuser in the right third, plenty of calm negative space on the left. Aspect ratio 3:2.
+Photorealistic editorial interior photograph of a premium residential building lobby with a concierge desk, stone floor and a seating area. Soft natural daylight plus warm gentle lighting.
+Colour palette: white walls and ceiling, warm milky-beige and cream textiles, light oak wood, a few accents of deep navy blue, slim graphite-black metal details.
+A clean white ceiling with a slim, discreet linear ventilation slot. There is NO diffuser device, no aroma machine, no gadget on shelves, tables or counters anywhere in the scene.
+If a window is visible it looks onto a quiet courtyard: soft blurred daylight, a light stone wall and a few bare tree branches. No city view, no buildings, no towers, no skyline outside.
+No people, no faces, no text, no logos, no signage, no price tags, no watermarks. Shot on a 35 mm lens at f/4, high detail, realistic materials, calm premium editorial mood.
+Composition: wide horizontal frame, eye-level, calm negative space. Aspect ratio 3:2.
 ```
 
 ## ✅ `sol-avtosalon` — Автосалон
 
 - Формат: 3:2
 - Где на сайте: /resheniya/avtosalon/
-- Alt: Ароматизация автосалона
+- Alt: Ароматизация автосалона: аромат подаётся через вентиляцию
 
 ```text
-Photorealistic editorial interior photograph, soft natural daylight, airy and clean modern minimal design, palette of white, warm light oak and muted sage green, shot on a 35 mm lens at f/4, high detail, realistic materials. No text, no logos, no watermarks, no visible faces.
-Scene: a bright car showroom with a premium sedan, polished concrete floor and tall glass facade in Astana, Kazakhstan.
-In the scene, a compact rectangular aroma diffuser about 20 cm tall made of matte graphite-grey powder-coated metal with slightly rounded edges, a narrow vertical black glossy glass panel on the right half of the front with small glowing blue LED digits and a tiny red power icon, a round black fan grille on the top, a small round port on the left side, four short black rubber feet, stands discreetly on a sleek low cabinet in the customer lounge corner. A barely visible soft mist rises from the top grille.
-Composition: wide horizontal frame, the diffuser in the right third, plenty of calm negative space on the left. Aspect ratio 3:2.
+Photorealistic editorial interior photograph of a bright car showroom with a premium sedan, polished concrete floor and tall glass facade. Soft natural daylight plus warm gentle lighting.
+Colour palette: white walls and ceiling, warm milky-beige and cream textiles, light oak wood, a few accents of deep navy blue, slim graphite-black metal details.
+A clean white ceiling with a slim, discreet linear ventilation slot. There is NO diffuser device, no aroma machine, no gadget on shelves, tables or counters anywhere in the scene.
+If a window is visible it looks onto a quiet courtyard: soft blurred daylight, a light stone wall and a few bare tree branches. No city view, no buildings, no towers, no skyline outside.
+No people, no faces, no text, no logos, no signage, no price tags, no watermarks. Shot on a 35 mm lens at f/4, high detail, realistic materials, calm premium editorial mood.
+Composition: wide horizontal frame, eye-level, calm negative space. Aspect ratio 3:2.
 ```
 
 ## ✅ `sol-dom` — Квартира
 
 - Формат: 3:2
 - Где на сайте: /resheniya/dom/
-- Alt: Ароматизация квартиры: диффузор в гостиной
+- Alt: Ароматизация квартиры: аромат подаётся через вентиляцию
 
 ```text
-Photorealistic editorial interior photograph, soft natural daylight, airy and clean modern minimal design, palette of white, warm light oak and muted sage green, shot on a 35 mm lens at f/4, high detail, realistic materials. No text, no logos, no watermarks, no visible faces.
-Scene: a cosy modern apartment living room with a linen sofa, oak sideboard and evening warm light in Astana, Kazakhstan.
-In the scene, a compact rectangular aroma diffuser about 20 cm tall made of matte graphite-grey powder-coated metal with slightly rounded edges, a narrow vertical black glossy glass panel on the right half of the front with small glowing blue LED digits and a tiny red power icon, a round black fan grille on the top, a small round port on the left side, four short black rubber feet, stands discreetly on the oak sideboard. A barely visible soft mist rises from the top grille.
-Composition: wide horizontal frame, the diffuser in the right third, plenty of calm negative space on the left. Aspect ratio 3:2.
+Photorealistic editorial interior photograph of a cosy modern apartment living room with a linen sofa, oak sideboard and evening warm light. Soft natural daylight plus warm gentle lighting.
+Colour palette: white walls and ceiling, warm milky-beige and cream textiles, light oak wood, a few accents of deep navy blue, slim graphite-black metal details.
+A clean white ceiling with a slim, discreet linear ventilation slot. There is NO diffuser device, no aroma machine, no gadget on shelves, tables or counters anywhere in the scene.
+If a window is visible it looks onto a quiet courtyard: soft blurred daylight, a light stone wall and a few bare tree branches. No city view, no buildings, no towers, no skyline outside.
+No people, no faces, no text, no logos, no signage, no price tags, no watermarks. Shot on a 35 mm lens at f/4, high detail, realistic materials, calm premium editorial mood.
+Composition: wide horizontal frame, eye-level, calm negative space. Aspect ratio 3:2.
 ```
 
 ## ✅ `cat-svezhie-citrusovye` — Свежие и цитрусовые
@@ -444,11 +470,10 @@ Minimal still-life product photograph on a seamless very light sage-green backgr
 
 - Формат: 3:2
 - Где на сайте: /kak-my-rabotaem/
-- Alt: Специалист устанавливает диффузор
+- Alt: Техник настраивает подачу аромата через вентиляцию
 
 ```text
-Photorealistic editorial interior photograph, soft natural daylight, airy and clean modern minimal design, palette of white, warm light oak and muted sage green, shot on a 35 mm lens at f/4, high detail, realistic materials. No text, no logos, no watermarks, no visible faces.
-Scene: a technician's hands (no face visible) in a sage-green work shirt placing a compact rectangular aroma diffuser about 20 cm tall made of matte graphite-grey powder-coated metal with slightly rounded edges, a narrow vertical black glossy glass panel on the right half of the front with small glowing blue LED digits and a tiny red power icon, a round black fan grille on the top, a small round port on the left side, four short black rubber feet on a white shelf in a bright modern office, a small case with oil bottles next to it. Aspect ratio 3:2.
+Photorealistic editorial photograph, soft natural daylight, bright modern office with white walls and light oak. Close view of a technician's hands (no face visible) in a navy work shirt adjusting a slim white ceiling ventilation grille, seen from below at a gentle angle. There is NO diffuser device, no aroma machine and no gadget anywhere in the image. No city view, no towers. No text, no logos. Aspect ratio 3:2.
 ```
 
 ## ✅ `blog-kak-vybrat-aromat-dlya-biznesa` — Обложка: как выбрать аромат
@@ -468,7 +493,7 @@ Minimal editorial flat-lay on a light sage background: six small glass dishes ea
 - Alt: Стоимость ароматизации помещения
 
 ```text
-Minimal still life: a compact rectangular aroma diffuser about 20 cm tall made of matte graphite-grey powder-coated metal with slightly rounded edges, a narrow vertical black glossy glass panel on the right half of the front with small glowing blue LED digits and a tiny red power icon, a round black fan grille on the top, a small round port on the left side, four short black rubber feet next to a small stack of three amber glass oil bottles without labels on a light oak table, soft daylight, sage green wall behind. Calm, premium, airy. No text, no logos. Aspect ratio 16:9.
+Minimal still life on a light oak table: an open white notebook with a pencil, a small ceramic dish with a few coins, a vanilla pod and a strip of orange peel beside it. Soft daylight, premium, airy, light warm background. There is NO diffuser device, no aroma machine and no gadget anywhere in the image. No city view, no towers. No text, no logos. Aspect ratio 16:9.
 ```
 
 ## ✅ `blog-arenda-ili-pokupka-aromatizatora` — Обложка: аренда или покупка
@@ -478,7 +503,7 @@ Minimal still life: a compact rectangular aroma diffuser about 20 cm tall made o
 - Alt: Аренда или покупка ароматизатора
 
 ```text
-Editorial photograph: two identical a compact rectangular aroma diffuser about 20 cm tall made of matte graphite-grey powder-coated metal with slightly rounded edges, a narrow vertical black glossy glass panel on the right half of the front with small glowing blue LED digits and a tiny red power icon, a round black fan grille on the top, a small round port on the left side, four short black rubber feets standing side by side on a white plinth, one with a small cardboard delivery box beside it, soft studio daylight, pale mint background. No text, no logos. Aspect ratio 16:9.
+Minimal still life on a light oak table: a set of keys on a simple ring, a closed cream paper folder and a sprig of eucalyptus. Soft daylight, premium, airy, light warm background. There is NO diffuser device, no aroma machine and no gadget anywhere in the image. No city view, no towers. No text, no logos. Aspect ratio 16:9.
 ```
 
 ## ✅ `blog-bezopasna-li-aromatizaciya` — Обложка: безопасность
@@ -488,8 +513,7 @@ Editorial photograph: two identical a compact rectangular aroma diffuser about 2
 - Alt: Безопасность ароматизации помещений
 
 ```text
-Photorealistic editorial interior photograph, soft natural daylight, airy and clean modern minimal design, palette of white, warm light oak and muted sage green, shot on a 35 mm lens at f/4, high detail, realistic materials. No text, no logos, no watermarks, no visible faces.
-Scene: a calm bright living room, a cat sleeping on a linen sofa, a compact rectangular aroma diffuser about 20 cm tall made of matte graphite-grey powder-coated metal with slightly rounded edges, a narrow vertical black glossy glass panel on the right half of the front with small glowing blue LED digits and a tiny red power icon, a round black fan grille on the top, a small round port on the left side, four short black rubber feet on a high shelf in the background with a faint mist. Aspect ratio 16:9.
+Photorealistic editorial interior photograph, soft natural daylight: a calm bright living room with a linen sofa, a cat sleeping on a knitted throw, a few plants, white ceiling with a discreet ventilation slot. There is NO diffuser device, no aroma machine and no gadget anywhere in the image. No city view, no towers. No text, no logos. Aspect ratio 16:9.
 ```
 
 ## ✅ `blog-skolko-diffuzorov-nuzhno` — Обложка: сколько диффузоров
@@ -499,7 +523,7 @@ Scene: a calm bright living room, a cat sleeping on a linen sofa, a compact rect
 - Alt: Расчёт количества диффузоров
 
 ```text
-Top-down architectural floor plan drawing of a cafe on white paper, thin black lines, with three small sage-green circles marking diffuser positions and soft gradient halos around them, a pencil and a ruler lying on the paper. Clean, minimal, editorial. No readable text. Aspect ratio 16:9.
+Top-down architectural floor plan drawing of a cafe on white paper, thin black lines, small navy marks at the ceiling air vents with soft pale-blue halos around them, a pencil and a ruler lying on the paper. Clean, minimal, editorial. No readable text. Aspect ratio 16:9.
 ```
 
 ## ✅ `blog-aromamarketing-primery` — Обложка: примеры аромамаркетинга
@@ -509,8 +533,7 @@ Top-down architectural floor plan drawing of a cafe on white paper, thin black l
 - Alt: Примеры аромамаркетинга в отеле, магазине и кофейне
 
 ```text
-Photorealistic editorial interior photograph, soft natural daylight, airy and clean modern minimal design, palette of white, warm light oak and muted sage green, shot on a 35 mm lens at f/4, high detail, realistic materials. No text, no logos, no watermarks, no visible faces.
-Scene: the entrance zone of a calm premium hotel lobby, a stone console with a vase of white flowers and a compact rectangular aroma diffuser about 20 cm tall made of matte graphite-grey powder-coated metal with slightly rounded edges, a narrow vertical black glossy glass panel on the right half of the front with small glowing blue LED digits and a tiny red power icon, a round black fan grille on the top, a small round port on the left side, four short black rubber feet standing on it with a faint mist, a blurred lounge in the background. Aspect ratio 16:9.
+Photorealistic editorial interior photograph, soft natural daylight: the entrance zone of a calm premium hotel lobby with warm stone, light oak, a bouquet of white flowers on a round table, white ceiling with a discreet ventilation slot. There is NO diffuser device, no aroma machine and no gadget anywhere in the image. No city view, no towers. No text, no logos. Aspect ratio 16:9.
 ```
 
 ## ✅ `blog-aromat-dlya-magazina-odezhdy` — Обложка: аромат для магазина одежды
@@ -520,7 +543,7 @@ Scene: the entrance zone of a calm premium hotel lobby, a stone console with a v
 - Alt: Аромат для магазина одежды
 
 ```text
-Minimal editorial still life on a light oak table: neatly folded knitwear and linen shirts in sage, cream and white, a paper scent strip resting on top, a compact rectangular aroma diffuser about 20 cm tall made of matte graphite-grey powder-coated metal with slightly rounded edges, a narrow vertical black glossy glass panel on the right half of the front with small glowing blue LED digits and a tiny red power icon, a round black fan grille on the top, a small round port on the left side, four short black rubber feet standing at the right edge with a faint mist, soft daylight, pale sage wall behind. Calm, premium, airy. No text, no logos. Aspect ratio 16:9.
+Minimal editorial still life on a light oak table: neatly folded knitwear and linen shirts in cream, white and navy, a paper scent strip resting on top. Soft daylight, premium, airy. There is NO diffuser device, no aroma machine and no gadget anywhere in the image. No city view, no towers. No text, no logos. Aspect ratio 16:9.
 ```
 
 ## ✅ `og` — Обложка для соцсетей
@@ -530,7 +553,7 @@ Minimal editorial still life on a light oak table: neatly folded knitwear and li
 - Alt: Вдох — ароматизация помещений в Астане
 
 ```text
-Wide hero image: a compact rectangular aroma diffuser about 20 cm tall made of matte graphite-grey powder-coated metal with slightly rounded edges, a narrow vertical black glossy glass panel on the right half of the front with small glowing blue LED digits and a tiny red power icon, a round black fan grille on the top, a small round port on the left side, four short black rubber feet on the right on a light oak surface, soft mint-to-white gradient background with delicate translucent aurora-like light waves, generous empty space on the left for a headline. Premium, calm, fresh. No text, no logos. Aspect ratio 16:9 (будет обрезано до 1200×630).
+Wide editorial interior photograph of a bright premium cafe-lounge with light oak, cream textiles, navy accents and soft daylight, white ceiling with a discreet ventilation slot, calm negative space on the left. There is NO diffuser device, no aroma machine and no gadget anywhere in the image. No city view, no towers. No text, no logos. Aspect ratio 16:9.
 ```
 
 ## ✅ `sc-svezhij-citrus` — Свежий цитрус

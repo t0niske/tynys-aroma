@@ -1051,3 +1051,19 @@ html.js .rv.in{opacity:1;transform:none}
   .bz-t h3{font-size:18px}.bz-t p{font-size:13.5px}
   .bz-go{display:none}
 }
+
+/* решения: «что даст ароматизация» — три карточки, цифра исследования или значок, вывод и ссылка на источник */
+.gn{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.gn-c{display:flex;flex-direction:column;padding:26px 26px 24px;border-radius:24px;background:#fff}
+.gn-c>b{font-size:54px;font-weight:600;letter-spacing:-.03em;line-height:1;color:var(--in)}
+.gn-c>b small{font-size:.42em;margin-left:4px}
+.gn-c>i{width:54px;height:54px;border-radius:50%;background:var(--sk);color:var(--in);display:grid;place-items:center}
+.gn-c>i .ic{width:24px;height:24px}
+.gn-c h3{margin-top:20px;font-size:19px;font-weight:600}
+.gn-c p{margin-top:6px;font-size:15px;line-height:1.5;color:var(--mu)}
+.gn-c a{margin-top:auto;padding-top:16px;font-size:12px;line-height:1.4;color:var(--mu);text-decoration:none}
+.gn-c a:hover{text-decoration:underline;text-underline-offset:3px}
+@media (max-width:900px){
+  .gn{grid-template-columns:minmax(0,1fr);gap:8px}
+  .gn-c{padding:20px 18px}.gn-c>b{font-size:44px}
+}
