@@ -39,28 +39,28 @@ const PLUS = [
   ['Масла и сервис в цене', 'Техник сам привозит и меняет масло по графику, следит за аппаратом'],
   [`${D.scents.length} аромата`, 'Подберём под ваш бизнес и привезём пробники, чтобы выбрать по запаху']
 ];
-/* Этапы теста: [название, когда, текст, цвет карточки]; между вторым и третьим — фото */
+/* Этапы теста: [название, когда, текст, цвет карточки]; крупно — когда, без номеров шагов; между вторым и третьим — фото */
 const STEPS = [
   ['Пишете нам', 'Сегодня', `Отвечаем в WhatsApp за ${CFG.replyMinutes} минут, уточняем площадь и что у вас за место`, ''],
   ['Подключаем', 'День 1', 'Аппарат встраиваем в вентиляцию и настраиваем силу запаха — гости его не видят', 'dk'],
   ['Наблюдаете', 'Дни 2–3', 'Смотрите, как ведут себя гости. Резко или слабо — подстроим силу запаха', 'dk'],
   ['Решаете', 'После теста', 'Подошло — договор на 1, 3 или 6 месяцев. Нет — отключаем, платить ничего не нужно', 'lt']
 ];
-const stepCard = ([t, when, d, cls], i) => `<div class="h-st${cls ? ' ' + cls : ''}"><div class="h-st-h"><b>${String(STEPS.findIndex(s => s[0] === t) + 1).padStart(2, '0')}</b><h3>${t}<small>${when}</small></h3></div><p>${d}</p></div>`;
+const stepCard = ([t, when, d, cls]) => `<div class="h-st${cls ? ' ' + cls : ''}"><div class="h-st-h"><b>${when}</b><h3>${t}</h3></div><p>${d}</p></div>`;
 /* Аромат в цифрах: [цифра, единица, подпись, источник, ссылка] — формулировки свои, не как на Aromé */
 const KASSA_NUM = [
   ['+20', '%', 'к сумме покупок в магазине, пока в зале пахло апельсином', 'Herrmann и др., Journal of Retailing, 2013', 'https://doi.org/10.1016/j.jretai.2012.08.002'],
   ['+14', 'мин', 'дольше гости пиццерии сидели за ужином при запахе лаванды', 'Guéguen, Petr, International Journal of Hospitality Management, 2006', 'https://doi.org/10.1016/j.ijhm.2005.04.007'],
   ['24', 'ч', 'спустя люди лучше помнили марки из зала с ароматом', 'Morrin, Ratneshwar, Journal of Marketing Research, 2003', 'https://doi.org/10.1509/jmkr.40.1.10.19128']
 ];
-/* Настроения: [семейство, название, для кого] — фото и ароматы берутся из семейства */
+/* Семейства ароматов: [семейство, какое впечатление, где выбирают] — фото и ароматы берутся из семейства */
 const MOODS = [
-  ['fresh', 'Бодрит', 'офис, фитнес, автосалон'],
-  ['spa', 'Успокаивает', 'салон, спа, клиника'],
-  ['gourmand', 'Уютно', 'кофейня, пекарня, ресторан'],
-  ['hotel', 'Дорого', 'отель, лобби ЖК, ресепшн'],
-  ['floral', 'Нежно', 'салон красоты, цветы, свадебный салон'],
-  ['perfume', 'С характером', 'бутик, шоурум, барбершоп']
+  ['fresh', 'бодрят и освежают', 'офис, фитнес, автосалон'],
+  ['spa', 'успокаивают', 'салон, спа, клиника'],
+  ['gourmand', 'дают тепло и аппетит', 'кофейня, пекарня, ресторан'],
+  ['hotel', 'как в лобби хорошего отеля', 'отель, лобби ЖК, ресепшн'],
+  ['floral', 'нежные и праздничные', 'салон красоты, цветы, свадебный салон'],
+  ['perfume', 'с характером, как духи', 'бутик, шоурум, барбершоп']
 ];
 /* Что входит в подписку: [жирное начало, продолжение] */
 const INCL = [
@@ -102,7 +102,7 @@ function register(site) {
       const slides = [['hero-kofejnya', 'Кофейня'], ['hero-salon', 'Салон красоты'], ['hero-otel', 'Отель'], ['hero-ofis', 'Офис'], ['hero', 'Магазин одежды']].filter(([k]) => site.hasImg(k));
       /* подбор: бизнесы с фото, первые три аромата решения; аппарат выбирается по площади в main.js */
       const pick = PICK.map(([slug, k, name]) => [bySlug(slug), k, name]).filter(([s, k]) => s && site.hasImg(k));
-      const pickData = { biz: pick.map(([s, , name]) => ({ n: name, sc: s.scents.slice(0, 3).map(n => D.byN(n).name) })), dev: D.devices.map(d => ({ n: d.name, area: d.area, pm: `от ${UI.pm(d)}` })) };
+      const pickData = { biz: pick.map(([s, , name]) => ({ n: name, sc: s.scents.slice(0, 3).map(n => D.byN(n).name) })).concat({ n: 'Другой бизнес', sc: [], other: 1 }), dev: D.devices.map(d => ({ n: d.name, area: d.area, pm: `от ${UI.pm(d)}` })) };
       /* цены: в месяц по каждому сроку и итог за срок, как в data.js */
       const priceData = D.devices.map(d => d.plans.map(p => [D.fmt(D.perMonth(p)), D.fmt(p.total), p.months]));
       const best = D.devices[0].plans.length - 1;
@@ -132,6 +132,7 @@ function register(site) {
     <div class="h-card h-pk-l">
       <p class="h-lab">Ваш бизнес</p>
       <div class="h-pk-biz" role="group" aria-label="Ваш бизнес" data-scroll-x>${pick.map(([s, k, name], i) => `<button type="button" class="h-pk-b" data-i="${i}" aria-pressed="${!i}">${img(k, { cls: 'h-pk-img', alt: `${name}: аромат подаётся через вентиляцию` })}<span>${name}</span></button>`).join('')}</div>
+      <button type="button" class="h-pk-b h-pk-other" data-i="${pick.length}" aria-pressed="false"><i>${icon('chat')}</i><span><b>Моего бизнеса нет в списке</b><small>Подберём аромат вручную под ваше помещение</small></span></button>
       <div class="h-pk-area"><div class="h-pk-ah"><label class="h-lab" for="pk-area">Площадь зала</label><b data-area-v>120 м²</b></div><input id="pk-area" type="range" min="30" max="1000" step="10" value="120" data-area><div class="h-pk-ticks"><span>30</span><span>300</span><span>600</span><span>1000 м²</span></div></div>
     </div>
     <div class="h-pk-r">
@@ -160,11 +161,11 @@ function register(site) {
 </section>
 
 <section class="h-sec" id="nastroenie">
-  <div class="h-head"><div><h2>Начните с настроения</h2><p class="h-lead">Шесть настроений вместо ${D.scents.length} названий — выберите, что должен почувствовать гость</p></div><a class="h-lnk" href="/aromaty/">Все ароматы ${icon('arrow', 'ic ic-s')}</a></div>
+  <div class="h-head"><div><h2>Какие бывают ароматы</h2><p class="h-lead">${D.scents.length} аромата в шести семействах. Наведите на семейство — покажем, какие ароматы в нём и где их выбирают</p></div><a class="h-lnk" href="/aromaty/">Все ароматы ${icon('arrow', 'ic ic-s')}</a></div>
   <div class="h-mo" data-moods>
-    <ul class="h-mo-list">${MOODS.map(([id, name, fits], k) => { const c = D.categories.find(x => x.id === id); return `<li class="h-mo-i${k ? '' : ' on'}" data-k="${k}"><small>0${k + 1}</small><button type="button"><b>${name}</b><span>${fits}</span></button><a href="/aromaty/${c.slug}/" aria-label="${c.name}">${icon('arrow', 'ic ic-s')}</a></li>`; }).join('')}</ul>
+    <ul class="h-mo-list">${MOODS.map(([id, feel], k) => { const c = D.categories.find(x => x.id === id); return `<li class="h-mo-i${k ? '' : ' on'}" data-k="${k}"><small>0${k + 1}</small><button type="button"><b>${c.name}</b><span>${feel}</span></button><a href="/aromaty/${c.slug}/" aria-label="${c.name}">${icon('arrow', 'ic ic-s')}</a></li>`; }).join('')}</ul>
     <div class="h-mo-ph">
-      ${MOODS.map(([id, name], k) => { const c = D.categories.find(x => x.id === id), n = D.scents.filter(s => s.cat === id).length; return `<figure class="h-mo-f${k ? '' : ' on'}">${img('cat-' + c.slug, { cls: 'h-mo-img', alt: `Ароматы настроения «${name}»` })}<figcaption><div><small>${c.short} · ${n} ${n < 5 ? 'аромата' : 'ароматов'}</small><b>${CAT_TEXT[id].hits.map(x => esc(D.byN(x).name)).join(', ')}</b></div><a href="/aromaty/${c.slug}/">Подробнее ${icon('arrow', 'ic ic-s')}</a></figcaption></figure>`; }).join('')}
+      ${MOODS.map(([id, , where], k) => { const c = D.categories.find(x => x.id === id), n = D.scents.filter(s => s.cat === id).length; return `<figure class="h-mo-f${k ? '' : ' on'}">${img('cat-' + c.slug, { cls: 'h-mo-img', alt: `${c.name} ароматы` })}<figcaption><div><small>${n} ${n < 5 ? 'аромата' : 'ароматов'} · ${where}</small><b>${CAT_TEXT[id].hits.map(x => esc(D.byN(x).name)).join(', ')}</b></div><a href="/aromaty/${c.slug}/">Подробнее ${icon('arrow', 'ic ic-s')}</a></figcaption></figure>`; }).join('')}
     </div>
   </div>
 </section>

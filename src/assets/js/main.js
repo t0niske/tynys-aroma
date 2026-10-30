@@ -187,14 +187,14 @@
     var draw = function () {
       var a = +area.value, d = P.dev[a > P.dev[0].area ? 1 : 0], b = P.biz[cur];
       set('[data-area-v]', a + ' м²');
-      set('[data-for]', 'Для вас: ' + b.n.toLowerCase() + ', ' + a + ' м²');
+      set('[data-for]', 'Для вас: ' + (b.other ? 'ваш бизнес' : b.n.toLowerCase()) + ', ' + a + ' м²');
       set('[data-dev]', d.n);
       set('[data-dev-d]', 'до ' + d.area + ' м², через вентиляцию');
       set('[data-pm]', d.pm);
-      $('[data-sc]', box).innerHTML = b.sc.map(function (n, i) { return '<li><b></b><span>' + (i ? 'на выбор' : 'чаще всего') + '</span></li>'; }).join('');
-      $$('[data-sc] b', box).forEach(function (el, i) { el.textContent = b.sc[i]; });
+      $('[data-sc]', box).innerHTML = b.other ? '<li class="h-pk-note">Подберём 3 аромата под ваше помещение и привезём пробники — выберете по запаху</li>' : b.sc.map(function (n, i) { return '<li><b></b><span>' + (i ? 'на выбор' : 'чаще всего') + '</span></li>'; }).join('');
+      if (!b.other) $$('[data-sc] b', box).forEach(function (el, i) { el.textContent = b.sc[i]; });
       btns.forEach(function (x, i) { x.setAttribute('aria-pressed', i === cur); });
-      if (go) go.href = wa(head() + 'Хочу тест ' + (T.days || 3) + ' дня: ' + b.n.toLowerCase() + ', ' + a + ' м², ' + d.n + '. Ароматы: ' + b.sc.join(', '));
+      if (go) go.href = wa(head() + (b.other ? 'Моего бизнеса нет в списке, помогите подобрать аромат: ' + a + ' м², ' + d.n + '. Мой бизнес: ' : 'Хочу тест ' + (T.days || 3) + ' дня: ' + b.n.toLowerCase() + ', ' + a + ' м², ' + d.n + '. Ароматы: ' + b.sc.join(', ')));
     };
     btns.forEach(function (x, i) { x.addEventListener('click', function () { cur = i; draw(); track('pick_biz', { biz: P.biz[i].n }); }); });
     area.addEventListener('input', draw);
