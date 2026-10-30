@@ -62,6 +62,8 @@ const MOODS = [
   ['floral', 'нежные и праздничные', 'салон красоты, цветы, свадебный салон'],
   ['perfume', 'с характером, как духи', 'бутик, шоурум, барбершоп']
 ];
+/* фото бизнеса без аппарата для карточек решений (sol-* — со старым аппаратом на столе) */
+const SOL_PHOTO = { ofis: 'hero-ofis', magazin: 'hero-magazin', 'magazin-odezhdy': 'hero', 'produktovyj-magazin': 'hero-produkty', kofejnya: 'hero-kofejnya', 'restoran-kafe': 'hero-restoran', otel: 'hero-otel', 'salon-krasoty': 'hero-salon', klinika: 'hero-klinika', fitnes: 'hero-fitnes', avtosalon: 'hero-avtosalon', 'zhk-nedvizhimost': 'hero-zhk' };
 /* Статьи на главной: первая — крупно с фото, остальные строками [статья, короткая подпись для строки] */
 const BLOG_HOME = [
   ['kak-vybrat-aromat-dlya-biznesa'],
@@ -83,6 +85,8 @@ const INCL = [
 ];
 
 const TEST_Q = ['Как проходит бесплатный тест?', TRIAL.text];
+/* запуск — своими словами: аппарат подключаем к вентиляции, а не ставим у розетки (общий D.faq[2] этого не учитывает) */
+const LAUNCH_Q = ['Как быстро запускается ароматизация?', 'Обычно за один день: подбираем аромат, подключаем аппарат к вентиляции и настраиваем силу запаха.'];
 const HOME_FAQ = [
   ['Не будет ли пахнуть слишком резко?', 'Нет. Интенсивность настраиваем под помещение: аромат заметен на входе и почти незаметен через несколько минут. Если покажется сильным — уменьшим.'],
   ['А если у кого-то аллергия?', 'Выбираем деликатные ароматы и мягкую интенсивность. Если сотруднику или гостю не подходит конкретная нота, подберём композицию без неё, а аппарат можно включать только в рабочие часы.'],
@@ -98,6 +102,23 @@ function register(site) {
   const img = site.img;
   const postCard = a => `<a class="post" href="/blog/${a.slug}/">${img('blog-' + a.slug, { cls: 'post-img' })}<span class="post-m">${dateRu(a.date)} · ${a.read} мин</span><h3>${esc(a.h1)}</h3><p>${esc(a.lead)}</p></a>`;
   const catCard = c => `<a class="cat" href="/aromaty/${c.slug}/">${img('cat-' + c.slug, { cls: 'cat-img' })}<span class="cat-t"><b>${c.name}</b><span>${c.mood}</span><em>${CAT_TEXT[c.id].hits.map(n => esc(D.byN(n).name)).join(' · ')}</em></span><span class="cat-n">${D.scents.filter(s => s.cat === c.id).length}</span></a>`;
+  /* блок цен как на главной: слева что входит в подписку, справа срок и два аппарата; используется на главной, в «Ценах» и в решениях */
+  const priceDuo = p => {
+    const go = label => `${label} <i>${icon('arrow', 'ic ic-s')}</i>`;
+    const priceData = D.devices.map(d => d.plans.map(pl => [D.fmt(D.perMonth(pl)), D.fmt(pl.total), pl.months]));
+    const best = D.devices[0].plans.length - 1;
+    return `<div class="h-pr" data-prices="${esc(JSON.stringify(priceData))}">
+    <div class="h-pr-l">
+      <h3>Что входит в подписку</h3>
+      <ul>${INCL.map(([b, t]) => `<li><span><b>${b}</b> ${t}</span></li>`).join('')}</ul>
+    </div>
+    <div class="h-pr-r">
+      <div class="h-pr-top"><span>Срок подписки</span><div class="h-pr-sw" role="group" aria-label="Срок подписки">${D.devices[0].plans.map((pl, i) => `<button type="button" data-m="${i}" aria-pressed="${i === best}">${pl.months} мес</button>`).join('')}</div></div>
+      <div class="h-pr-devs">${D.devices.map((d, k) => { const [pmv, tot, m] = priceData[k][best]; return `<a class="h-pr-d" href="/oborudovanie/${d.slug}/">${img('device', { cls: 'h-pr-img', alt: `Аппарат ${d.name}` })}<h4>${d.name}</h4><p>до ${d.area} м² — ${d.fits.slice(0, 3).join(', ')}</p><b data-pm="${k}">${pmv}</b><small data-tot="${k}">в месяц · ${tot} за ${months(m)}</small></a>`; }).join('')}</div>
+      <div class="h-pr-act">${wa(p, 'test', go(`Начать с теста ${TRIAL.days} дня`), 'h-go')}<small>Сначала ${TRIAL.days} дня бесплатно, договор — только если аромат подошёл</small></div>
+    </div>
+  </div>`;
+  };
   const samplesBox = (p, names = '') => `<div class="samples">${icon('box')}<div><h3 class="h4">Закажите пробники</h3><p>${CFG.samples}</p></div>${wa(p, 'sample', 'Заказать пробники', 'btn btn-dark', names)}</div>`;
 
   /* ── Главная ───────────────────────────────────────── */
@@ -113,9 +134,6 @@ function register(site) {
       /* подбор: бизнесы с фото и рекомендуемый аромат — первый в решении; аппарат выбирается по площади в main.js */
       const pick = PICK.map(([slug, k, name]) => [bySlug(slug), k, name]).filter(([s, k]) => s && site.hasImg(k));
       const pickData = { biz: pick.map(([s, , name]) => { const r = D.byN(s.scents[0]); return { n: name, rec: { n: r.name, d: r.desc.replace(/\.$/, ''), cat: D.categories.find(c => c.id === r.cat).slug } }; }).concat({ n: 'Другой бизнес', other: 1 }), total: D.scents.length, dev: D.devices.map(d => ({ n: d.name, area: d.area, pm: `от ${UI.pm(d)}` })) };
-      /* цены: в месяц по каждому сроку и итог за срок, как в data.js */
-      const priceData = D.devices.map(d => d.plans.map(p => [D.fmt(D.perMonth(p)), D.fmt(p.total), p.months]));
-      const best = D.devices[0].plans.length - 1;
       return `
 <div class="h-w">
 <section class="h-hero">
@@ -183,17 +201,7 @@ function register(site) {
 
 <section class="h-sec" id="ceny">
   <div class="h-head"><div><h2>Одна подписка — всё включено</h2><p class="h-lead">Цена за один аппарат в месяц. Чем дольше срок, тем ниже цена</p></div><a class="h-lnk" href="/ceny/">Примеры расчёта ${icon('arrow', 'ic ic-s')}</a></div>
-  <div class="h-pr" data-prices="${esc(JSON.stringify(priceData))}">
-    <div class="h-pr-l">
-      <h3>Что входит в подписку</h3>
-      <ul>${INCL.map(([b, t]) => `<li><span><b>${b}</b> ${t}</span></li>`).join('')}</ul>
-    </div>
-    <div class="h-pr-r">
-      <div class="h-pr-top"><span>Срок подписки</span><div class="h-pr-sw" role="group" aria-label="Срок подписки">${D.devices[0].plans.map((p, i) => `<button type="button" data-m="${i}" aria-pressed="${i === best}">${p.months} мес</button>`).join('')}</div></div>
-      <div class="h-pr-devs">${D.devices.map((d, k) => { const [pmv, tot, m] = priceData[k][best]; return `<a class="h-pr-d" href="/oborudovanie/${d.slug}/">${img('device', { cls: 'h-pr-img', alt: `Аппарат ${d.name}` })}<h4>${d.name}</h4><p>до ${d.area} м² — ${d.fits.slice(0, 3).join(', ')}</p><b data-pm="${k}">${pmv}</b><small data-tot="${k}">в месяц · ${tot} за ${months(m)}</small></a>`; }).join('')}</div>
-      <div class="h-pr-act">${wa(this, 'test', go(`Начать с теста ${TRIAL.days} дня`), 'h-go')}<small>Сначала ${TRIAL.days} дня бесплатно, договор — только если аромат подошёл</small></div>
-    </div>
-  </div>
+  ${priceDuo(this)}
 </section>
 
 <section class="h-sec" id="stati">
@@ -232,7 +240,7 @@ function register(site) {
 <section class="sec"><div class="wrap narrow prose">
   <h2>Как выбрать решение</h2>
   <p>Ароматизация подбирается под три параметра: площадь, количество зон и задачу аромата. Небольшим помещениям до 300 м² — бутику, кофейне, кабинету клиники — подходит <a href="/oborudovanie/nova-300/">Nova 300</a>. Большие залы, лобби и шоурумы до 1000 м² закрывает <a href="/oborudovanie/nova-1000/">Nova 1000</a>.</p>
-  <p>Если в помещении несколько отдельных зон, удобнее поставить несколько аппаратов: аромат не проходит сквозь стены и двери. Посчитать можно в <a href="/ceny/#calc">подборе по площади</a>, а точный расчёт сделает менеджер.</p>
+  <p>Если в помещении несколько отдельных зон, удобнее поставить несколько аппаратов: аромат не проходит сквозь стены и двери. Посчитать можно в <a href="/#podbor">подборе на главной</a>, а точный расчёт сделает менеджер.</p>
 </div></section>`;
     }
   });
@@ -240,7 +248,7 @@ function register(site) {
   SOL.forEach((s, i) => {
     const p = `resheniya/${s.slug}/`;
     const others = [1, 2, 3].map(k => SOL[(i + k) % SOL.length]);
-    const allFaq = [...s.faq, TEST_Q, D.faq[2]];
+    const allFaq = [...s.faq, TEST_Q, LAUNCH_Q];
     const big = s.area > 300;
     const dev = D.devices[big ? 1 : 0];
     const names = s.scents.map(n => D.byN(n).name);
@@ -255,8 +263,8 @@ function register(site) {
           actions: `<p class="hero-price"><span class="hp-k">${esc(s.unit)} до ${dev.area} м²</span><b>от ${UI.pm(dev)}</b> в месяц</p>${UI.actions(this)}`
         }) + `
 <section class="sec">
-  <div class="wrap split">
-    <div class="prose">${s.intro.map(t => `<p>${t}</p>`).join('')}</div>
+  <div class="wrap split sol-intro">
+    <div class="prose"><h2 class="h2">Аромат для ${esc(s.gen)}</h2>${s.intro.map(t => `<p>${t}</p>`).join('')}</div>
     <aside class="facts-box">
       <h2 class="h4">Коротко</h2>
       <dl>
@@ -278,24 +286,29 @@ function register(site) {
 <section class="sec">
   <div class="wrap">
     <div class="sec-head row"><div><span class="eyebrow">Ароматы</span><h2 class="h2">Что выбирают: ${esc(s.name.toLowerCase())}</h2></div><a class="btn btn-light" href="/aromaty/">Весь каталог ${icon('arrow', 'ic ic-s')}</a></div>
-    <div class="scents">${s.scents.map(n => UI.scentCard(D.byN(n), { page: this })).join('')}</div>
+    <div class="scents">${s.scents.map(n => UI.scentCard(D.byN(n), { page: this, img: true })).join('')}</div>
     ${samplesBox(this, names.join(', '))}
   </div>
 </section>
 <section class="sec sec-soft">
   <div class="wrap">
-    <div class="sec-head"><span class="eyebrow">Цена</span><h2 class="h2">Сколько стоит ароматизация ${esc(s.gen)}</h2><p class="lead">Цена за один аппарат. Масла, обслуживание и гарантия уже включены. ${esc(s.device)}</p></div>
-    ${UI.nichePrice(s, this)}
+    <div class="sec-head"><span class="eyebrow">Цена</span><h2 class="h2">Сколько стоит ароматизация ${esc(s.gen)}</h2><p class="lead">Цена за один аппарат. Масла, обслуживание и гарантия уже включены</p></div>
+    ${priceDuo(this)}
   </div>
 </section>
 <section class="sec">
   <div class="wrap">
-    <div class="sec-head"><span class="eyebrow">Как это выглядит</span><h2 class="h2">Куда поставим аппарат</h2></div>
+    <div class="sec-head"><span class="eyebrow">Через вентиляцию</span><h2 class="h2">Как аромат попадает в зал</h2><p class="lead">Аппарат не стоит в зале: мы подключаем его к вентиляции, и аромат приходит вместе с воздухом</p></div>
     ${UI.scheme(s)}
   </div>
 </section>
 ${UI.faq(allFaq, 'Вопросы: ' + s.name.toLowerCase())}
-${UI.related('Другие решения', others.map(o => [o.h1, `resheniya/${o.slug}/`]))}`;
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head row"><div><h2 class="h2">Другие решения</h2></div><a class="h-lnk" href="/resheniya/">Все решения ${icon('arrow', 'ic ic-s')}</a></div>
+    <div class="oth">${others.map(o => `<a class="oth-c" href="/resheniya/${o.slug}/">${SOL_PHOTO[o.slug] && site.hasImg(SOL_PHOTO[o.slug]) ? img(SOL_PHOTO[o.slug], { cls: 'oth-img', alt: `${o.name}: аромат подаётся через вентиляцию` }) : ''}<div><h3>${esc(o.name)}</h3><p>${esc(o.short)}</p></div><i>${icon('arrow', 'ic ic-s')}</i></a>`).join('')}</div>
+  </div>
+</section>`;
       }
     });
   });
@@ -308,7 +321,7 @@ ${UI.related('Другие решения', others.map(o => [o.h1, `resheniya/${
     ['Смена аромата', 'Покупаете новое масло', 'При следующей замене масла'],
     ['Настройка', 'Разбираетесь сами', 'Техник ставит аппарат и настраивает расписание']
   ];
-  const devFaq = [['Можно ли купить аппарат, а не арендовать?', 'Мы работаем по подписке: аппарат выдаётся в аренду вместе с маслами и обслуживанием. Так вам не нужно искать масла, следить за аппаратом и платить за ремонт.'], D.faq[5], ['Куда устанавливают аппарат?', 'На стойку, полку, шкаф или на стену рядом с розеткой. Лучше всего — в зоне движения воздуха, а не в углу.'], TEST_Q];
+  const devFaq = [['Можно ли купить аппарат, а не арендовать?', 'Мы работаем по подписке: аппарат выдаётся в аренду вместе с маслами и обслуживанием. Так вам не нужно искать масла, следить за аппаратом и платить за ремонт.'], D.faq[5], ['Куда устанавливают аппарат?', 'Не в зал: аппарат подключают к вентиляции помещения, и аромат приходит вместе с воздухом. Гости его не видят.'], TEST_Q];
   add({
     path: 'oborudovanie/', section: 'oborudovanie/', label: 'Аромамашины',
     title: 'Аромамашины для бизнеса в Астане — аренда с обслуживанием',
@@ -420,20 +433,18 @@ ${UI.faq(dfaq, `Вопросы о ${d.name}`)}`;
     get body() {
       const ex = (t, area, setup, pmv) => `<li><b>${t}</b> — ${setup}, на 6 месяцев: ${D.fmt(pmv)} в месяц.</li>`;
       return UI.pageHead(this, { kicker: 'Подписка', lead: `Фиксированная цена в месяц за аппарат, масла, обслуживание и гарантию. Перед договором — ${TRIAL.days} дня бесплатного теста, запуск за 1 день.` }) + `
-<section class="sec sec-tight"><div class="wrap">${UI.priceBlock(this)}</div></section>
+<section class="sec"><div class="wrap">${priceDuo(this)}</div></section>
 <section class="sec">
-  <div class="wrap narrow prose">
-    <h2>Примеры расчёта</h2>
-    <ul>
-      ${ex('Кофейня 80 м²', 80, 'один Nova 300', 33333)}
-      ${ex('Магазин одежды 150 м²', 150, 'один Nova 300', 33333)}
-      ${ex('Офис 450 м²', 450, 'один Nova 1000', 66667)}
-      <li><b>Отель: лобби и 4 этажа</b> — Nova 1000 и четыре Nova 300: около ${D.fmt(200000)} в месяц.</li>
-    </ul>
-    <h2>Аренда или покупка</h2>
-    <p>Можно купить аппарат и масла отдельно, но тогда покупка, поиск масел, настройка и ремонт ложатся на вас. В подписке аппарат выдаётся в аренду, масла меняем мы, а поломка — наша забота. Сравнение — на странице <a href="/oborudovanie/">аромамашин</a> и в статье «<a href="/blog/arenda-ili-pokupka-aromatizatora/">Аромамашина для бизнеса: аренда или покупка</a>».</p>
-    <p>Из чего складывается цена — в статье «<a href="/blog/stoimost-aromatizacii-pomeshcheniya/">Сколько стоит ароматизация помещения</a>».</p>
-  </div>
+  <div class="wrap">
+    <div class="sec-head"><h2 class="h2">Ароматизация для вашего бизнеса</h2><p class="lead">Аппарат подбираем под площадь и планировку вашего помещения. На странице бизнеса — зоны, ароматы и как проходит тест</p></div>
+    <div class="bz v">${SOL.filter(x => SOL_PHOTO[x.slug] && site.hasImg(SOL_PHOTO[x.slug])).map(x => `<a class="bz-c" href="/resheniya/${x.slug}/">
+      ${img(SOL_PHOTO[x.slug], { cls: 'bz-img', alt: `${x.name}: аромат подаётся через вентиляцию` })}
+      <div class="bz-t"><h3>${esc(x.name)}</h3><p>${esc(x.short)}</p>
+        <span class="bz-go">Подробнее ${icon('arrow', 'ic ic-s')}</span>
+      </div>
+    </a>`).join('')}</div>
+    <p class="dfit-n">Нет вашего бизнеса? <a href="/#podbor">Подберите по площади</a> или напишите — посчитаем под ваше помещение</p>
+    </div>
 </section>
 ${UI.faq(priceFaq, 'Вопросы о цене')}`;
     }
@@ -508,9 +519,9 @@ ${UI.related('Другие семейства', D.categories.filter(o => o !== c
         ['Подбор аромата и аппарата', 'Менеджер предлагает 2–3 аромата под вашу задачу и рассчитывает, сколько аппаратов нужно. Можно заказать пробники и выбрать по запаху.'],
         [`Тест ${TRIAL.days} дня`, TRIAL.text],
         ['Договор', 'Подошло — заключаем договор с юрлицом или ИП на 1, 3 или 6 месяцев. Цена фиксирована на весь срок.'],
-        ['Обслуживание', 'Меняем масла по графику, следим за работой аппарата, при необходимости меняем аромат. Если аппарат сломается, заменим его.']
+        ['Обслуживание', 'Меняем масла по графику, следим за работой аппарата, Если аппарат сломается, заменим его.']
       ];
-      return UI.pageHead(this, { kicker: 'Процесс', lead: 'Вы рассказываете о помещении, мы делаем всё остальное: подбираем аромат, привозим и настраиваем аппарат, меняем масла и следим за работой.', media: img('process', { eager: true }) }) + `
+      return UI.pageHead(this, { kicker: 'Процесс', lead: 'Вы рассказываете о помещении, мы делаем всё остальное: подбираем аромат, подключаем аппарат к вентиляции, меняем масла и следим за работой.', media: img('process', { eager: true }) }) + `
 <section class="sec">
   <div class="wrap narrow">
     <ol class="timeline">${steps.map(([t, d], i) => `<li><span class="tl-n">${String(i + 1).padStart(2, '0')}</span><div><h2 class="h3">${t}</h2><p>${d}</p></div></li>`).join('')}</ol>
@@ -524,8 +535,8 @@ ${UI.related('Другие семейства', D.categories.filter(o => o !== c
 </section>
 <section class="sec">
   <div class="wrap narrow prose">
-    <h2>Где лучше ставить аппарат</h2>
-    <p>Аромат распространяется вместе с движением воздуха. Поэтому аппарат ставят не в дальнем углу, а там, где воздух движется: у входа, рядом с проходом, недалеко от вентиляции. Стены и двери останавливают аромат, поэтому отдельным помещениям нужны отдельные точки.</p>
+    <h2>Как аромат попадает в помещение</h2>
+    <p>Аппарат не ставят в зале: его подключают к вентиляции помещения. Масло малыми дозами попадает в поток воздуха, расходится по воздуховодам и выходит из решёток в зонах, где он нужен. Гости чувствуют аромат, но не видят техники. Если у зон своя вентиляция — например, у санузлов или раздевалок, — для них можно подключить отдельный аппарат.</p>
     <h2>Как настраивается интенсивность</h2>
     <p>Хороший аромат заметен на входе и почти незаметен через несколько минут. Если сотрудники к вечеру устают от запаха, интенсивность снижают. Расписание позволяет включать аппарат к открытию и выключать после закрытия, чтобы масло тратилось только тогда, когда в помещении есть люди.</p>
     <p>Подробнее о безопасности — в статье «<a href="/blog/bezopasna-li-aromatizaciya/">Безопасна ли ароматизация помещений</a>».</p>
@@ -607,10 +618,10 @@ ${UI.related('Читайте также', ART.filter(o => o !== a).slice(0, 3).m
   /* ── Вопросы ───────────────────────────────────────── */
   const FAQ_GROUPS = [
     ['Тест и договор', [TEST_Q, ['Как заключается договор?', CFG.documents + ' Срок — 1, 3 или 6 месяцев, чем длиннее, тем ниже цена в месяц.'], ['Можно ли отказаться?', CFG.cancel]]],
-    ['Аппарат', [D.faq[1], D.faq[5], ['Шумит ли аппарат?', 'Уровень шума менее 35 дБ — тише шёпота. Аппарат можно ставить в переговорной, кабинете и спальне.'], ['Что нужно для установки?', 'Только розетка рядом с местом установки. Аппарат ставят на полку, стойку или крепят на стену.']]],
-    ['Ароматы', [D.faq[0], D.faq[4], ['Сколько ароматов можно выбрать?', 'В каталоге 32 аромата в 6 семействах. Для разных зон можно выбрать разные ароматы.'], ['Можно ли оценить аромат до установки?', CFG.samples]]],
+    ['Аппарат', [D.faq[1], D.faq[5], ['Шумит ли аппарат?', 'Уровень шума менее 35 дБ — тише шёпота. Аромат можно подавать и в переговорную, кабинет или спальню.'], ['Что нужно для установки?', 'Вентиляция в помещении: аппарат подключаем к ней, место в зале ему не нужно.']]],
+    ['Ароматы', [D.faq[0], ['Сколько ароматов можно выбрать?', 'В каталоге 32 аромата в 6 семействах. Для разных зон можно выбрать разные ароматы.'], ['Можно ли оценить аромат до установки?', CFG.samples]]],
     ['Цены', [['Что входит в цену?', 'Аренда аппарата, подбор аромата, регулярная замена масел, обслуживание и гарантия.'], ['Почему 6 месяцев выгоднее?', 'Чем длиннее срок подписки, тем ниже цена в месяц: для Nova 300 — 33 333 ₸ вместо 45 000 ₸.']]],
-    ['Обслуживание', [D.faq[2], ['Кто меняет масло?', 'Наш специалист, по графику. Вам ничего делать не нужно.'], ['Что, если аппарат сломается?', 'Обслуживание и гарантия входят в подписку: аппарат отремонтируют или заменят.']]]
+    ['Обслуживание', [LAUNCH_Q, ['Кто меняет масло?', 'Наш специалист, по графику. Вам ничего делать не нужно.'], ['Что, если аппарат сломается?', 'Обслуживание и гарантия входят в подписку: аппарат отремонтируют или заменят.']]]
   ];
   const allQ = FAQ_GROUPS.flatMap(g => g[1]);
   add({
@@ -636,7 +647,7 @@ ${UI.related('Читайте также', ART.filter(o => o !== a).slice(0, 3).m
     schema: [site.schema.business(UI.OWN)],
     ctaTitle: 'Оставьте заявку',
     get body() {
-      return UI.pageHead(this, { kicker: 'Астана', lead: 'Напишите в WhatsApp или позвоните — подберём аромат, посчитаем стоимость и привезём аппарат на бесплатный тест.' }) + `
+      return UI.pageHead(this, { kicker: 'Астана', lead: 'Напишите в WhatsApp или позвоните — подберём аромат, посчитаем стоимость и подключим аппарат на бесплатный тест.' }) + `
 <section class="sec sec-tight">
   <div class="wrap">
     <div class="contacts">

@@ -189,10 +189,13 @@ function actions(p, o = {}) {
 }
 
 function faq(list, title = 'Частые вопросы') {
+  /* как на главной: слева заголовок и кнопка, справа раскрывающийся список */
   return `<section class="sec" id="faq">
-  <div class="wrap narrow">
-    <h2 class="h2">${title}</h2>
-    <div class="faq">${list.map(([q, a], i) => `<details${i === 0 ? ' open' : ''}><summary>${esc(q)}${icon('chevron')}</summary><p>${a}</p></details>`).join('')}</div>
+  <div class="wrap">
+    <div class="h-faq">
+      <div class="h-card h-faq-l"><h2>${title}</h2><p class="h-lead">Не нашли ответ — напишите, ответим за ${CFG.replyMinutes} минут</p><a class="h-go" href="${esc(waHref('Здравствуйте! У меня вопрос'))}" target="_blank" rel="noopener" data-ev="wa_click">Задать вопрос <i>${icon('arrow', 'ic ic-s')}</i></a></div>
+      <div class="h-card h-qs">${list.map(([q, a], i) => `<details${i === 0 ? ' open' : ''}><summary>${esc(q)}</summary><p>${a}</p></details>`).join('')}</div>
+    </div>
   </div>
 </section>`;
 }
@@ -231,11 +234,12 @@ function cta(p) {
 function scentCard(s, o = {}) {
   const c = D.cat(s.cat);
   const sols = SOL.filter(x => x.scents.includes(s.n)).map(x => x.slug).join(' ');
-  return `<article class="sc" data-cat="${s.cat}" data-sol="${sols}">
+  return `<article class="sc${o.img ? ' sc-ph' : ''}" data-cat="${s.cat}" data-sol="${sols}">
+  ${o.img ? site.img(site.hasImg('sc-' + s.slug) ? 'sc-' + s.slug : 'cat-' + c.slug, { cls: 'sc-img', alt: `${s.name}: аромат из семейства «${c.name}»` }) : ''}
   <div class="sc-top"><span class="sc-n">${String(s.n).padStart(2, '0')}</span><span class="sc-cat">${c.short}</span></div>
   <h3>${esc(s.name)}</h3>
   <p class="sc-mood">${esc(c.mood)}</p>
-  <p>${esc(s.desc)}</p>
+  <p class="sc-desc">${esc(s.desc.replace(/\.$/, ''))}</p>
   <dl class="sc-notes"><div><dt>Верх</dt><dd>${esc(s.notes[0])}</dd></div><div><dt>Сердце</dt><dd>${esc(s.notes[1])}</dd></div><div><dt>База</dt><dd>${esc(s.notes[2])}</dd></div></dl>
   <div class="sc-foot"><span class="sc-pow" title="Интенсивность">${[1, 2, 3].map(i => `<i class="${i <= s.power ? 'on' : ''}"></i>`).join('')}</span><span>${esc(s.spaces.slice(0, 2).join(', '))}</span></div>
   ${o.page ? wa(o.page, 'sample', 'Пробник', 'sc-sample', s.name) : ''}
@@ -302,17 +306,15 @@ function nichePrice(s, p) {
 ${actions(p, { second: wa(p, 'kp', 'Получить КП', 'btn btn-light btn-lg', String(s.area)) })}`;
 }
 
-/* Схема «куда поставим аппарат» в типовом помещении ниши — пока нет фото с объектов */
+/* Схема «как аромат попадает в зал» для решения: аппарат подключён к вентиляции, аромат выходит в зоны */
 function scheme(s) {
-  const at = Object.fromEntries(s.scheme.map(([z, t]) => [z, t]));
-  return `<div class="scheme">
-  <figure class="pm">
-    <div class="pm-room">${s.zones.map(([z], i) => `<div class="pm-z${at[i] ? ' has' : ''}"><span class="pm-n">${String(i + 1).padStart(2, '0')}</span><b>${esc(z)}</b>${at[i] ? `<span class="pm-dev pm-${at[i]}"><i aria-hidden="true"></i>Nova ${at[i]}</span>` : ''}</div>`).join('')}<span class="pm-door">Вход</span></div>
-    <figcaption>Схема типового помещения: ${esc(s.unit.toLowerCase())}, ${s.area} м². Точное место выбираем при установке.</figcaption>
-  </figure>
-  <ul class="scheme-l">${s.scheme.map(([z, t]) => `<li><span class="pm-dot pm-${t}" aria-hidden="true"></span><div><b>Nova ${t} — ${esc(s.zones[z][0].toLowerCase())}</b><p>${esc(s.zones[z][2])}</p></div></li>`).join('')}
-    <li><span class="pm-dot pm-0" aria-hidden="true"></span><div><b>Розетка рядом — и всё</b><p>Аппарат ставят на полку, стойку или крепят на стену. Ремонт и вентиляция не нужны.</p></div></li>
-  </ul>
+  /* три карточки как этапы на главной: подключение к вентиляции → аромат с воздухом → решётки в зонах */
+  const zones = s.zones.map(([z]) => z);
+  const ic = d => `<i><svg viewBox="0 0 24 24" aria-hidden="true">${d}</svg></i>`;
+  return `<div class="vs3">
+  <div class="vs3-c">${ic('<rect x="4" y="7" width="7" height="10" rx="1.5"/><path d="M11 12h9M17 9l3 3-3 3"/>')}<h3>Подключаем к вентиляции</h3><p>Аппарат не стоит в зале: мы подключаем его к вентиляции помещения</p></div>
+  <div class="vs3-c dk">${ic('<path d="M4 9c2.7-2.4 5.3-2.4 8 0s5.3 2.4 8 0M4 15c2.7-2.4 5.3-2.4 8 0s5.3 2.4 8 0"/>')}<h3>Аромат идёт с воздухом</h3><p>Масло малыми дозами попадает в поток воздуха и расходится по воздуховодам</p></div>
+  <div class="vs3-c lt">${ic('<rect x="4" y="6" width="16" height="12" rx="2"/><path d="M7 10h10M7 14h10"/>')}<h3>Гости чувствуют, но не видят</h3><p>Аромат выходит из решёток вентиляции, техники в зале нет</p><div class="vs3-z">${zones.map(z => `<span>${esc(z)}</span>`).join('')}</div></div>
 </div>`;
 }
 

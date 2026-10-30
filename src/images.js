@@ -89,3 +89,42 @@ Composition: vertical frame 4:5, eye-level view down the aisle, rails on both si
   'blog-aromat-dlya-magazina-odezhdy': { title: 'Обложка: аромат для магазина одежды', w: 16, h: 9, prio: 2, where: 'блог', alt: 'Аромат для магазина одежды', prompt: `Minimal editorial still life on a light oak table: neatly folded knitwear and linen shirts in sage, cream and white, a paper scent strip resting on top, ${DEVICE} standing at the right edge with a faint mist, soft daylight, pale sage wall behind. Calm, premium, airy. No text, no logos. Aspect ratio 16:9.` },
   'og': { title: 'Обложка для соцсетей', w: 16, h: 9, prio: 2, where: 'превью ссылок в мессенджерах', alt: 'Вдох — ароматизация помещений в Астане', prompt: `Wide hero image: ${DEVICE} on the right on a light oak surface, soft mint-to-white gradient background with delicate translucent aurora-like light waves, generous empty space on the left for a headline. Premium, calm, fresh. No text, no logos. Aspect ratio 16:9 (будет обрезано до 1200×630).` }
 };
+
+/* Фото каждого аромата для карточек «Что выбирают» на страницах решений — тот же стиль, что у семейств, без названий брендов */
+const SC_STILL = {
+  1: 'a halved lemon, a halved bergamot and a few mandarin segments',
+  2: 'loose green tea leaves in a small ceramic bowl and a few fresh mint sprigs',
+  3: 'a neat bundle of dried Provence lavender tied with twine',
+  4: 'a small block of cedar wood and a pile of pale sandalwood chips',
+  5: 'smooth grey sea pebbles, a piece of bleached driftwood and a pinch of coarse sea salt',
+  6: 'two vanilla pods and a few glossy pieces of amber caramel',
+  7: 'a small white cup of espresso with golden crema and a few roasted coffee beans',
+  8: 'soft white cotton bolls and a folded piece of white linen',
+  9: 'a branch of white jasmine blossoms',
+  10: 'a neat stack of crisp folded white cotton linen with a single cotton boll on top',
+  11: 'a folded piece of dark brown leather and a few dried tobacco leaves',
+  12: 'fresh blue-green eucalyptus branches',
+  13: 'two deep pink damask roses and a small glass dish of honey',
+  14: 'a few stems of delicate white and pale yellow freesia flowers',
+  15: 'a ripe green pear cut in half next to white freesia flowers',
+  16: 'a single dark red rose, a few pink peppercorns and a thin wisp of smoke from an incense stick',
+  17: 'silvery white tea buds in a small white porcelain bowl',
+  18: 'halved limes, fresh basil leaves and a wedge of pink grapefruit',
+  19: 'a white seashell, smooth blue-grey sea stones and a little wet sand',
+  20: 'a sprig of juniper with blue berries, a small cedar twig and a pine branch',
+  21: 'roasted coffee beans and a few broken pieces of dark chocolate',
+  22: 'vanilla pods and a small bowl of vanilla cream',
+  23: 'fresh blackberries with a few glossy bay leaves',
+  24: 'a bunch of green grapes and a few red grapes',
+  25: 'loose white tea leaves, a halved fresh fig and a small piece of light birch wood',
+  26: 'an orange slice, a single white gardenia flower and a small piece of polished dark wood',
+  27: 'green tea leaves, a short bamboo stalk and a smooth flat stone',
+  28: 'a sprig of white lily of the valley and a thin slice of lime',
+  29: 'a few white jasmine and rose petals and small pieces of warm amber resin',
+  30: 'half a pink grapefruit, a small cedar block and a few green cardamom pods',
+  31: 'a white cotton boll and a sliced green apple',
+  32: 'vanilla pods, two cinnamon sticks and a pale pink peony'
+};
+for (const s of require('../lib/data').scents) {
+  module.exports['sc-' + s.slug] = { title: s.name, where: 'карточка аромата в «Что выбирают»', alt: `${s.name}: ${s.desc.replace(/\.$/, '').toLowerCase()}`, ...still(SC_STILL[s.n]) };
+}
