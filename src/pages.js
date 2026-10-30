@@ -62,6 +62,14 @@ const MOODS = [
   ['floral', 'нежные и праздничные', 'салон красоты, цветы, свадебный салон'],
   ['perfume', 'с характером, как духи', 'бутик, шоурум, барбершоп']
 ];
+/* Статьи на главной: первая — крупно с фото, остальные строками [статья, короткая подпись для строки] */
+const BLOG_HOME = [
+  ['kak-vybrat-aromat-dlya-biznesa'],
+  ['stoimost-aromatizacii-pomeshcheniya', 'Из чего складывается цена и почему подписка выгоднее покупки'],
+  ['arenda-ili-pokupka-aromatizatora', 'Когда выгоднее купить аппарат, а когда взять в подписку'],
+  ['bezopasna-li-aromatizaciya', 'Чем профессиональный аромат отличается от освежителя'],
+  ['skolko-diffuzorov-nuzhno', 'Как посчитать аппараты — не только по площади']
+];
 /* Что входит в подписку: [жирное начало, продолжение] */
 const INCL = [
   ['Аппарат в аренду', 'на весь срок — покупать ничего не нужно'],
@@ -186,6 +194,18 @@ function register(site) {
       <div class="h-pr-act">${wa(this, 'test', go(`Начать с теста ${TRIAL.days} дня`), 'h-go')}<small>Сначала ${TRIAL.days} дня бесплатно, договор — только если аромат подошёл</small></div>
     </div>
   </div>
+</section>
+
+<section class="h-sec" id="stati">
+  <div class="h-head"><div><h2>Перед запуском полезно знать</h2><p class="h-lead">Короткие статьи о цене, безопасности и выборе аромата — по делу, без воды</p></div><a class="h-lnk" href="/blog/">Все статьи ${icon('arrow', 'ic ic-s')}</a></div>
+  ${(() => {
+    const list = BLOG_HOME.map(([slug, short]) => [ART.find(a => a.slug === slug), short]).filter(([a]) => a);
+    const [[top], ...rest] = list;
+    return `<div class="h-bl">
+    <a class="h-bl-top" href="/blog/${top.slug}/">${img('blog-' + top.slug, { cls: 'h-bl-img', alt: esc(top.h1) })}<div><small>${top.read} мин чтения</small><h3>${esc(top.h1)}</h3><p>${esc(top.lead.replace(/\.$/, ''))}</p></div></a>
+    <div class="h-bl-list">${rest.map(([a, short]) => `<a class="h-bl-i" href="/blog/${a.slug}/"><div><small>${a.read} мин чтения</small><h3>${esc(a.h1)}</h3><p>${short}</p></div><i>${icon('arrow', 'ic ic-s')}</i></a>`).join('')}</div>
+  </div>`;
+  })()}
 </section>
 
 <section class="h-sec" id="faq">
