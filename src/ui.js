@@ -104,7 +104,7 @@ function footer(p) {
         <address>
           ${call('', icon('phone') + C.phone)}
           <a href="${esc(waHref(waText(p)))}" target="_blank" rel="noopener" data-ev="wa_click">${icon('chat')}WhatsApp</a>
-          <a href="${C.map2gis}" target="_blank" rel="noopener">${icon('pin')}${C.address}</a>
+          <span>${icon('pin')}Астана</span>
           <span>${icon('clock')}${C.hours}</span>
           ${C.reviews2gis ? `<a href="${C.reviews2gis}" target="_blank" rel="noopener">${icon('chat')}Отзывы о нас в 2ГИС</a>` : ''}
         </address>
