@@ -300,10 +300,10 @@ ul,ol{margin:0;padding:0;list-style:none}
 
 /* цены: слева что входит, справа срок и два аппарата */
 .h-pr{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.h-pr-l{padding:36px 36px 34px;border-radius:24px;background:var(--in);color:#fff}
+.h-pr-l{padding:36px 36px 34px;border-radius:24px;background:var(--in);color:#fff;display:flex;flex-direction:column}
 .h-pr-l h3{font-size:26px;font-weight:600;letter-spacing:-.02em;line-height:1.15;color:#fff}
-.h-pr-l ul{list-style:none;margin:24px 0 0;padding:0;display:grid;gap:14px}
-.h-pr-l li{display:grid;grid-template-columns:22px 1fr;gap:12px;font-size:15.5px;line-height:1.45;color:#E1E6F1}
+.h-pr-l ul{list-style:none;margin:26px 0 0;padding:0;flex:1;display:flex;flex-direction:column;justify-content:space-between;gap:14px}
+.h-pr-l li{display:grid;grid-template-columns:22px 1fr;gap:12px;font-size:16px;line-height:1.45;color:#E1E6F1}
 .h-pr-l li::before{content:"";width:22px;height:22px;margin-top:1px;border-radius:50%;background:rgba(255,255,255,.16) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6 12.5l4 4 8-9' fill='none' stroke='%23fff' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/13px no-repeat}
 .h-pr-l li b{font-weight:600;color:#fff}
 .h-pr-r{padding:30px 30px 28px;border-radius:24px;background:var(--sk);display:flex;flex-direction:column}
