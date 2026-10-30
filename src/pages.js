@@ -100,9 +100,9 @@ function register(site) {
       const go = label => `${label} <i>${icon('arrow', 'ic ic-s')}</i>`;
       /* слайдер первого экрана: [слот картинки, подпись]; без фото слайд не показываем */
       const slides = [['hero-kofejnya', 'Кофейня'], ['hero-salon', 'Салон красоты'], ['hero-otel', 'Отель'], ['hero-ofis', 'Офис'], ['hero', 'Магазин одежды']].filter(([k]) => site.hasImg(k));
-      /* подбор: бизнесы с фото, первые три аромата решения; аппарат выбирается по площади в main.js */
+      /* подбор: бизнесы с фото и рекомендуемый аромат — первый в решении; аппарат выбирается по площади в main.js */
       const pick = PICK.map(([slug, k, name]) => [bySlug(slug), k, name]).filter(([s, k]) => s && site.hasImg(k));
-      const pickData = { biz: pick.map(([s, , name]) => ({ n: name, sc: s.scents.slice(0, 3).map(n => D.byN(n).name) })).concat({ n: 'Другой бизнес', sc: [], other: 1 }), total: D.scents.length, dev: D.devices.map(d => ({ n: d.name, area: d.area, pm: `от ${UI.pm(d)}` })) };
+      const pickData = { biz: pick.map(([s, , name]) => { const r = D.byN(s.scents[0]); return { n: name, rec: { n: r.name, d: r.desc.replace(/\.$/, ''), cat: D.categories.find(c => c.id === r.cat).slug } }; }).concat({ n: 'Другой бизнес', other: 1 }), total: D.scents.length, dev: D.devices.map(d => ({ n: d.name, area: d.area, pm: `от ${UI.pm(d)}` })) };
       /* цены: в месяц по каждому сроку и итог за срок, как в data.js */
       const priceData = D.devices.map(d => d.plans.map(p => [D.fmt(D.perMonth(p)), D.fmt(p.total), p.months]));
       const best = D.devices[0].plans.length - 1;
@@ -127,7 +127,7 @@ function register(site) {
 </section>
 
 <section class="h-sec" id="podbor">
-  <div class="h-head"><div><h2>Подбор за 30 секунд</h2><p class="h-lead">Выберите место и площадь — сразу появится аппарат, ароматы и цена</p></div></div>
+  <div class="h-head"><div><h2>Подбор за 30 секунд</h2><p class="h-lead">Выберите место и площадь — сразу появится аппарат, аромат и цена</p></div></div>
   <div class="h-pk" data-pick="${esc(JSON.stringify(pickData))}">
     <div class="h-card h-pk-l">
       <p class="h-lab">Ваш бизнес</p>
@@ -138,7 +138,8 @@ function register(site) {
     <div class="h-pk-r">
       <small data-for></small>
       <p class="h-pk-dev"><span data-dev></span><span class="h-pk-dd" data-dev-d></span></p>
-      <ul class="h-pk-sc" data-sc></ul>
+      ${img('device', { cls: 'h-pk-dimg', alt: 'Аппарат Nova' })}
+      <div class="h-pk-rec" data-rec></div>
       <div class="h-pk-pr"><div><b data-pm></b><span>в месяц при подписке на 6 месяцев</span></div>${wa(this, 'test', go('На тест'), 'h-go h-go-sm h-pk-go')}</div>
     </div>
   </div>

@@ -183,6 +183,7 @@
   /* подбор за 30 секунд: бизнес и площадь → аппарат, ароматы и цена; кнопка теста уходит в WhatsApp с подбором */
   $$('[data-pick]').forEach(function (box) {
     var P = JSON.parse(box.getAttribute('data-pick')), btns = $$('.h-pk-b', box), area = $('[data-area]', box), go = $('.h-pk-go', box), cur = 0;
+    var dimg = $('.h-pk-dimg', box), base = dimg ? dimg.getAttribute('src').replace(/[^/]*$/, '') : '/assets/img/';
     var set = function (sel, t) { var el = $(sel, box); if (el) el.textContent = t; };
     var draw = function () {
       var a = +area.value, d = P.dev[a > P.dev[0].area ? 1 : 0], b = P.biz[cur];
@@ -191,10 +192,18 @@
       set('[data-dev]', d.n);
       set('[data-dev-d]', 'до ' + d.area + ' м², через вентиляцию');
       set('[data-pm]', d.pm);
-      $('[data-sc]', box).innerHTML = b.other ? '<li class="h-pk-note">Подскажем, какие ароматы подойдут вашему помещению. Все ' + P.total + ' можно оценить вживую — выберете тот, что нравится именно вам</li>' : b.sc.map(function (n, i) { return '<li><b></b><span>' + (i ? 'на выбор' : 'чаще всего') + '</span></li>'; }).join('');
-      if (!b.other) $$('[data-sc] b', box).forEach(function (el, i) { el.textContent = b.sc[i]; });
+      /* рекомендуемый аромат: фото семейства, название и описание; для «другого бизнеса» — подсказка */
+      var rec = $('[data-rec]', box);
+      rec.classList.toggle('note', !!b.other);
+      rec.innerHTML = b.other ? '<p></p>' : '<img alt="" loading="lazy"><div><small>Чаще всего выбирают</small><b></b><span></span></div>';
+      if (b.other) $('p', rec).textContent = 'Подскажем, какие ароматы подойдут вашему помещению. Все ' + P.total + ' можно оценить вживую — выберете тот, что нравится именно вам';
+      else {
+        $('img', rec).src = base + 'cat-' + b.rec.cat + '.webp';
+        $('b', rec).textContent = b.rec.n;
+        $('span', rec).textContent = b.rec.d;
+      }
       btns.forEach(function (x, i) { x.setAttribute('aria-pressed', i === cur); });
-      if (go) go.href = wa(head() + (b.other ? 'Моего бизнеса нет в списке, помогите подобрать аромат: ' + a + ' м², ' + d.n + '. Мой бизнес: ' : 'Хочу тест ' + (T.days || 3) + ' дня: ' + b.n.toLowerCase() + ', ' + a + ' м², ' + d.n + '. Ароматы: ' + b.sc.join(', ')));
+      if (go) go.href = wa(head() + (b.other ? 'Моего бизнеса нет в списке, помогите подобрать аромат: ' + a + ' м², ' + d.n + '. Мой бизнес: ' : 'Хочу тест ' + (T.days || 3) + ' дня: ' + b.n.toLowerCase() + ', ' + a + ' м², ' + d.n + '. Аромат: ' + b.rec.n));
     };
     btns.forEach(function (x, i) { x.addEventListener('click', function () { cur = i; draw(); track('pick_biz', { biz: P.biz[i].n }); }); });
     area.addEventListener('input', draw);
