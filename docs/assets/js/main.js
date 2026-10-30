@@ -191,7 +191,7 @@
       set('[data-dev]', d.n);
       set('[data-dev-d]', 'до ' + d.area + ' м², через вентиляцию');
       set('[data-pm]', d.pm);
-      $('[data-sc]', box).innerHTML = b.other ? '<li class="h-pk-note">Подскажем, какие ароматы подойдут вашему помещению, а понюхать можно все ' + P.total + ' — выберете по запаху</li>' : b.sc.map(function (n, i) { return '<li><b></b><span>' + (i ? 'на выбор' : 'чаще всего') + '</span></li>'; }).join('');
+      $('[data-sc]', box).innerHTML = b.other ? '<li class="h-pk-note">Подскажем, какие ароматы подойдут вашему помещению. Все ' + P.total + ' можно оценить вживую — выберете тот, что нравится именно вам</li>' : b.sc.map(function (n, i) { return '<li><b></b><span>' + (i ? 'на выбор' : 'чаще всего') + '</span></li>'; }).join('');
       if (!b.other) $$('[data-sc] b', box).forEach(function (el, i) { el.textContent = b.sc[i]; });
       btns.forEach(function (x, i) { x.setAttribute('aria-pressed', i === cur); });
       if (go) go.href = wa(head() + (b.other ? 'Моего бизнеса нет в списке, помогите подобрать аромат: ' + a + ' м², ' + d.n + '. Мой бизнес: ' : 'Хочу тест ' + (T.days || 3) + ' дня: ' + b.n.toLowerCase() + ', ' + a + ' м², ' + d.n + '. Ароматы: ' + b.sc.join(', ')));
